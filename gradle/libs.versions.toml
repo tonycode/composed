@@ -1,0 +1,37 @@
+# More about this file: https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+minSdk = "21"  # Lollipop (required for Jetpack Compose)
+targetSdk = "34"  # Upside Down Cake
+compileSdk = "34"  # Upside Down Cake
+buildTools = "34.0.0"
+androidGradlePlugin = "8.2.0"
+composeCompilerExtension = "1.5.7"  # check compatibility: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+
+kotlin = "1.9.21"
+compose = "1.5.4"
+
+[libraries]
+androidx-activity-compose = "androidx.activity:activity-compose:1.8.2"
+androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3", version = "1.1.2" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+androidx-constraintLayout-compose = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+androidx-core-ktx = "androidx.core:core-ktx:1.12.0"
+androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
+androidx-navigation-compose = "androidx.navigation:navigation-compose:2.7.6"
+coil-compose = "io.coil-kt:coil-compose:2.5.0"
+kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom" }
+kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
+kotlinx-collections-immutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7"
+
+[bundles]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+gradle-versions = "com.github.ben-manes.versions:0.50.0"  # https://github.com/ben-manes/gradle-versions-plugin
+grgit = { id = "org.ajoberstar.grgit", version = "5.2.1" }  # Manipulate with project's git repo (https://github.com/ajoberstar/grgit)
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
