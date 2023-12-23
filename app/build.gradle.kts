@@ -105,7 +105,7 @@ dependencies {
     implementation(libs.androidx.compose.material.icons.extended)
 
     //// Demos
-    implementation(projects.demos.app1)
+    implementation(projects.demos.comidaApp)
 
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)

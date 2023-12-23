@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="comida_app_name">Comida</string>
+
+    <string name="comida_deliver_to">Deliver to</string>
+    <string name="comida_good_afternoon">Good Afternoon!</string>
+    <string name="comida_search_hint">Search dishes, restaurants</string>
+
+    <string name="comida_view_all">View All</string>
+
+</resources>

@@ -3,17 +3,19 @@ package dev.tonycode.composed.ui
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import dev.tonycode.composed.app1.ui.App1Activity
+import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.ui.components.DemoAppCard
 import dev.tonycode.composed.ui.theme.ComposedAppTheme
 import dev.tonycode.composed.ui.util.FontScalePreviews
 import dev.tonycode.composed.ui.util.LightDarkPreviews
@@ -34,22 +36,28 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 private fun ComposedApp() {
+
     ComposedAppTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
+            color = MaterialTheme.colorScheme.background,
         ) {
             val context = LocalContext.current
 
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 32.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                OutlinedButton(onClick = {
-                    App1Activity.launch(context)
-                }) { Text("app1") }
+                items(demoApps) { demoApp ->
+                    DemoAppCard(demoApp) {
+                        demoApp.launcher.invoke(context)
+                    }
+                }
             }
         }
     }
+
 }
 
 @LightDarkPreviews

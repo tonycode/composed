@@ -9,6 +9,16 @@ composed
 Android JetpackCompose implementations for various apps
 
 
+## Demo Apps
+
+### Comida Food Delivery App
+
+- [`demos/comida-app`](demos/comida-app/src/main/kotlin/dev/tonycode/composed/comida/ui/ComidaAppActivity.kt)
+- design by Ola Hamdy - [dribbble](https://dribbble.com/shots/23157137-Comida-Food-Delivery-App-UI-Kit)
+
+<a href="docs/Comida - Home.jpg"><img src="docs/Comida - Home.jpg" height=800 /></a>
+
+
 ## License
 
 [MIT](LICENSE)

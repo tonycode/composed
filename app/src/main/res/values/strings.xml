@@ -3,4 +3,7 @@
 
     <string name="app_name">Composed</string>
 
+    <string name="launch_design_url">Launch design url</string>
+    <string name="launch_demo_app">Launch this demo app</string>
+
 </resources>

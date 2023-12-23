@@ -26,7 +26,7 @@ footer
     - build - Changes that affect the build system or external dependencies
     - ci - Changes to our CI configuration files and scripts
 - scopes
-    - demo - Changes related to demonstrational application
+    - comida, ... - Changes related to demonstrational applications
 - description
     - use the imperative, present tense: "change" not "changed" or "changes"
         - It tells someone what applying the commit will do, rather than what you did
