@@ -50,6 +50,7 @@ fun BottomNav(
             navItems.forEach { screen ->
                 BottomNavItem(
                     screen,
+                    badgeCounter = if (screen.route == Screen.Notifications.route) 5 else null,
                     isSelected = (selectedRoute == screen.route),
                     onSelected = { selectedRoute = screen.route },
                 )
@@ -62,6 +63,7 @@ fun BottomNav(
 @Composable
 private fun BottomNavItem(
     screen: Screen,
+    badgeCounter: Int?,
     isSelected: Boolean,
     onSelected: () -> Unit,
 ) {
@@ -71,31 +73,70 @@ private fun BottomNavItem(
             .clickable { onSelected.invoke() }
             .padding(horizontal = 16.dp),
     ) {
-        // nav-item icon
+        IconWithBadge(
+            iconRes = screen.iconRes,
+            iconDescription = screen.iconDescription,
+            badgeCounter = badgeCounter,
+            isSelected = isSelected,
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(vertical = 16.dp),
+        )
+
+        if (isSelected) {
+            SelectedItemIndicator(modifier = Modifier.align(Alignment.BottomCenter))
+        }
+    }
+}
+
+@Composable
+private fun IconWithBadge(
+    @DrawableRes iconRes: Int,
+    iconDescription: String,
+    badgeCounter: Int?,
+    isSelected: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    val iconSize = 28.dp
+    val badgeHorizontalPadding = 2.dp
+    val badgeVerticalPadding = 4.dp
+
+    Box(modifier = modifier) {
         Image(
-            painterResource(id = screen.iconRes),
-            contentDescription = screen.iconDescription,
+            painterResource(id = iconRes),
+            contentDescription = iconDescription,
             colorFilter = ColorFilter.tint(
                 if (isSelected) ComidaPalette.Primary else ComidaPalette.ParisPaving
             ),
             modifier = Modifier
                 .align(Alignment.Center)
-                .padding(vertical = 16.dp)
-                .requiredSize(28.dp),
+                .requiredSize(
+                    width = iconSize + badgeHorizontalPadding*2,
+                    height = iconSize + badgeVerticalPadding*2,
+                )
+                .padding(horizontal = badgeHorizontalPadding, vertical = badgeVerticalPadding),
         )
 
-        // bottom line indicator for selected nav-item
-        if (isSelected) {
-            Surface(
-                shape = MaterialTheme.shapes.small,
-                color = MaterialTheme.colorScheme.primary,
-                modifier = Modifier
-                    .align(Alignment.BottomCenter)
-                    .size(width = 40.dp, height = 4.dp),
-            ) { }
+        if (badgeCounter != null) {
+            BadgeCounter(
+                value = badgeCounter,
+                modifier = Modifier.align(Alignment.TopEnd),
+            )
         }
     }
 }
+
+@Composable
+private fun SelectedItemIndicator(
+    modifier: Modifier = Modifier,
+) {
+    Surface(
+        shape = MaterialTheme.shapes.small,
+        color = MaterialTheme.colorScheme.primary,
+        modifier = modifier.size(width = 40.dp, height = 4.dp),
+    ) { }
+}
+
 
 private sealed class Screen(val route: String, @DrawableRes val iconRes: Int, val iconDescription: String) {
     object Home : Screen("home", R.drawable.nav_home_28, "Home screen")
