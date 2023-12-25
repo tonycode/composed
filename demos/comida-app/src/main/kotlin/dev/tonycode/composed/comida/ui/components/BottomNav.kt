@@ -4,9 +4,12 @@ import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -14,7 +17,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,8 +44,8 @@ fun BottomNav(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
+                .padding(horizontal = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             navItems.forEach { screen ->
                 BottomNavItem(
@@ -60,14 +65,36 @@ private fun BottomNavItem(
     isSelected: Boolean,
     onSelected: () -> Unit,
 ) {
-    Image(
-        painterResource(id = screen.iconRes),
-        contentDescription = screen.iconDescription,
-        colorFilter = ColorFilter.tint(
-            if (isSelected) ComidaPalette.Primary else ComidaPalette.ParisPaving
-        ),
-        modifier = Modifier.clickable { onSelected.invoke() }
-    )
+    Box(
+        modifier = Modifier
+            .clip(MaterialTheme.shapes.medium)
+            .clickable { onSelected.invoke() }
+            .padding(horizontal = 16.dp),
+    ) {
+        // nav-item icon
+        Image(
+            painterResource(id = screen.iconRes),
+            contentDescription = screen.iconDescription,
+            colorFilter = ColorFilter.tint(
+                if (isSelected) ComidaPalette.Primary else ComidaPalette.ParisPaving
+            ),
+            modifier = Modifier
+                .align(Alignment.Center)
+                .padding(vertical = 16.dp)
+                .requiredSize(28.dp),
+        )
+
+        // bottom line indicator for selected nav-item
+        if (isSelected) {
+            Surface(
+                shape = MaterialTheme.shapes.small,
+                color = MaterialTheme.colorScheme.primary,
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .size(width = 40.dp, height = 4.dp),
+            ) { }
+        }
+    }
 }
 
 private sealed class Screen(val route: String, @DrawableRes val iconRes: Int, val iconDescription: String) {
