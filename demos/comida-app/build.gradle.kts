@@ -54,6 +54,8 @@ dependencies {
 
     implementation(projects.commonUi)
 
+    implementation(libs.coil.compose)
+
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

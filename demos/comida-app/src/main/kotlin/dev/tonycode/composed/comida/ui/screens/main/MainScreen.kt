@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.comidaCategories
+import dev.tonycode.composed.comida.data.comidaRestaurants
 import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
@@ -77,8 +78,6 @@ fun MainScreen() {
             onViewAllClicked = { },
         )
 
-        Spacer(Modifier.height(8.dp))
-
         RestaurantsBlock()
     }
 
@@ -120,14 +119,12 @@ private fun OffersBlock() {
 
 @Composable
 private fun RestaurantsBlock() {
-    val restaurants = listOf("Seafood maki sushi", "Tori Midori")
-
     LazyRow(
-        contentPadding = PaddingValues(horizontal = screenHorizontalPadding),
+        contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(restaurants) {
-            RestaurantCard(title = it)
+        items(comidaRestaurants) {
+            RestaurantCard(restaurant = it)
         }
     }
 }
