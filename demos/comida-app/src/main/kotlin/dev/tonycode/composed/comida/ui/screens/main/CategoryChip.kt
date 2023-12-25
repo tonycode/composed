@@ -1,13 +1,13 @@
 package dev.tonycode.composed.comida.ui.screens.main
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -20,24 +20,35 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.data.comidaCategories
 import dev.tonycode.composed.comida.model.Category
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.comida.ui.util.shadowCustom
 
 
 @Composable
 fun CategoryChip(
     category: Category,
-    isChecked: Boolean = false,
+    isSelected: Boolean = false,
     onClicked: () -> Unit,
 ) {
 
     val textStyle = MaterialTheme.typography.bodySmall
 
     Column(
-        modifier = Modifier.clickable { onClicked.invoke() },
+        modifier = Modifier
+            .clip(MaterialTheme.shapes.large)
+            .clickable { onClicked.invoke() }
+            .background(if (isSelected) Color(0xFF6ED39D) else Color.Transparent)
+            .then(
+                if (isSelected) Modifier.padding(start = 6.dp, top = 4.dp, end = 6.dp, bottom = 14.dp)
+                else Modifier.padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 12.dp)
+            )
+        ,
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
@@ -47,36 +58,43 @@ fun CategoryChip(
                 .size(50.dp)
                 .shadowCustom(
                     Color(0x3FD3D1D8),
-                    offsetX = 0.dp, offsetY = 20.dp,
-                    blurRadius = 30.dp
+                    offsetX = 0.dp, offsetY = 8.dp,
+                    blurRadius = 12.dp
                 )
-                .clip(CircleShape),
+                .clip(CircleShape)
+                .background(color = Color.White),
         )
 
-        Spacer(Modifier.height(if (!isChecked) 4.dp else 6.dp))
+        Spacer(Modifier.height(if (!isSelected) 4.dp else 8.dp))
 
         Text(
             text = category.title,
-            style = if (!isChecked) textStyle else textStyle.copy(fontWeight = FontWeight.SemiBold),
-            //color = if (!isChecked) MaterialTheme.colorScheme.onBackground else ComidaPalette.White,
+            style = if (!isSelected) textStyle else textStyle.copy(fontWeight = FontWeight.SemiBold),
+            color = if (!isSelected) MaterialTheme.colorScheme.onBackground else ComidaPalette.White,
         )
     }
 
 }
 
+
 @Preview
 @Composable
-private fun PreviewCategoryChip() {
+private fun PreviewCategoryChip(
+    @PreviewParameter(PreviewProvider::class) pair: Pair<Category, Boolean>,
+) {
     ComidaAppTheme {
-        Surface(color = MaterialTheme.colorScheme.background) {
-            val cat1 = comidaCategories.first()
-            val cat2 = comidaCategories.last()
-
-            Row {
-                CategoryChip(cat1, isChecked = true, onClicked = { })
-                Spacer(Modifier.width(8.dp))
-                CategoryChip(cat2, isChecked = false, onClicked = { })
-            }
+        Surface(
+            color = MaterialTheme.colorScheme.background,
+            modifier = Modifier.padding(8.dp),
+        ) {
+            CategoryChip(pair.first, isSelected = pair.second, onClicked = { })
         }
     }
+}
+
+private class PreviewProvider : PreviewParameterProvider<Pair<Category, Boolean>> {
+    override val values = sequenceOf(
+        Pair(comidaCategories.first(), false),
+        Pair(comidaCategories.last(), true),
+    )
 }
