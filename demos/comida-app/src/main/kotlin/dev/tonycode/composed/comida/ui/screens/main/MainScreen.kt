@@ -32,7 +32,7 @@ import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 @Composable
 fun MainScreen() {
 
-    Column(modifier = Modifier.padding(top = 16.dp, bottom = 80.dp)) {
+    Column(modifier = Modifier.padding(top = 12.dp, bottom = 80.dp)) {
         ComidaTopAppbar(
             modifier = Modifier.padding(horizontal = screenHorizontalPadding),
             onNavMenuClicked = { },
@@ -66,11 +66,9 @@ fun MainScreen() {
             onViewAllClicked = { },
         )
 
-        Spacer(Modifier.height(8.dp))
-
         OffersBlock()
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(Modifier.height(12.dp))
 
         Section(
             title = "Restaurants",
@@ -108,7 +106,7 @@ private fun OffersBlock() {
     val offers = listOf("Burger King", "TakoMaki")
 
     LazyRow(
-        contentPadding = PaddingValues(horizontal = screenHorizontalPadding),
+        contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         items(offers) {

@@ -32,7 +32,7 @@ fun DeliveryInfo(
             modifier = Modifier
                 .clip(MaterialTheme.shapes.small)
                 .clickable { onSelectorClicked.invoke() }
-                .padding(horizontal = 4.dp),
+                .padding(horizontal = 6.dp, vertical = 2.dp),
         ) {
             Text(
                 stringResource(R.string.comida_deliver_to),

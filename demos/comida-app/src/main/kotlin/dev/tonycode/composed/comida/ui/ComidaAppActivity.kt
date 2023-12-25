@@ -42,7 +42,7 @@ class ComidaAppActivity : ComponentActivity() {
 }
 
 
-val screenHorizontalPadding = 24.dp
+val screenHorizontalPadding = 22.dp
 
 @Composable
 private fun ComidaApp() {
@@ -57,7 +57,7 @@ private fun ComidaApp() {
                 BottomNav(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = screenHorizontalPadding, vertical = 24.dp)
+                        .padding(start = 18.dp, end = 18.dp, bottom = 18.dp)
                         .align(Alignment.BottomCenter),
                 )
             }

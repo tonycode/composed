@@ -36,7 +36,7 @@ fun ComidaTopAppbar(
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Surface(
-            shape = MaterialTheme.shapes.medium,
+            shape = MaterialTheme.shapes.small,
             color = MaterialTheme.colorScheme.background,
             modifier = Modifier
                 .size(40.dp)
@@ -68,7 +68,7 @@ fun ComidaTopAppbar(
         )
 
         Surface(
-            shape = MaterialTheme.shapes.medium,
+            shape = MaterialTheme.shapes.small,
             color = ComidaPalette.MistyBlue.copy(alpha = 0.15f),
             modifier = Modifier.size(40.dp),
         ) {

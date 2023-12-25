@@ -33,6 +33,7 @@ val comidaTypography = Typography(
         fontFamily = poppinsFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
     ),
 
     bodyLarge = TextStyle(
@@ -58,6 +59,7 @@ val comidaTypography = Typography(
         fontFamily = poppinsFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
     )
 
 )

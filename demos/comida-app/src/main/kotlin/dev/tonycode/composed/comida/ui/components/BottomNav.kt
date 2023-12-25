@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -37,7 +38,7 @@ fun BottomNav(
     var selectedRoute by remember { mutableStateOf(navItems.first().route) }
 
     Surface(
-        shape = MaterialTheme.shapes.medium,
+        shape = RoundedCornerShape(20.dp),
         color = MaterialTheme.colorScheme.surface,
         modifier = modifier,
     ) {
@@ -78,9 +79,7 @@ private fun BottomNavItem(
             iconDescription = screen.iconDescription,
             badgeCounter = badgeCounter,
             isSelected = isSelected,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(vertical = 16.dp),
+            modifier = Modifier.align(Alignment.Center),
         )
 
         if (isSelected) {
@@ -101,7 +100,7 @@ private fun IconWithBadge(
     val badgeHorizontalPadding = 2.dp
     val badgeVerticalPadding = 4.dp
 
-    Box(modifier = modifier) {
+    Box(modifier = modifier.padding(vertical = 16.dp - badgeVerticalPadding)) {
         Image(
             painterResource(id = iconRes),
             contentDescription = iconDescription,

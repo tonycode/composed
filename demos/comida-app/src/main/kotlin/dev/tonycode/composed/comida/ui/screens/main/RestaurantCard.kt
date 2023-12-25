@@ -1,6 +1,7 @@
 package dev.tonycode.composed.comida.ui.screens.main
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -52,7 +53,9 @@ fun RestaurantCard(
     ) {
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.padding(bottom = 12.dp)
+            modifier = Modifier
+                .clickable { }
+                .padding(bottom = 12.dp),
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)

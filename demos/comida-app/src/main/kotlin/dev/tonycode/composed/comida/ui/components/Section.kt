@@ -29,7 +29,7 @@ fun Section(
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.Top,
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = title,
@@ -45,7 +45,7 @@ fun Section(
                 .clickable {
                     onViewAllClicked.invoke()
                 }
-                .padding(horizontal = 4.dp, vertical = 2.dp),
+                .padding(horizontal = 8.dp, vertical = 6.dp),
         )
     }
 

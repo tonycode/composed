@@ -1,5 +1,6 @@
 package dev.tonycode.composed.comida.ui.screens.main
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,7 +28,9 @@ fun OfferCard(
         modifier = Modifier.size(width = 256.dp, height = 110.dp),
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .clickable { },
             contentAlignment = Alignment.Center,
         ) {
             Text(
