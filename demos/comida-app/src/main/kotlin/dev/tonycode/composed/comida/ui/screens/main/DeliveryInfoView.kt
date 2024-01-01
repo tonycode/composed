@@ -21,7 +21,7 @@ import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 
 
 @Composable
-fun DeliveryInfo(
+fun DeliveryInfoView(
     street: String,
     onSelectorClicked: () -> Unit,
 ) {
@@ -56,7 +56,7 @@ fun DeliveryInfo(
 private fun PreviewDeliveryInfo() {
     ComidaAppTheme {
         Surface(color = MaterialTheme.colorScheme.background) {
-            DeliveryInfo(street = "387 Merdina", onSelectorClicked = { })
+            DeliveryInfoView(street = "387 Merdina", onSelectorClicked = { })
         }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.comidaCategories
+import dev.tonycode.composed.comida.data.comidaOffers
 import dev.tonycode.composed.comida.data.comidaRestaurants
 import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
@@ -105,14 +106,12 @@ private fun CategoriesBlock() {
 
 @Composable
 private fun OffersBlock() {
-    val offers = listOf("Burger King", "TakoMaki")
-
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(offers) {
-            OfferCard(title = it)
+        items(comidaOffers) {
+            OfferCard(it)
         }
     }
 }

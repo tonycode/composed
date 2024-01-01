@@ -9,13 +9,10 @@ object ComidaPalette {
     val PrimaryText = Color(0xFF242731)
 
     val White = Color(0xFFFFFFFF)
+    val WhiteA75 = Color(0xBFFFFFFF)
     val Doctor = Color(0xFFF9F9FA)
     val MistyBlue = Color(0xFFA9ABB4)
     val ParisPaving = Color(0xFF737477)
-
-    // legacy
-    val WhiteA20 = Color(0x33FFFFFF)
-    val AccentGrey = Color(0xFF828385)
-    val Dark = Color(0xFF1B1D21)
+    val BlackA33 = Color(0x33000000)
 
 }

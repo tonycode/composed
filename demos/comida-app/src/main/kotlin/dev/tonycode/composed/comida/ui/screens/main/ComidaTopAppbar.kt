@@ -62,7 +62,7 @@ fun ComidaTopAppbar(
             }
         }
 
-        DeliveryInfo(
+        DeliveryInfoView(
             street = "387 Merdina",
             onSelectorClicked = { },
         )
