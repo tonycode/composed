@@ -13,6 +13,7 @@ object ComidaPalette {
     val Doctor = Color(0xFFF9F9FA)
     val MistyBlue = Color(0xFFA9ABB4)
     val ParisPaving = Color(0xFF737477)
-    val BlackA33 = Color(0x33000000)
+    val Black = Color(0xFF18191D)
+    val BlackA33 = Color(0x3318191D)
 
 }

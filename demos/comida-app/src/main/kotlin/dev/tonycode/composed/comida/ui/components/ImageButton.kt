@@ -23,13 +23,14 @@ import dev.tonycode.composed.comida.ui.util.shadowCustom
 @Composable
 fun ImageButton(
     onClick: () -> Unit,
+    modifier: Modifier = Modifier,
     image: @Composable () -> Unit,
 ) {
 
     Surface(
         shape = MaterialTheme.shapes.small,
         color = MaterialTheme.colorScheme.background,
-        modifier = Modifier
+        modifier = modifier
             .size(40.dp)
             .shadowCustom(
                 Color(0x55D3D1D8),
@@ -60,7 +61,7 @@ private fun PreviewIconButton() {
         ) {
             ImageButton(onClick = { }) {
                 Image(
-                    painterResource(R.drawable.ic_nav_menu_40),
+                    painterResource(R.drawable.nav_menu_40),
                     contentDescription = "open nav menu",
                 )
             }

@@ -55,6 +55,13 @@ val comidaTypography = Typography(
         platformStyle = PlatformTextStyle(includeFontPadding = false),
     ),
 
+    labelMedium = TextStyle(
+        fontFamily = poppinsFamily,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
+    ),
+
     labelSmall = TextStyle(
         fontFamily = poppinsFamily,
         fontWeight = FontWeight.Medium,
