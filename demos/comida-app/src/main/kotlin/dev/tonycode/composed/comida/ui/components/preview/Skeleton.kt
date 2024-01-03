@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.Dp
 
 @Composable
 fun Skeleton(
+    modifier: Modifier = Modifier,
     width: Dp? = null,
     height: Dp? = null,
     shape: Shape = MaterialTheme.shapes.small,
@@ -29,6 +30,7 @@ fun Skeleton(
             .then(
                 if (height != null) Modifier.height(height) else Modifier.fillMaxHeight()
             )
+            .then(modifier)
             .background(color = Color.Gray, shape = shape),
     )
 

@@ -24,8 +24,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.comidaCategories
-import dev.tonycode.composed.comida.data.dummy.comidaOffers
+import dev.tonycode.composed.comida.data.dummy.dummyOffers
 import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
+import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
@@ -42,6 +43,10 @@ fun MainScreen(
 
     val restaurantsLoading by remember { mainViewModel.loadingRestaurants }
     val restaurants by remember { mainViewModel.restaurants }
+
+    val offersLoading by remember { mainViewModel.loadingOffers }
+    val offers by remember { mainViewModel.offers }
+
 
     Column(modifier = Modifier.padding(top = 12.dp, bottom = 80.dp)) {
         ComidaTopAppbar(
@@ -77,7 +82,7 @@ fun MainScreen(
             onViewAllClicked = { },
         )
 
-        OffersBlock()
+        OffersBlock(offersLoading, offers)
 
         Spacer(Modifier.height(12.dp))
 
@@ -114,13 +119,22 @@ private fun CategoriesBlock() {
 }
 
 @Composable
-private fun OffersBlock() {
+private fun OffersBlock(
+    offersLoading: Boolean,
+    offers: List<Offer>,
+) {
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(comidaOffers) {
-            OfferCard(it)
+        if (offersLoading) {
+            item(listOf(dummyOffers.first())) {
+                OfferCard(isShimming = true)
+            }
+        } else {
+            items(offers) {
+                OfferCard(offer = it)
+            }
         }
     }
 }

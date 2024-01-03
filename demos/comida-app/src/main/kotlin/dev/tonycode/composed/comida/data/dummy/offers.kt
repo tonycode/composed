@@ -7,7 +7,7 @@ import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import java.math.BigDecimal
 
 
-val comidaOffers = listOf(
+val dummyOffers = listOf(
     Offer(
         title = "Burger Prince",
         imageUrl = "https://tonycode.dev/demos/assets/pic-hamburger-01.png",

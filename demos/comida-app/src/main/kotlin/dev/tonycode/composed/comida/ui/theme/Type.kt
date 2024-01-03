@@ -21,6 +21,7 @@ val comidaTypography = Typography(
         fontFamily = poppinsFamily,
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
+        platformStyle = PlatformTextStyle(includeFontPadding = false),
     ),
 
     headlineSmall = TextStyle(

@@ -8,7 +8,7 @@ import kotlinx.coroutines.delay
 class RestaurantsRepository {
 
     suspend fun getRestaurants(): List<Restaurant> {
-        delay(7500L)
+        delay(5000L)
         return dummyRestaurants
     }
 
