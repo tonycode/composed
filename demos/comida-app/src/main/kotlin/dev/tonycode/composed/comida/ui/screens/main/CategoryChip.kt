@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import dev.tonycode.composed.comida.data.comidaCategories
+import dev.tonycode.composed.comida.data.dummy.comidaCategories
 import dev.tonycode.composed.comida.model.Category
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette

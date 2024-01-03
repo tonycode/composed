@@ -32,8 +32,8 @@ private val LightColorScheme = lightColorScheme(
     onBackground = ComidaPalette.PrimaryText,
     surface = ComidaPalette.PrimaryText,
     onSurface = ComidaPalette.White,
-//    secondaryContainer = Color(0xffc1c5f1),
-//    onSecondaryContainer = ComidaPalette.PianoBlack,
+    secondaryContainer = ComidaPalette.MistyBlue,
+    onSecondaryContainer = ComidaPalette.Black,
     surfaceVariant = ComidaPalette.Doctor,
 
     primary = ComidaPalette.Primary,

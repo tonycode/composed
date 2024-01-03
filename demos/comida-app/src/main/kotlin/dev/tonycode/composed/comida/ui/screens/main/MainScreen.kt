@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -23,16 +25,24 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.data.comidaCategories
-import dev.tonycode.composed.comida.data.comidaOffers
-import dev.tonycode.composed.comida.data.comidaRestaurants
+import dev.tonycode.composed.comida.data.dummy.comidaCategories
+import dev.tonycode.composed.comida.data.dummy.comidaOffers
+import dev.tonycode.composed.comida.model.Restaurant
+import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import org.koin.androidx.compose.koinViewModel
+import org.koin.compose.KoinApplication
 
 
 @Composable
-fun MainScreen() {
+fun MainScreen(
+    mainViewModel: MainViewModel = koinViewModel(),
+) {
+
+    val restaurantsLoading by remember { mainViewModel.loadingRestaurants }
+    val restaurants by remember { mainViewModel.restaurants }
 
     Column(modifier = Modifier.padding(top = 12.dp, bottom = 80.dp)) {
         ComidaTopAppbar(
@@ -78,7 +88,18 @@ fun MainScreen() {
             onViewAllClicked = { },
         )
 
-        RestaurantsBlock()
+        if (restaurantsLoading) {
+            CircularProgressIndicator(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(horizontal = screenHorizontalPadding, vertical = 24.dp)
+                    .size(32.dp),
+                color = MaterialTheme.colorScheme.onSecondaryContainer,
+                trackColor = MaterialTheme.colorScheme.secondaryContainer,
+            )
+        } else {
+            RestaurantsBlock(restaurants)
+        }
     }
 
 }
@@ -117,12 +138,14 @@ private fun OffersBlock() {
 }
 
 @Composable
-private fun RestaurantsBlock() {
+private fun RestaurantsBlock(
+    restaurants: List<Restaurant>,
+) {
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(comidaRestaurants) {
+        items(restaurants) {
             RestaurantCard(restaurant = it)
         }
     }
@@ -132,12 +155,16 @@ private fun RestaurantsBlock() {
 @Preview
 @Composable
 private fun PreviewMainScreen() {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            MainScreen()
+    KoinApplication(application = {
+        modules(comidaAppModule)
+    }) {
+        ComidaAppTheme {
+            Surface(
+                color = MaterialTheme.colorScheme.background,
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                MainScreen()
+            }
         }
     }
 }

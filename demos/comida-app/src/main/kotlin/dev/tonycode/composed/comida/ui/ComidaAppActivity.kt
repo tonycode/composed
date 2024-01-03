@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.ui.components.BottomNav
 import dev.tonycode.composed.comida.ui.screens.main.MainScreen
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import org.koin.compose.KoinApplication
 
 
 class ComidaAppActivity : ComponentActivity() {
@@ -46,20 +47,24 @@ val screenHorizontalPadding = 22.dp
 
 @Composable
 private fun ComidaApp() {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                MainScreen()
+    KoinApplication(application = {
+        modules(comidaAppModule)
+    }) {
+        ComidaAppTheme {
+            Surface(
+                color = MaterialTheme.colorScheme.background,
+                modifier = Modifier.fillMaxSize(),
+            ) {
+                Box(modifier = Modifier.fillMaxSize()) {
+                    MainScreen()
 
-                BottomNav(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(start = 18.dp, end = 18.dp, bottom = 18.dp)
-                        .align(Alignment.BottomCenter),
-                )
+                    BottomNav(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 18.dp, end = 18.dp, bottom = 18.dp)
+                            .align(Alignment.BottomCenter),
+                    )
+                }
             }
         }
     }

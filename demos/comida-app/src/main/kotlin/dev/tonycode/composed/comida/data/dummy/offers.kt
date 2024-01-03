@@ -1,4 +1,4 @@
-package dev.tonycode.composed.comida.data
+package dev.tonycode.composed.comida.data.dummy
 
 import androidx.compose.ui.graphics.Color
 import dev.tonycode.composed.comida.model.DeliveryInfo

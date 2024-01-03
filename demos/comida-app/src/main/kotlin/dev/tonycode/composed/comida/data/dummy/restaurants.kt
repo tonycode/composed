@@ -1,4 +1,4 @@
-package dev.tonycode.composed.comida.data
+package dev.tonycode.composed.comida.data.dummy
 
 import dev.tonycode.composed.comida.model.DeliveryInfo
 import dev.tonycode.composed.comida.model.Restaurant

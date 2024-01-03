@@ -5,11 +5,12 @@ minSdk = "21"  # Lollipop (required for Jetpack Compose)
 targetSdk = "34"  # Upside Down Cake
 compileSdk = "34"  # Upside Down Cake
 buildTools = "34.0.0"
-androidGradlePlugin = "8.2.0"
-composeCompilerExtension = "1.5.7"  # check compatibility: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 
-kotlin = "1.9.21"
+androidGradlePlugin = "8.2.0"
+kotlin = "1.9.21"  # check compose-compiler compatibility: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+koin = "3.5.3"
 compose = "1.5.4"
+composeCompilerExtension = "1.5.7"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.8.2"
@@ -20,12 +21,12 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", versi
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
 androidx-constraintLayout-compose = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 androidx-core-ktx = "androidx.core:core-ktx:1.12.0"
-androidx-lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:2.6.2"
 androidx-navigation-compose = "androidx.navigation:navigation-compose:2.7.6"
 coil-compose = "io.coil-kt:coil-compose:2.5.0"
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
-kotlinx-collections-immutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.7"
 
 [bundles]
 

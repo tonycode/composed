@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.data.comidaRestaurants
+import dev.tonycode.composed.comida.data.dummy.comidaRestaurants
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette

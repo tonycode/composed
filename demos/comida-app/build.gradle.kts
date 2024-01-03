@@ -42,9 +42,10 @@ dependencies {
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
     implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
+    implementation(libs.koin.core)
+    implementation(libs.koin.androidx.compose)
 
     //// UI
-    implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
