@@ -14,6 +14,9 @@ data class DeliveryInfo(
     val isFree: Boolean = (deliveryPrice == null || deliveryPrice.signum() == 0)
 
     companion object {
+        /**
+         * Factory method for "free delivery" instance
+         */
         fun free(approxTimeMins: Int) = DeliveryInfo(deliveryPrice = null, approxTimeMins)
     }
 

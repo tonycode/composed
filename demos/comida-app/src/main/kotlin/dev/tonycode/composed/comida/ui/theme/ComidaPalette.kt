@@ -11,6 +11,7 @@ object ComidaPalette {
     val White = Color(0xFFFFFFFF)
     val WhiteA75 = Color(0xBFFFFFFF)
     val Doctor = Color(0xFFF9F9FA)
+    val KinglyCloud = Color(0xFFDEDEDE)
     val MistyBlue = Color(0xFFA9ABB4)
     val ParisPaving = Color(0xFF737477)
     val Black = Color(0xFF18191D)

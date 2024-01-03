@@ -1,7 +1,12 @@
 package dev.tonycode.composed.comida.ui.screens.main
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,9 +24,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.defaultShimmerTheme
+import com.valentinilk.shimmer.rememberShimmer
+import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.comidaCategories
 import dev.tonycode.composed.comida.data.dummy.dummyOffers
@@ -30,8 +40,10 @@ import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
+import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.util.AnimationBox
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.KoinApplication
 
@@ -76,21 +88,9 @@ fun MainScreen(
 
         Spacer(Modifier.height(12.dp))
 
-        Section(
-            title = "Special Offers",
-            modifier = Modifier.padding(horizontal = screenHorizontalPadding),
-            onViewAllClicked = { },
-        )
-
         OffersBlock(offersLoading, offers)
 
         Spacer(Modifier.height(12.dp))
-
-        Section(
-            title = "Restaurants",
-            modifier = Modifier.padding(horizontal = screenHorizontalPadding),
-            onViewAllClicked = { },
-        )
 
         RestaurantsBlock(restaurantsLoading, restaurants)
     }
@@ -119,42 +119,114 @@ private fun CategoriesBlock() {
 }
 
 @Composable
-private fun OffersBlock(
+private fun ColumnScope.OffersBlock(
     offersLoading: Boolean,
     offers: List<Offer>,
 ) {
+    val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
+    val shimmerLightContent = rememberShimmer(
+        shimmerBounds = ShimmerBounds.Window,
+        theme = defaultShimmerTheme.copy(
+            shaderColors = listOf(
+                Color.Unspecified.copy(alpha = 1.0f),
+                Color.Unspecified.copy(alpha = 0.0f),
+                Color.Unspecified.copy(alpha = 1.0f),
+            ),
+        ),
+    )
+
+    // section title
+    AnimatedContent(
+        targetState = offersLoading,
+        label = "offers block",
+        transitionSpec = { fadeIn().togetherWith(fadeOut()) },
+    ) { targetLoading ->
+        if (!targetLoading) {
+            Section(
+                title = "Special Offers",
+                modifier = Modifier.padding(horizontal = screenHorizontalPadding),
+                onViewAllClicked = { },
+            )
+        } else {
+            Skeleton(
+                width = 160.dp,
+                height = 29.dp,
+                modifier = Modifier
+                    .padding(start = screenHorizontalPadding)
+                    .shimmer(customShimmer = shimmer),
+            )
+        }
+    }
+
+    // section content
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        userScrollEnabled = !offersLoading,
     ) {
         if (offersLoading) {
-            item(listOf(dummyOffers.first())) {
-                OfferCard(isShimming = true)
+            items(dummyOffers.take(2)) {
+                AnimationBox {
+                    OfferCard(isShimming = true, shimmer = shimmerLightContent)
+                }
             }
         } else {
             items(offers) {
-                OfferCard(offer = it)
+                AnimationBox {
+                    OfferCard(offer = it)
+                }
             }
         }
     }
 }
 
 @Composable
-private fun RestaurantsBlock(
+private fun ColumnScope.RestaurantsBlock(
     restaurantsLoading: Boolean,
     restaurants: List<Restaurant>,
 ) {
+    val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
+
+    // section title
+    AnimatedContent(
+        targetState = restaurantsLoading,
+        label = "restaurants block",
+        transitionSpec = { fadeIn().togetherWith(fadeOut()) },
+    ) { targetLoading ->
+        if (!targetLoading) {
+            Section(
+                title = "Restaurants",
+                modifier = Modifier.padding(horizontal = screenHorizontalPadding),
+                onViewAllClicked = { },
+            )
+        } else {
+            Skeleton(
+                width = 160.dp,
+                height = 29.dp,
+                modifier = Modifier
+                    .padding(start = screenHorizontalPadding)
+                    .shimmer(customShimmer = shimmer),
+            )
+        }
+    }
+
+    // section content
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
+        userScrollEnabled = !restaurantsLoading,
     ) {
         if (restaurantsLoading) {
-            items(listOf(dummyRestaurants.first())) {
-                RestaurantCard(isShimming = true)
+            items(dummyRestaurants.take(2)) {
+                AnimationBox {
+                    RestaurantCard(isShimming = true, shimmer = shimmer)
+                }
             }
         } else {
             items(restaurants) {
-                RestaurantCard(restaurant = it)
+                AnimationBox {
+                    RestaurantCard(restaurant = it)
+                }
             }
         }
     }

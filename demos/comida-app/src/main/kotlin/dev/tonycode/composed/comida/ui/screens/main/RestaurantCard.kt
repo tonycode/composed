@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.valentinilk.shimmer.Shimmer
 import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
@@ -50,6 +51,7 @@ private val imageHeight = 112.dp
 fun RestaurantCard(
     restaurant: Restaurant = dummyRestaurants.first(),
     isShimming: Boolean = false,
+    shimmer: Shimmer? = null,
 ) {
 
     Surface(
@@ -66,8 +68,8 @@ fun RestaurantCard(
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .clickable { }
-                .thenIf(isShimming) { shimmer() }
+                .thenIf(isShimming) { shimmer(customShimmer = shimmer) }
+                .thenIf(!isShimming) { clickable { } }
                 .padding(bottom = 12.dp),
         ) {
             // image

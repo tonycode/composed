@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -41,7 +42,7 @@ fun CategoryChip(
 
     Column(
         modifier = Modifier
-            .clip(MaterialTheme.shapes.large)
+            .clip(RoundedCornerShape(100))
             .clickable { onClicked.invoke() }
             .background(if (isSelected) Color(0xFF6ED39D) else Color.Transparent)
             .then(

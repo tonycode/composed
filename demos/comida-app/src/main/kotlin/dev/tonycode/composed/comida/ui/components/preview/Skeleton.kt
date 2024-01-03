@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,7 +18,8 @@ fun Skeleton(
     modifier: Modifier = Modifier,
     width: Dp? = null,
     height: Dp? = null,
-    shape: Shape = MaterialTheme.shapes.small,
+    shape: Shape = LocalSkeletonTheme.current.shape,
+    color: Color = LocalSkeletonTheme.current.color,
 ) {
 
     Box(
@@ -31,7 +31,7 @@ fun Skeleton(
                 if (height != null) Modifier.height(height) else Modifier.fillMaxHeight()
             )
             .then(modifier)
-            .background(color = Color.Gray, shape = shape),
+            .background(color = color, shape = shape),
     )
 
 }
