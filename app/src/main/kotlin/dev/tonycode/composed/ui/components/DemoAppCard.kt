@@ -28,10 +28,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.R
+import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.DemoApp
 import dev.tonycode.composed.ui.demoApps
 import dev.tonycode.composed.ui.theme.ComposedAppTheme
-import dev.tonycode.composed.ui.util.LightDarkPreviews
 import dev.tonycode.composed.util.openUrlInExternalApp
 
 

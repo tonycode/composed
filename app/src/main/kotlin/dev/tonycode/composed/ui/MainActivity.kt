@@ -15,10 +15,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.common.ui.preview.FontScalePreviews
+import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.components.DemoAppCard
 import dev.tonycode.composed.ui.theme.ComposedAppTheme
-import dev.tonycode.composed.ui.util.FontScalePreviews
-import dev.tonycode.composed.ui.util.LightDarkPreviews
 
 
 class MainActivity : ComponentActivity() {

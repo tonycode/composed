@@ -7,10 +7,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -27,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.comidaCategories
 import dev.tonycode.composed.comida.data.dummy.comidaOffers
+import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
@@ -88,18 +87,7 @@ fun MainScreen(
             onViewAllClicked = { },
         )
 
-        if (restaurantsLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(horizontal = screenHorizontalPadding, vertical = 24.dp)
-                    .size(32.dp),
-                color = MaterialTheme.colorScheme.onSecondaryContainer,
-                trackColor = MaterialTheme.colorScheme.secondaryContainer,
-            )
-        } else {
-            RestaurantsBlock(restaurants)
-        }
+        RestaurantsBlock(restaurantsLoading, restaurants)
     }
 
 }
@@ -139,14 +127,21 @@ private fun OffersBlock() {
 
 @Composable
 private fun RestaurantsBlock(
+    restaurantsLoading: Boolean,
     restaurants: List<Restaurant>,
 ) {
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp),
     ) {
-        items(restaurants) {
-            RestaurantCard(restaurant = it)
+        if (restaurantsLoading) {
+            items(listOf(dummyRestaurants.first())) {
+                RestaurantCard(isShimming = true)
+            }
+        } else {
+            items(restaurants) {
+                RestaurantCard(restaurant = it)
+            }
         }
     }
 }

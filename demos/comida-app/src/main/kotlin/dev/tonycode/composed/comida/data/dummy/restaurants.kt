@@ -4,7 +4,7 @@ import dev.tonycode.composed.comida.model.DeliveryInfo
 import dev.tonycode.composed.comida.model.Restaurant
 
 
-val comidaRestaurants = listOf(
+val dummyRestaurants = listOf(
     Restaurant(
         id = 0,
         title = "Seafood maki sushi",
