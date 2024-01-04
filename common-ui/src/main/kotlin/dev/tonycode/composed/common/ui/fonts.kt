@@ -6,15 +6,20 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 
 
-val robotoFamily = FontFamily(Font(DeviceFontFamilyName("sans-serif")))
+val robotoFamily =
+    FontFamily(Font(DeviceFontFamilyName("sans-serif")))
 
-val robotoCondensedFamily = FontFamily(Font(DeviceFontFamilyName("sans-serif-condensed")))
+val robotoCondensedFamily =
+    FontFamily(Font(DeviceFontFamilyName("sans-serif-condensed")))
 
-val notoSerifFamily = FontFamily(Font(DeviceFontFamilyName("serif")))
+val notoSerifFamily =
+    FontFamily(Font(DeviceFontFamilyName("serif")))
 
-val droidSansMonoFamily = FontFamily(Font(DeviceFontFamilyName("monospace")))
+val droidSansMonoFamily =
+    FontFamily(Font(DeviceFontFamilyName("monospace")))
 
-val cutiveMonoFamily = FontFamily(Font(DeviceFontFamilyName("serif-monospace")))
+val cutiveMonoFamily =
+    FontFamily(Font(DeviceFontFamilyName("serif-monospace")))
 
 val dmSansFamily = FontFamily(
     Font(R.font.dm_sans_regular, FontWeight.Normal),
