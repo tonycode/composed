@@ -18,7 +18,7 @@ dependencyResolutionManagement {
 
         google()  // https://maven.google.com/web/index.html - Android-specific artifacts
         mavenCentral()  // https://repo.maven.apache.org/maven2/
-        maven("https://jitpack.io")  // for ArcProgressView
+        //maven("https://jitpack.io")
 
         //mavenLocal()  // ~/.m2/repository
     }
