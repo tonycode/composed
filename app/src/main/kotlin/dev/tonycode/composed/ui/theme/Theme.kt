@@ -11,7 +11,6 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
@@ -21,15 +20,15 @@ import androidx.core.view.ViewCompat
 private val DarkColorScheme = darkColorScheme(
     background = Palette.PianoBlack,
     onBackground = Palette.GhostWhite,
-    surface = Palette.PianoBlack,
+    surface = Palette.Nero,
     onSurface = Palette.GhostWhite,
-    secondaryContainer = Palette.Tamahagane,
+    secondaryContainer = Palette.Walrus,
     onSecondaryContainer = Palette.GhostWhite,
 
     primary = Palette.SilverPhoenix,
     onPrimary = Palette.Walrus,
     secondary = Palette.GhostWhite,
-    onSecondary = Palette.GhostWhite,
+    onSecondary = Palette.DiscoBall,
     tertiary = Palette.Walrus,
     onTertiary = Palette.Tamahagane,
 )
@@ -37,9 +36,9 @@ private val DarkColorScheme = darkColorScheme(
 private val LightColorScheme = lightColorScheme(
     background = Palette.GhostWhite,
     onBackground = Palette.PianoBlack,
-    surface = Color(0xffeaecfa),
+    surface = Palette.FirstSnow,
     onSurface = Palette.PianoBlack,
-    secondaryContainer = Color(0xffc1c5f1),
+    secondaryContainer = Palette.FrostFairy,
     onSecondaryContainer = Palette.PianoBlack,
 
     primary = Palette.DepthOfNight,
