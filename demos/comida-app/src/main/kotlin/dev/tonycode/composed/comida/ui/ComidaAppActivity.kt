@@ -5,18 +5,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.ui.components.BottomNav
+import dev.tonycode.composed.comida.ui.screens.main.ComidaTopAppbar
 import dev.tonycode.composed.comida.ui.screens.main.MainScreen
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import org.koin.compose.KoinApplication
@@ -55,15 +55,23 @@ private fun ComidaApp() {
                 color = MaterialTheme.colorScheme.background,
                 modifier = Modifier.fillMaxSize(),
             ) {
-                Box(modifier = Modifier.fillMaxSize()) {
-                    MainScreen()
-
-                    BottomNav(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 18.dp, end = 18.dp, bottom = 18.dp)
-                            .align(Alignment.BottomCenter),
-                    )
+                Scaffold(
+                    topBar = {
+                        ComidaTopAppbar(
+                            modifier = Modifier
+                                .padding(start = screenHorizontalPadding, top = 8.dp, end = screenHorizontalPadding),
+                            onNavMenuClicked = { },
+                        )
+                    },
+                    bottomBar = {
+                        BottomNav(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(start = 18.dp, top = 0.dp, end = 18.dp, bottom = 18.dp),
+                        )
+                    }
+                ) { innerPadding ->
+                    MainScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
