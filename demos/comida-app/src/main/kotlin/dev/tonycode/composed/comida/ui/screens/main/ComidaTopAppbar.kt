@@ -5,20 +5,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.components.ImageButton
+import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
-import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 
 
 @Composable
@@ -43,13 +42,13 @@ fun ComidaTopAppbar(
             onSelectorClicked = { },
         )
 
-        Surface(
+        // Avatar
+        Skeleton(
+            width = 40.dp,
+            height = 40.dp,
             shape = MaterialTheme.shapes.small,
-            color = ComidaPalette.MistyBlue.copy(alpha = 0.15f),
-            modifier = Modifier.size(40.dp),
-        ) {
-            // Avatar
-        }
+            modifier = Modifier.shimmer(),
+        )
     }
 }
 
