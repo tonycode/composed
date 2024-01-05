@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +22,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.ui.poppinsFamily
 
@@ -68,18 +66,11 @@ fun BadgeCounter(
 @Preview
 @Composable
 private fun PreviewBadgeCounter(
-    @PreviewParameter(PreviewValueProvider::class) value: Int,
-) {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.padding(8.dp),
-        ) {
-            BadgeCounter(value)
-        }
-    }
+    @PreviewParameter(IntValueProvider::class) value: Int,
+) = ElementPreview(maxWidth = false) {
+    BadgeCounter(value)
 }
 
-private class PreviewValueProvider : PreviewParameterProvider<Int> {
+private class IntValueProvider : PreviewParameterProvider<Int> {
     override val values = sequenceOf(1, 5, 17, 88, 123)
 }

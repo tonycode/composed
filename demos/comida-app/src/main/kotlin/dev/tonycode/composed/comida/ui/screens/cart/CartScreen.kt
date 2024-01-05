@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.components.ImageButton
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import java.math.BigDecimal
 import java.math.RoundingMode
@@ -197,13 +197,6 @@ private fun BottomBlock() {
 
 @Preview
 @Composable
-private fun PreviewCartScreen() {
-    ComidaAppTheme {
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.background,
-        ) {
-            CartScreen()
-        }
-    }
+private fun PreviewCartScreen() = ElementPreview(usePadding = false) {
+    CartScreen()
 }

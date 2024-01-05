@@ -16,8 +16,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.components.ImageButton
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 
 
@@ -55,16 +55,9 @@ fun ComidaTopAppbar(
 
 @Preview
 @Composable
-private fun PreviewComidaTopAppbar() {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            ComidaTopAppbar(
-                modifier = Modifier.padding(horizontal = screenHorizontalPadding),
-                onNavMenuClicked = { },
-            )
-        }
-    }
+private fun PreviewComidaTopAppbar() = ElementPreview {
+    ComidaTopAppbar(
+        modifier = Modifier.padding(horizontal = screenHorizontalPadding),
+        onNavMenuClicked = { },
+    )
 }

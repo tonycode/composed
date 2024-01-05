@@ -26,7 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 
 
@@ -109,11 +109,11 @@ private fun IconWithBadge(
             ),
             modifier = Modifier
                 .align(Alignment.Center)
+                .padding(horizontal = badgeHorizontalPadding, vertical = badgeVerticalPadding)
                 .requiredSize(
                     width = iconSize + badgeHorizontalPadding*2,
                     height = iconSize + badgeVerticalPadding*2,
-                )
-                .padding(horizontal = badgeHorizontalPadding, vertical = badgeVerticalPadding),
+                ),
         )
 
         if (badgeCounter != null) {
@@ -149,15 +149,6 @@ private val navItems = listOf(Screen.Home, Screen.Cart, Screen.Profile, Screen.N
 
 @Preview
 @Composable
-private fun PreviewBottomNav() {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            BottomNav(
-                modifier = Modifier.padding(24.dp)
-            )
-        }
-    }
+private fun PreviewBottomNav() = ElementPreview {
+    BottomNav()
 }

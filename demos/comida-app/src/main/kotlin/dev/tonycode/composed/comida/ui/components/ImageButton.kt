@@ -3,7 +3,6 @@ package dev.tonycode.composed.comida.ui.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.util.shadowCustom
 
 
@@ -53,18 +52,11 @@ fun ImageButton(
 
 @Preview
 @Composable
-private fun PreviewIconButton() {
-    ComidaAppTheme {
-        Surface(
-            modifier = Modifier.padding(16.dp),
-            color = MaterialTheme.colorScheme.background,
-        ) {
-            ImageButton(onClick = { }) {
-                Image(
-                    painterResource(R.drawable.nav_menu_40),
-                    contentDescription = "open nav menu",
-                )
-            }
-        }
+private fun PreviewIconButton() = ElementPreview(maxWidth = false) {
+    ImageButton(onClick = { }) {
+        Image(
+            painterResource(R.drawable.nav_menu_40),
+            contentDescription = "open nav menu",
+        )
     }
 }

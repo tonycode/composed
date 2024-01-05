@@ -1,4 +1,4 @@
-package dev.tonycode.composed.ui.preview
+package dev.tonycode.composed.comida.ui.preview
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -8,8 +8,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.common.ui.thenIf
-import dev.tonycode.composed.ui.theme.ComposedAppTheme
 
 
 private val paddingSize = 8.dp
@@ -22,7 +22,7 @@ fun ElementPreview(
     content: @Composable (() -> Unit),
 ) {
 
-    ComposedAppTheme {
+    ComidaAppTheme {
         when {
             showBackground -> {
                 Surface(

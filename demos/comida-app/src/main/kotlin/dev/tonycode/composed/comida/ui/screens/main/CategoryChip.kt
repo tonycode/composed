@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,7 +25,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.data.dummy.comidaCategories
 import dev.tonycode.composed.comida.model.Category
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.comida.ui.util.shadowCustom
 
@@ -81,19 +80,12 @@ fun CategoryChip(
 @Preview
 @Composable
 private fun PreviewCategoryChip(
-    @PreviewParameter(PreviewProvider::class) pair: Pair<Category, Boolean>,
-) {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.padding(8.dp),
-        ) {
-            CategoryChip(pair.first, isSelected = pair.second, onClicked = { })
-        }
-    }
+    @PreviewParameter(CategoryChipStateProvider::class) state: Pair<Category, Boolean>,
+) = ElementPreview(maxWidth = false) {
+    CategoryChip(state.first, isSelected = state.second, onClicked = { })
 }
 
-private class PreviewProvider : PreviewParameterProvider<Pair<Category, Boolean>> {
+private class CategoryChipStateProvider : PreviewParameterProvider<Pair<Category, Boolean>> {
     override val values = sequenceOf(
         Pair(comidaCategories.first(), false),
         Pair(comidaCategories.last(), true),

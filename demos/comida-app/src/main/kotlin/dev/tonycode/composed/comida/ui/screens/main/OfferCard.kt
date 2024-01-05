@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -43,7 +42,7 @@ import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.ui.components.preview.LocalSkeletonTheme
 import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.components.preview.defaultSkeletonTheme
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.ui.preview.LoadingPreviewData
 import dev.tonycode.composed.common.ui.thenIf
@@ -207,25 +206,18 @@ fun OfferCard(
 @Preview
 @Composable
 private fun PreviewOfferCard(
-    @PreviewParameter(PreviewOfferProvider::class) previewData: LoadingPreviewData<Offer>,
-) {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            when (previewData) {
-                is LoadingPreviewData.Data ->
-                    OfferCard(previewData.data)
+    @PreviewParameter(OfferCardStateProvider::class) previewData: LoadingPreviewData<Offer>,
+) = ElementPreview {
+    when (previewData) {
+        is LoadingPreviewData.Data ->
+            OfferCard(offer = previewData.data)
 
-                is LoadingPreviewData.Loading ->
-                    OfferCard(isShimming = true)
-            }
-        }
+        is LoadingPreviewData.Loading ->
+            OfferCard(isShimming = true)
     }
 }
 
-private class PreviewOfferProvider : PreviewParameterProvider<LoadingPreviewData<Offer>> {
+private class OfferCardStateProvider : PreviewParameterProvider<LoadingPreviewData<Offer>> {
     override val values = sequenceOf(
         LoadingPreviewData.Data(dummyOffers.first()),
         LoadingPreviewData.Data(dummyOffers.last()),

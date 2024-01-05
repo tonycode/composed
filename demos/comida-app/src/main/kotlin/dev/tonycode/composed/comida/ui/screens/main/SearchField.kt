@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 
 
 @Composable
@@ -51,13 +51,6 @@ fun SearchField(
 
 @Preview
 @Composable
-private fun PreviewSearchField() {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            SearchField(onChanged = { })
-        }
-    }
+private fun PreviewSearchField() = ElementPreview {
+    SearchField(onChanged = { })
 }

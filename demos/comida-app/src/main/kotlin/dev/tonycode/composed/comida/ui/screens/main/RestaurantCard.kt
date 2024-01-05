@@ -37,7 +37,7 @@ import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.components.preview.Skeleton
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.ui.preview.LoadingPreviewData
 import dev.tonycode.composed.common.ui.thenIf
@@ -179,27 +179,18 @@ fun RestaurantCard(
 @Preview
 @Composable
 private fun PreviewRestaurantCard(
-    @PreviewParameter(PreviewDataProvider::class) previewData: LoadingPreviewData<Restaurant>,
-) {
-    ComidaAppTheme {
-        Surface(
-            color = MaterialTheme.colorScheme.background,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
-        ) {
-            when (previewData) {
-                is LoadingPreviewData.Data ->
-                    RestaurantCard(previewData.data)
+    @PreviewParameter(RestaurantCardStateProvider::class) previewData: LoadingPreviewData<Restaurant>,
+) = ElementPreview {
+    when (previewData) {
+        is LoadingPreviewData.Data ->
+            RestaurantCard(restaurant = previewData.data)
 
-                is LoadingPreviewData.Loading ->
-                    RestaurantCard(isShimming = true)
-            }
-        }
+        is LoadingPreviewData.Loading ->
+            RestaurantCard(isShimming = true)
     }
 }
 
-private class PreviewDataProvider : PreviewParameterProvider<LoadingPreviewData<Restaurant>> {
+private class RestaurantCardStateProvider : PreviewParameterProvider<LoadingPreviewData<Restaurant>> {
     override val values = sequenceOf(
         LoadingPreviewData.Data(dummyRestaurants.first()),
         LoadingPreviewData.Loading()

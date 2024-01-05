@@ -9,13 +9,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,8 +39,8 @@ import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.components.preview.Skeleton
+import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
 import dev.tonycode.composed.comida.ui.util.AnimationBox
 import org.koin.androidx.compose.koinViewModel
 import org.koin.compose.KoinApplication
@@ -239,13 +237,8 @@ private fun PreviewMainScreen() {
     KoinApplication(application = {
         modules(comidaAppModule)
     }) {
-        ComidaAppTheme {
-            Surface(
-                color = MaterialTheme.colorScheme.background,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                MainScreen()
-            }
+        ElementPreview(usePadding = false) {
+            MainScreen()
         }
     }
 }
