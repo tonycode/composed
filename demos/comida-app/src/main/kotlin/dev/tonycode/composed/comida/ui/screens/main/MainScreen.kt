@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.defaultShimmerTheme
 import com.valentinilk.shimmer.rememberShimmer
@@ -39,20 +40,17 @@ import dev.tonycode.composed.comida.data.dummy.dummyOffers
 import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
 import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.model.Restaurant
-import dev.tonycode.composed.comida.ui.comidaAppModule
 import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.util.AnimationBox
-import org.koin.androidx.compose.koinViewModel
-import org.koin.compose.KoinApplication
 
 
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    mainViewModel: MainViewModel = koinViewModel(),
+    mainViewModel: MainViewModel = viewModel(),
 ) {
 
     val restaurantsLoading by remember { mainViewModel.loadingRestaurants }
@@ -236,12 +234,6 @@ private fun ColumnScope.RestaurantsBlock(
 
 @Preview
 @Composable
-private fun PreviewMainScreen() {
-    KoinApplication(application = {
-        modules(comidaAppModule)
-    }) {
-        ElementPreview(usePadding = false) {
-            MainScreen()
-        }
-    }
+private fun PreviewMainScreen() = ElementPreview(usePadding = false) {
+    MainScreen()
 }

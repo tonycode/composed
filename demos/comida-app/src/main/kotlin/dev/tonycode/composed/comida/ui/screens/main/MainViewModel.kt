@@ -4,14 +4,17 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.tonycode.composed.comida.data.OffersRepository
 import dev.tonycode.composed.comida.data.RestaurantsRepository
 import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.model.Restaurant
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-class MainViewModel(
+@HiltViewModel
+class MainViewModel @Inject constructor(
     private val restaurantsRepository: RestaurantsRepository,
     private val offersRepository: OffersRepository,
 ) : ViewModel() {

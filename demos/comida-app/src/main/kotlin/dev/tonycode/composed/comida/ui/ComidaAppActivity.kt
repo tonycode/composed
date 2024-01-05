@@ -15,13 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dagger.hilt.android.AndroidEntryPoint
 import dev.tonycode.composed.comida.ui.components.BottomNav
 import dev.tonycode.composed.comida.ui.screens.main.ComidaTopAppbar
 import dev.tonycode.composed.comida.ui.screens.main.MainScreen
 import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
-import org.koin.compose.KoinApplication
 
 
+@AndroidEntryPoint
 class ComidaAppActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,32 +48,28 @@ val screenHorizontalPadding = 22.dp
 
 @Composable
 private fun ComidaApp() {
-    KoinApplication(application = {
-        modules(comidaAppModule)
-    }) {
-        ComidaAppTheme {
-            Surface(
-                color = MaterialTheme.colorScheme.background,
-                modifier = Modifier.fillMaxSize(),
-            ) {
-                Scaffold(
-                    topBar = {
-                        ComidaTopAppbar(
-                            modifier = Modifier
-                                .padding(start = screenHorizontalPadding, top = 8.dp, end = screenHorizontalPadding),
-                            onNavMenuClicked = { },
-                        )
-                    },
-                    bottomBar = {
-                        BottomNav(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(start = 18.dp, top = 0.dp, end = 18.dp, bottom = 18.dp),
-                        )
-                    }
-                ) { innerPadding ->
-                    MainScreen(modifier = Modifier.padding(innerPadding))
+    ComidaAppTheme {
+        Surface(
+            color = MaterialTheme.colorScheme.background,
+            modifier = Modifier.fillMaxSize(),
+        ) {
+            Scaffold(
+                topBar = {
+                    ComidaTopAppbar(
+                        modifier = Modifier
+                            .padding(start = screenHorizontalPadding, top = 8.dp, end = screenHorizontalPadding),
+                        onNavMenuClicked = { },
+                    )
+                },
+                bottomBar = {
+                    BottomNav(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 18.dp, top = 0.dp, end = 18.dp, bottom = 18.dp),
+                    )
                 }
+            ) { innerPadding ->
+                MainScreen(modifier = Modifier.padding(innerPadding))
             }
         }
     }

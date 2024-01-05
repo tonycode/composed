@@ -7,6 +7,8 @@ import java.util.TimeZone
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.hilt)
 
     alias(libs.plugins.grgit)
 }
@@ -95,6 +97,8 @@ dependencies {
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
     implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
+    implementation(libs.hilt.android.base)
+    kapt(libs.hilt.android.compiler)
 
     //// UI
     implementation(libs.androidx.activity.compose)
@@ -110,4 +114,9 @@ dependencies {
 
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
