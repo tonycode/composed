@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -98,7 +99,7 @@ fun MainScreen(
 
 @Composable
 private fun CategoriesBlock() {
-    var selectedCategoryTitle: String by remember { mutableStateOf(comidaCategories.first().title) }
+    var selectedCategoryTitle: String by rememberSaveable { mutableStateOf(comidaCategories.first().title) }
 
     LazyRow(
         contentPadding = PaddingValues(horizontal = screenHorizontalPadding, vertical = 8.dp),
