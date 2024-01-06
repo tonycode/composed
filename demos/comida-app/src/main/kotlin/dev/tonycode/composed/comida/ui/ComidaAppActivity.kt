@@ -77,6 +77,4 @@ private fun ComidaApp() {
 
 @Preview
 @Composable
-private fun PreviewComposedApp() {
-    ComidaApp()
-}
+private fun PreviewComposedApp() = ComidaApp()

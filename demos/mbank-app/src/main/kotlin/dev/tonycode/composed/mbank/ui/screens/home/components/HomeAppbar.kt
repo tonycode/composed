@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
@@ -86,6 +88,7 @@ fun HomeAppbar(
                         contentDescription = stringResource(R.string.open_account_details),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
                         modifier = Modifier
+                            .clip(CircleShape)
                             .clickable { onAccountDetailsClicked?.invoke() }
                             .size(24.dp + iconTouchMargin * 2)
                             .padding(iconTouchMargin),
@@ -96,6 +99,7 @@ fun HomeAppbar(
                         contentDescription = stringResource(R.string.open_setting_screen),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
                         modifier = Modifier
+                            .clip(CircleShape)
                             .clickable { onSettingsScreenClicked?.invoke() }
                             .size(36.dp)
                             .padding(6.dp),

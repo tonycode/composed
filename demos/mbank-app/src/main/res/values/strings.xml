@@ -8,5 +8,10 @@
     <string name="spent_this_month">Spent this month</string>
     <string name="recent_operations">Recent operations</string>
     <string name="full_history">Full history</string>
+    <string name="home">Home</string>
+    <string name="payments">Payments</string>
+    <string name="finance">Finance</string>
+    <string name="statistics">Statistics</string>
+    <string name="services">Services</string>
 
 </resources>

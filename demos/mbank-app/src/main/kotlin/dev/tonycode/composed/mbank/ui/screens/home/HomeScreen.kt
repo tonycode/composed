@@ -31,13 +31,14 @@ import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 @Composable
 fun HomeScreen(
+    modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = viewModel(),
 ) {
 
     val userProfile: UserProfile? by remember { homeViewModel.userProfile }
 
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         color = Color.Unspecified,
     ) {
         Column {

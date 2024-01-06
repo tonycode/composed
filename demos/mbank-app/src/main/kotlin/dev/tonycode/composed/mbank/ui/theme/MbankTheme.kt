@@ -1,7 +1,9 @@
 package dev.tonycode.composed.mbank.ui.theme
 
 import android.app.Activity
+import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -17,6 +19,7 @@ class MbankColorScheme(
     val background: Color,
     val onBackground: Color,
     val bottomNavigation: Color,
+    val bottomNavigationStroke: Color,
     val onBottomNavigation: Color,
     val onBottomNavigationAccent: Color,
     val surface: Color,
@@ -31,6 +34,7 @@ private val LightColorScheme = MbankColorScheme(
     background = Color(0xFFF3EFF4),
     onBackground = MbankPalette.Black,
     bottomNavigation = Color(0xFFF9F9F9),
+    bottomNavigationStroke = Color(0xFF3C3C43).copy(alpha = 0.36f),
     onBottomNavigation = MbankPalette.GreyWeb,
     onBottomNavigationAccent = Color(0xFF1665B2),
     surface = Color(0xFFFFFBFF),
@@ -45,6 +49,7 @@ private val DarkColorScheme = MbankColorScheme(
     background = MbankPalette.Black,
     onBackground = MbankPalette.White,
     bottomNavigation = Color(0xFF151515),
+    bottomNavigationStroke = Color(0xFF3C3C43).copy(alpha = 0.36f),
     onBottomNavigation = MbankPalette.Grey,
     onBottomNavigationAccent = Color(0xFF186FC5),
     surface = Color(0xFF1C1C1E),
@@ -76,9 +81,12 @@ fun MbankAppTheme(
         }
     }
 
+    val rippleIndication = rememberRipple()
+
     CompositionLocalProvider(
         LocalColorScheme provides colorScheme,
         LocalTypography provides MbankTypography(),
+        LocalIndication provides rippleIndication,
 
         content = content
     )
