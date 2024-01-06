@@ -31,5 +31,6 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(
     "common-ui",
     "demos:comida-app",
+    "demos:mbank-app",
     "app",
 )

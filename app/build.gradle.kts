@@ -111,6 +111,7 @@ dependencies {
 
     //// Demos
     implementation(projects.demos.comidaApp)
+    implementation(projects.demos.mbankApp)
 
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)

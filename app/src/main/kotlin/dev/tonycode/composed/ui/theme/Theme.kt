@@ -22,7 +22,7 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = Palette.GhostWhite,
     surface = Palette.Nero,
     onSurface = Palette.GhostWhite,
-    secondaryContainer = Palette.Walrus,
+    secondaryContainer = Palette.Tamahagane,
     onSecondaryContainer = Palette.GhostWhite,
 
     primary = Palette.SilverPhoenix,
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = Palette.PianoBlack,
     surface = Palette.FirstSnow,
     onSurface = Palette.PianoBlack,
-    secondaryContainer = Palette.FrostFairy,
+    secondaryContainer = Palette.CottonBall,
     onSecondaryContainer = Palette.PianoBlack,
 
     primary = Palette.DepthOfNight,

@@ -18,15 +18,16 @@ footer
 
 - types
     - feat - A new feature
+    - wip - A work-in-progress change, typically a component of a larger feature which will be enabled once all tasks are complete
     - fix - A bug fix
-    - redesign - Visual (UI) changes that do not add a new feature nor fixes a bug
+    - redesign - Visual (UI) change that do not add a new feature nor fixes a bug
     - refactor - Any other code change that neither fixes a bug nor adds a feature
     - style - Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
     - docs - Documentation only changes
     - build - Changes that affect the build system or external dependencies
     - ci - Changes to our CI configuration files and scripts
 - scopes
-    - comida, ... - Changes related to demonstrational applications
+    - comida, mbank, ... - Changes related to demonstrational applications
 - description
     - use the imperative, present tense: "change" not "changed" or "changes"
         - It tells someone what applying the commit will do, rather than what you did

@@ -1,10 +1,10 @@
 package dev.tonycode.composed.ui.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,11 +33,9 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.R
 import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.DemoApp
-import dev.tonycode.composed.ui.demoApps
 import dev.tonycode.composed.ui.icons.AppIconPack
 import dev.tonycode.composed.ui.icons.ArrowRight
 import dev.tonycode.composed.ui.preview.ElementPreview
-import dev.tonycode.composed.ui.theme.Palette
 import dev.tonycode.composed.util.openUrlInExternalApp
 
 
@@ -90,7 +88,7 @@ fun DemoAppCard(
                     .padding(16.dp)
                     .size(36.dp)
                     .background(
-                        color = if (isSystemInDarkTheme()) Palette.Tamahagane else Palette.CottonBall,
+                        color = MaterialTheme.colorScheme.secondaryContainer,
                         shape = CircleShape,
                     ),
             ) {
@@ -135,12 +133,17 @@ private fun DesignAuthorBlock(name: String, url: String?) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
-                    painterResource(R.drawable.logo_dribbble),
+                    painterResource(url.getUrlIconRes()),
                     contentDescription = stringResource(R.string.launch_design_url),
-                    modifier = Modifier.size(20.dp),
+                    modifier = Modifier
+                        .size(20.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.secondaryContainer,
+                            shape = CircleShape,
+                        ).padding(3.dp),
                 )
 
-                Spacer(Modifier.width(6.dp))
+                Spacer(Modifier.width(4.dp))
 
                 Text(
                     text = name,
@@ -163,6 +166,18 @@ private fun DesignAuthorBlock(name: String, url: String?) {
     }
 }
 
+@DrawableRes
+private fun String.getUrlIconRes(): Int = when {
+    this.contains("dribbble.com") ->
+        R.drawable.logo_dribbble
+
+    this.contains("figma.com") ->
+        R.drawable.logo_figma
+
+    else ->
+        R.drawable.logo_global
+}
+
 
 @LightDarkPreviews
 @Composable
@@ -174,8 +189,10 @@ private fun PreviewDemoAppCard(
 
 private class DemoAppProvider : PreviewParameterProvider<DemoApp> {
     override val values = sequenceOf(
-        demoApps.first(),
-        DemoApp("App with no design-url", "design-author-name", null) { /* launch nothing */ },
-        DemoApp("App with no design-author & -url", null, null) { /* launch nothing */ }
+        DemoApp("App with no design-author & -url", null, null) { /* launch nothing */ },
+        DemoApp("App with no design-url", "MrCreative", null) { /* launch nothing */ },
+        DemoApp("App with dribbble design-url", "MrCreative", "https://dribbble.com/1a2b3c") { /* launch nothing */ },
+        DemoApp("App with figma design-url", "MrCreative", "https://figma.com/1a2b3c") { /* launch nothing */ },
+        DemoApp("App with unknown design-url", "MrCreative", "https://somesite.com/1a2b3c") { /* launch nothing */ },
     )
 }

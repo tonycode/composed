@@ -49,7 +49,7 @@ private fun ComposedApp() {
                 contentPadding = PaddingValues(horizontal = 24.dp, vertical = 32.dp),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
             ) {
-                items(demoApps) { demoApp ->
+                items(demoApps.take(1)) { demoApp ->
                     DemoAppCard(demoApp) {
                         demoApp.launcher.invoke(context)
                     }
