@@ -5,10 +5,13 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
+import dev.tonycode.composed.common.ui.skeleton.LocalSkeletonTheme
+import dev.tonycode.composed.common.ui.skeleton.defaultSkeletonTheme
 
 
 //private val DarkColorScheme = darkColorScheme(
@@ -45,7 +48,6 @@ private val LightColorScheme = lightColorScheme(
 )
 
 
-@Suppress("DEPRECATION")
 @Composable
 fun ComidaAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -64,18 +66,24 @@ fun ComidaAppTheme(
         else -> LightColorScheme
     }
 
+    // setup status-bar colors
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             (view.context as Activity).window.statusBarColor = ComidaPalette.White.toArgb()
+            @Suppress("DEPRECATION")
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = true
         }
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = comidaTypography,
-        shapes = comidaShapes,
-        content = content
-    )
+    CompositionLocalProvider(
+        LocalSkeletonTheme provides defaultSkeletonTheme.copy(color = ComidaPalette.KinglyCloud),
+    ) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = comidaTypography,
+            shapes = comidaShapes,
+            content = content
+        )
+    }
 }

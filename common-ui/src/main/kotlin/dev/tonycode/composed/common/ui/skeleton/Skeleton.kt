@@ -1,4 +1,4 @@
-package dev.tonycode.composed.comida.ui.components.preview
+package dev.tonycode.composed.common.ui.skeleton
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

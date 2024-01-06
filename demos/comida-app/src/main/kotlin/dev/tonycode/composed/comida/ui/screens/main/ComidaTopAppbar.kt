@@ -15,9 +15,9 @@ import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.components.ImageButton
-import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
+import dev.tonycode.composed.common.ui.skeleton.Skeleton
 
 
 @Composable

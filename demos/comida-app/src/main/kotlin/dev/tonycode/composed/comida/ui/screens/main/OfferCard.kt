@@ -39,12 +39,12 @@ import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.dummyOffers
 import dev.tonycode.composed.comida.model.Offer
-import dev.tonycode.composed.comida.ui.components.preview.LocalSkeletonTheme
-import dev.tonycode.composed.comida.ui.components.preview.Skeleton
-import dev.tonycode.composed.comida.ui.components.preview.defaultSkeletonTheme
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.ui.preview.LoadingPreviewData
+import dev.tonycode.composed.common.ui.skeleton.LocalSkeletonTheme
+import dev.tonycode.composed.common.ui.skeleton.Skeleton
+import dev.tonycode.composed.common.ui.skeleton.defaultSkeletonTheme
 import dev.tonycode.composed.common.ui.thenIf
 
 

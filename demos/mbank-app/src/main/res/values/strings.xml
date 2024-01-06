@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="greeting_pattern">Hello, %s</string>
+    <string name="open_account_details">Open account details</string>
+    <string name="open_setting_screen">Open settings screen</string>
+    <string name="available_funds">Available funds</string>
+    <string name="spent_this_month">Spent this month</string>
+    <string name="recent_operations">Recent operations</string>
+    <string name="full_history">Full history</string>
+
+</resources>

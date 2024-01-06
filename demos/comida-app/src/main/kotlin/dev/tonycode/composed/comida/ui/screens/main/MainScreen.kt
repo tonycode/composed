@@ -42,10 +42,10 @@ import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
 import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.model.Restaurant
 import dev.tonycode.composed.comida.ui.components.Section
-import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.util.AnimationBox
+import dev.tonycode.composed.common.ui.skeleton.Skeleton
 
 
 @Composable

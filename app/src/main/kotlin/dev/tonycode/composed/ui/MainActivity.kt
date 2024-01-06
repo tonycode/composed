@@ -47,7 +47,7 @@ private fun ComposedApp() {
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
                 contentPadding = PaddingValues(horizontal = 24.dp, vertical = 32.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
             ) {
                 items(demoApps.take(1)) { demoApp ->
                     DemoAppCard(demoApp) {

@@ -30,7 +30,7 @@ fun ElementPreview(
                     modifier = Modifier
                         .thenIf(maxWidth) { fillMaxWidth() }
                         .thenIf(usePadding) { padding(paddingSize) },
-                    content = content,
+                    content = content
                 )
             }
 

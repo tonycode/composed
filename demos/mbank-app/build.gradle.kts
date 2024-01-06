@@ -58,6 +58,9 @@ dependencies {
 
     implementation(projects.commonUi)
 
+    implementation(libs.coil.compose)
+    implementation(libs.valentinilk.compose.shimmer)
+
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

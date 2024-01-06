@@ -5,15 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import dagger.hilt.android.AndroidEntryPoint
+import dev.tonycode.composed.mbank.ui.screens.home.HomeScreen
+import dev.tonycode.composed.mbank.ui.theme.MbankAppTheme
+import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 
 @AndroidEntryPoint
@@ -37,17 +36,14 @@ class MbankAppActivity : ComponentActivity() {
 
 }
 
-
-val screenHorizontalPadding = 22.dp
-
 @Composable
 private fun MbankApp() {
-    Surface(
-        color = Color.White,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = screenHorizontalPadding),
-    ) {
-        Text("mBank")
+    MbankAppTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MbankTheme.colorScheme.background,
+        ) {
+            HomeScreen()
+        }
     }
 }

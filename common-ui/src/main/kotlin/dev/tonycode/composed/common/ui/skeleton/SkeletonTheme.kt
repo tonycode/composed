@@ -1,10 +1,9 @@
-package dev.tonycode.composed.comida.ui.components.preview
+package dev.tonycode.composed.common.ui.skeleton
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 
 
 data class SkeletonTheme(
@@ -18,7 +17,7 @@ data class SkeletonTheme(
 
 val defaultSkeletonTheme = SkeletonTheme(
     shape = RoundedCornerShape(33),
-    color = ComidaPalette.KinglyCloud,
+    color = Color.LightGray,
 )
 
 val LocalSkeletonTheme = staticCompositionLocalOf { defaultSkeletonTheme }

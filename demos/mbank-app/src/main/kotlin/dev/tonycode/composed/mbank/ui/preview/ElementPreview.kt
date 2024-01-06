@@ -1,15 +1,15 @@
-package dev.tonycode.composed.ui.preview
+package dev.tonycode.composed.mbank.ui.preview
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.common.ui.thenIf
-import dev.tonycode.composed.ui.theme.ComposedAppTheme
+import dev.tonycode.composed.mbank.ui.theme.MbankAppTheme
+import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 
 private val paddingSize = 8.dp
@@ -22,11 +22,11 @@ fun ElementPreview(
     content: @Composable (() -> Unit),
 ) {
 
-    ComposedAppTheme {
+    MbankAppTheme {
         when {
             showBackground -> {
                 Surface(
-                    color = MaterialTheme.colorScheme.background,
+                    color = MbankTheme.colorScheme.background,
                     modifier = Modifier
                         .thenIf(maxWidth) { fillMaxWidth() }
                         .thenIf(usePadding) { padding(paddingSize) },

@@ -36,10 +36,10 @@ import com.valentinilk.shimmer.shimmer
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.data.dummy.dummyRestaurants
 import dev.tonycode.composed.comida.model.Restaurant
-import dev.tonycode.composed.comida.ui.components.preview.Skeleton
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.ui.preview.LoadingPreviewData
+import dev.tonycode.composed.common.ui.skeleton.Skeleton
 import dev.tonycode.composed.common.ui.thenIf
 
 
