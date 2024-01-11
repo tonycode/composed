@@ -6,12 +6,12 @@ targetSdk = "34"  # Upside Down Cake
 compileSdk = "34"  # Upside Down Cake
 buildTools = "34.0.0"
 
-androidGradlePlugin = "8.2.0"
-kotlin = "1.9.21"  # check compose-compiler compatibility: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
+androidGradlePlugin = "8.2.1"
+kotlin = "1.9.22"  # check compose-compiler compatibility: https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 hilt = "2.48.1"
 compose = "1.5.4"
-composeCompilerExtension = "1.5.7"
-lifecycleViewmodelCompose = "2.6.2"
+composeCompilerExtension = "1.5.8"
+lifecycleViewmodelCompose = "2.7.0"
 
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.8.2"
