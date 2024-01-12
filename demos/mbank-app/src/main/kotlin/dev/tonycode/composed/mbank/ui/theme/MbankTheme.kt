@@ -28,6 +28,7 @@ class MbankColorScheme(
     val card: Color,
     val onCard: Color,
     val onCardSecondary: Color,
+    val primary: Color,
 )
 
 private val LightColorScheme = MbankColorScheme(
@@ -43,6 +44,7 @@ private val LightColorScheme = MbankColorScheme(
     card = Color(0xFFF3EFF4),
     onCard = MbankPalette.Black,
     onCardSecondary = MbankPalette.GreyWeb,
+    primary = MbankPalette.AtomicOrange,
 )
 
 private val DarkColorScheme = MbankColorScheme(
@@ -58,6 +60,7 @@ private val DarkColorScheme = MbankColorScheme(
     card = Color(0xFF282828),
     onCard = MbankPalette.White,
     onCardSecondary = MbankPalette.Grey,
+    primary = MbankPalette.AtomicOrange,
 )
 
 

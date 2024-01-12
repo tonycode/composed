@@ -10,4 +10,6 @@ object MbankPalette {
     val Grey = Color(0xFF808080)
     val White = Color(0xFFFFFFFF)
 
+    val AtomicOrange = Color(0xFFFB8406)
+
 }
