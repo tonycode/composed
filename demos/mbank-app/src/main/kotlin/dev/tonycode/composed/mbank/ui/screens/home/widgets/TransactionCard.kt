@@ -42,11 +42,15 @@ fun TransactionCard(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
         ) {
+            // transaction-icon
             Box(
                 modifier = Modifier
                     .size(32.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(MbankTheme.colorScheme.primary)
+                    .background(
+                        if (transaction.isCleared) MbankTheme.colorScheme.primary
+                        else MbankTheme.colorScheme.accent
+                    )
             )
 
             Spacer(Modifier.width(12.dp))

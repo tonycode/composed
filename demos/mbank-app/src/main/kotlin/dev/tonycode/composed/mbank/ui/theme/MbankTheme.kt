@@ -29,6 +29,7 @@ class MbankColorScheme(
     val onCard: Color,
     val onCardSecondary: Color,
     val primary: Color,
+    val accent: Color,
 )
 
 private val LightColorScheme = MbankColorScheme(
@@ -37,14 +38,15 @@ private val LightColorScheme = MbankColorScheme(
     bottomNavigation = Color(0xFFF9F9F9),
     bottomNavigationStroke = Color(0xFF3C3C43).copy(alpha = 0.36f),
     onBottomNavigation = MbankPalette.GreyWeb,
-    onBottomNavigationAccent = Color(0xFF1665B2),
+    onBottomNavigationAccent = MbankPalette.Cloisonne,
     surface = Color(0xFFFFFBFF),
     onSurface = MbankPalette.Black,
     onSurfaceAccent = Color(0xFFAD1710),
     card = Color(0xFFF3EFF4),
     onCard = MbankPalette.Black,
     onCardSecondary = MbankPalette.GreyWeb,
-    primary = MbankPalette.AtomicOrange,
+    primary = MbankPalette.Cloisonne,
+    accent = MbankPalette.AtomicOrange,
 )
 
 private val DarkColorScheme = MbankColorScheme(
@@ -60,7 +62,8 @@ private val DarkColorScheme = MbankColorScheme(
     card = Color(0xFF282828),
     onCard = MbankPalette.White,
     onCardSecondary = MbankPalette.Grey,
-    primary = MbankPalette.AtomicOrange,
+    primary = MbankPalette.Cloisonne,
+    accent = MbankPalette.AtomicOrange,
 )
 
 
