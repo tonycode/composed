@@ -15,11 +15,13 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.common.ui.fmtAsAmount
+import dev.tonycode.composed.common.ui.fmtAsEpochMillis
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
-import java.math.RoundingMode
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 
 @Composable
@@ -41,8 +43,11 @@ fun TransactionCard(
                     style = MbankTheme.typography.bodyEmphasis,
                 )
 
+                val fmtPerformedAt = transaction.performedAt.fmtAsEpochMillis(
+                    datetimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, HH:mm", Locale.ENGLISH)
+                )
                 Text(
-                    "yesterday, 21:37",
+                    fmtPerformedAt,
                     style = MbankTheme.typography.body,
                     color = MbankTheme.colorScheme.onCardSecondary,
                 )

@@ -48,9 +48,10 @@ android {
         }
     }
     compileOptions {
-        //isCoreLibraryDesugaringEnabled = true  // requires multidex
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+
+        isCoreLibraryDesugaringEnabled = true  // https://developer.android.com/studio/write/java8-support#library-desugaring
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_17.toString()
@@ -99,6 +100,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.android.base)
     kapt(libs.hilt.android.compiler)
+    coreLibraryDesugaring(libs.desugar.jdkLibs)
 
     //// UI
     implementation(libs.androidx.activity.compose)

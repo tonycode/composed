@@ -28,6 +28,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
+        isCoreLibraryDesugaringEnabled = true  // https://developer.android.com/studio/write/java8-support#library-desugaring
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -65,6 +67,7 @@ dependencies {
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
     implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
+    coreLibraryDesugaring(libs.desugar.jdkLibs)
 
     //// UI
     implementation(libs.androidx.compose.ui)

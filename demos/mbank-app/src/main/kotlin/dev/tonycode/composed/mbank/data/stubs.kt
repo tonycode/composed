@@ -1,10 +1,10 @@
 package dev.tonycode.composed.mbank.data
 
+import dev.tonycode.composed.common.ui.hoursToMillis
 import dev.tonycode.composed.mbank.model.AccountStats
 import dev.tonycode.composed.mbank.model.AccountSummary
 import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.model.UserProfile
-import dev.tonycode.composed.mbank.util.hoursToMillis
 import java.math.BigDecimal
 
 
@@ -37,17 +37,24 @@ val stubAccountStats = AccountStats(
 
 val stubTransactions = arrayOf(
     Transaction(
-        performedAt = System.currentTimeMillis(),
-        amount = BigDecimal(42),
+        performedAt = System.currentTimeMillis(),  // now
+        amount = BigDecimal(-42),
         isCleared = false,
         merchant = "Shopee",
         icon = "transaction_cart.png",
     ),
     Transaction(
-        performedAt = System.currentTimeMillis() - 16L.hoursToMillis(),
-        amount = BigDecimal(9.10),
+        performedAt = (System.currentTimeMillis() - 24.hoursToMillis()),  // 1 day before
+        amount = BigDecimal(-9.10),
         isCleared = false,
         merchant = "Rossmann",
         icon = "transaction_card.png",
+    ),
+    Transaction(
+        performedAt = (System.currentTimeMillis() - (2*24).hoursToMillis()),  // 2 days before
+        amount = BigDecimal(21.00),
+        isCleared = true,
+        merchant = "mTransfer",
+        icon = "transaction_transfer.png",
     ),
 )
