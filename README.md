@@ -16,7 +16,7 @@ Android JetpackCompose implementations for various apps
 - [`demos/comida-app`](demos/comida-app/src/main/kotlin/dev/tonycode/composed/comida/ui/ComidaAppActivity.kt)
 - design by Ola Hamdy - [dribbble](https://dribbble.com/shots/23157137-Comida-Food-Delivery-App-UI-Kit)
 
-<a href="docs/Comida - Home.png"><img src="docs/Comida - Home.png" /></a>
+<a href="docs/Comida-showcase.png"><img src="docs/Comida-showcase.png" /></a>
 
 ### mBank - Redesigned App
 
