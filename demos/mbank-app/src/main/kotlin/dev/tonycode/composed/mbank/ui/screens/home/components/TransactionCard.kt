@@ -14,6 +14,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.common.ui.fmtAsAmount
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
@@ -48,7 +49,7 @@ fun TransactionCard(
             }
 
             Text(
-                transaction.amount.setScale(2, RoundingMode.CEILING).toString(),
+                transaction.amount.fmtAsAmount(),
                 style = MbankTheme.typography.bodyEmphasis,
             )
         }

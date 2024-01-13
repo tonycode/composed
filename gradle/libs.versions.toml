@@ -13,6 +13,8 @@ compose = "1.5.4"
 composeCompilerExtension = "1.5.8"
 lifecycleViewmodelCompose = "2.7.0"
 
+jacoco = "0.8.9"
+
 [libraries]
 androidx-activity-compose = "androidx.activity:activity-compose:1.8.2"
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose" }
@@ -25,8 +27,10 @@ androidx-core-ktx = "androidx.core:core-ktx:1.12.0"
 androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelCompose" }
 androidx-navigation-compose = "androidx.navigation:navigation-compose:2.7.6"
 coil-compose = "io.coil-kt:coil-compose:2.5.0"
+google-truth = "com.google.truth:truth:1.2.0"
 hilt-android-base = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+junit = "junit:junit:4.13.2"
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom" }
 kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8", version.ref = "kotlin" }
 valentinilk-compose-shimmer = "com.valentinilk.shimmer:compose-shimmer:1.2.0"

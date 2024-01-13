@@ -8,6 +8,10 @@
     - `./gradlew app:dependencies --configuration debugCompileClasspath`
 
 - `./gradlew test`
+    - or narrow: `./gradlew common-ui:testDebugUnitTest`
+        - then: `xdg-open common-ui/build/reports/tests/testDebugUnitTest/index.html`
+    - with coverage: `./gradlew common-ui:createDebugUnitTestCoverageReport`
+        - then: `xdg-open common-ui/build/reports/coverage/test/debug/index.html`
 - `./gradlew connectedAndroidTest`
 
 - `./gradlew installDebug`

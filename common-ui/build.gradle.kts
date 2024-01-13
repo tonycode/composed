@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+
+    jacoco
 }
 
 
@@ -11,6 +13,8 @@ android {
         minSdk = libs.versions.minSdk.get().toInt()
         resourceConfigurations.addAll(listOf("en"))
         consumerProguardFile("consumer-rules.pro")
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileSdk = libs.versions.compileSdk.get().toInt()
@@ -35,6 +39,25 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.composeCompilerExtension.get()
     }
+
+    buildTypes {
+        debug {
+            isMinifyEnabled = false
+            isShrinkResources = false
+            enableUnitTestCoverage = true
+            //enableAndroidTestCoverage = true
+        }
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
+    }
+    testCoverage {
+        jacocoVersion = libs.versions.jacoco.get()
+    }
 }
 
 dependencies {
@@ -47,4 +70,8 @@ dependencies {
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    //// UnitTests
+    testImplementation(libs.junit)
+    testImplementation(libs.google.truth)
 }

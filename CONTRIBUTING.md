@@ -27,6 +27,7 @@ footer
     - build - Changes that affect the build system or external dependencies
     - ci - Changes to our CI configuration files and scripts
 - scopes
+    - common-ui
     - comida, mbank, ... - Changes related to demonstrational applications
 - description
     - use the imperative, present tense: "change" not "changed" or "changes"
