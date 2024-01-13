@@ -87,7 +87,5 @@ private fun PreviewTransactionCard(
 }
 
 private class TransactionPreviewProvider : PreviewParameterProvider<Transaction> {
-    override val values = sequenceOf(
-        *stubTransactions
-    )
+    override val values = stubTransactions.asSequence()
 }

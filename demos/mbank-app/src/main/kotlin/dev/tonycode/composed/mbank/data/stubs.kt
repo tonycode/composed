@@ -35,7 +35,7 @@ val stubAccountStats = AccountStats(
     ),
 )
 
-val stubTransactions = arrayOf(
+val stubTransactions = listOf(
     Transaction(
         performedAt = System.currentTimeMillis(),  // now
         amount = BigDecimal(-42),
