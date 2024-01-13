@@ -22,10 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.R
+import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.UserProfile
 import dev.tonycode.composed.mbank.ui.preview.ScreenPreview
 import dev.tonycode.composed.mbank.ui.screens.home.components.HomeAppbar
 import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
+import dev.tonycode.composed.mbank.ui.screens.home.components.TransactionCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 
@@ -108,6 +110,15 @@ fun HomeScreen(
                                 stringResource(R.string.full_history),
                                 style = MbankTheme.typography.bodyEmphasis,
                                 color = MbankTheme.colorScheme.onSurfaceAccent,
+                            )
+                        }
+
+                        Spacer(Modifier.height(8.dp))
+
+                        stubTransactions.take(3).forEach {
+                            TransactionCard(
+                                Modifier.padding(vertical = 4.dp),
+                                transaction = it,
                             )
                         }
                     }
