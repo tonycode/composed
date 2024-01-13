@@ -1,5 +1,6 @@
 package dev.tonycode.composed.mbank.ui.screens.home.widgets
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -29,6 +30,8 @@ import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 fun RecentTransactionsWidget(
     transactions: List<Transaction>,
     modifier: Modifier = Modifier,
+    onTransactionClicked: ((Transaction) -> Unit)? = null,
+    onShowAllClicked: (() -> Unit)? = null,
 ) = MbankCard(modifier) {
 
     Column {
@@ -47,6 +50,7 @@ fun RecentTransactionsWidget(
                 stringResource(R.string.full_history),
                 style = MbankTheme.typography.bodyEmphasis,
                 color = MbankTheme.colorScheme.onSurfaceAccent,
+                modifier = Modifier.clickable { onShowAllClicked?.invoke() }
             )
         }
 
@@ -55,8 +59,9 @@ fun RecentTransactionsWidget(
         // operations
         transactions.forEach {
             TransactionCard(
-                Modifier.padding(vertical = 4.dp),
                 transaction = it,
+                modifier = Modifier.padding(vertical = 4.dp),
+                onClicked = { onTransactionClicked?.invoke(it) },
             )
         }
     }

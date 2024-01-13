@@ -1,4 +1,4 @@
-package dev.tonycode.composed.mbank.ui.screens.home.components
+package dev.tonycode.composed.mbank.ui.screens.home.widgets
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -23,6 +23,7 @@ import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
+import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 import java.time.format.DateTimeFormatter
 import java.util.Locale
@@ -30,55 +31,62 @@ import java.util.Locale
 
 @Composable
 fun TransactionCard(
-    modifier: Modifier = Modifier,
     transaction: Transaction,
+    modifier: Modifier = Modifier,
+    onClicked: (() -> Unit)? = null,
+) = MbankCard(
+    modifier,
+    backgroundColor = MbankTheme.colorScheme.card,
+    padding = 12.dp,
+    onClicked = onClicked,
 ) {
-    MbankCard(
-        modifier,
-        backgroundColor = MbankTheme.colorScheme.card,
-        padding = 12.dp,
+
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
-            // transaction-icon
-            Box(
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(
-                        if (transaction.isCleared) MbankTheme.colorScheme.primary
-                        else MbankTheme.colorScheme.accent
-                    )
-            )
-
-            Spacer(Modifier.width(12.dp))
-
-            Column(Modifier.weight(1f)) {
-                Text(
-                    transaction.merchant,
-                    style = MbankTheme.typography.bodyEmphasis,
-                    color = MbankTheme.colorScheme.onCard,
+        // transaction-icon
+        Box(
+            modifier = Modifier
+                .size(32.dp)
+                .clip(RoundedCornerShape(8.dp))
+                .background(
+                    if (transaction.isCleared) MbankTheme.colorScheme.primary
+                    else MbankTheme.colorScheme.accent
                 )
+        )
 
-                val fmtPerformedAt = transaction.performedAt.fmtAsEpochMillis(
-                    datetimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, HH:mm", Locale.ENGLISH)
-                )
-                Text(
-                    fmtPerformedAt,
-                    style = MbankTheme.typography.body,
-                    color = MbankTheme.colorScheme.onCardSecondary,
-                )
-            }
+        Spacer(Modifier.width(12.dp))
 
+        Column(Modifier.weight(1f)) {
+            // merchant
             Text(
-                transaction.amount.fmtAsAmount(),
+                transaction.merchant,
                 style = MbankTheme.typography.bodyEmphasis,
                 color = MbankTheme.colorScheme.onCard,
             )
+
+            // performed-at
+            val fmtPerformedAt = transaction.performedAt.fmtAsEpochMillis(
+                datetimeFormatter = DateTimeFormatter.ofPattern("MMMM dd, HH:mm", Locale.ENGLISH)
+            )
+            Text(
+                fmtPerformedAt,
+                style = MbankTheme.typography.body,
+                color = MbankTheme.colorScheme.onCardSecondary,
+            )
         }
+
+        Spacer(Modifier.width(12.dp))
+
+        // amount with sign & currency
+        Text(
+            transaction.amount.fmtAsAmount(),
+            style = MbankTheme.typography.bodyEmphasis,
+            color = MbankTheme.colorScheme.onCard,
+        )
     }
+
 }
 
 
