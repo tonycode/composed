@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -46,22 +47,35 @@ fun RecentTransactionsWidget(
                 color = MbankTheme.colorScheme.onSurface,
             )
 
-            Text(
-                stringResource(R.string.full_history),
-                style = MbankTheme.typography.bodyEmphasis,
-                color = MbankTheme.colorScheme.onSurfaceAccent,
-                modifier = Modifier.clickable { onShowAllClicked?.invoke() }
-            )
+            if (transactions.isNotEmpty()) {
+                Text(
+                    stringResource(R.string.full_history),
+                    style = MbankTheme.typography.bodyEmphasis,
+                    color = MbankTheme.colorScheme.onSurfaceAccent,
+                    modifier = Modifier.clickable { onShowAllClicked?.invoke() }
+                )
+            }
         }
 
         Spacer(Modifier.height(8.dp))
 
         // operations
-        transactions.forEach {
-            TransactionCard(
-                transaction = it,
-                modifier = Modifier.padding(vertical = 4.dp),
-                onClicked = { onTransactionClicked?.invoke(it) },
+        if (transactions.isNotEmpty()) {
+            transactions.forEach {
+                TransactionCard(
+                    transaction = it,
+                    modifier = Modifier.padding(vertical = 4.dp),
+                    onClicked = { onTransactionClicked?.invoke(it) },
+                )
+            }
+        } else {
+            Text(
+                stringResource(R.string.no_operations),
+                style = MbankTheme.typography.body,
+                color = MbankTheme.colorScheme.onSurfaceSecondary,
+                modifier = Modifier
+                    .padding(vertical = 24.dp)
+                    .align(Alignment.CenterHorizontally),
             )
         }
     }
@@ -80,5 +94,6 @@ private fun PreviewRecentTransactionsWidget(
 private class TransactionsPreviewProvider : PreviewParameterProvider<List<Transaction>> {
     override val values = sequenceOf(
         stubTransactions,
+        emptyList()
     )
 }
