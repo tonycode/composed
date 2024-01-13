@@ -17,6 +17,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.common.ui.cards.CardJointHelper
+import dev.tonycode.composed.common.ui.cards.paddingForCardJoint
 import dev.tonycode.composed.mbank.R
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction
@@ -25,8 +27,6 @@ import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 
-//todo:
-// - [ ] join cards within one day
 @Composable
 fun RecentTransactionsWidget(
     transactions: List<Transaction>,
@@ -61,14 +61,23 @@ fun RecentTransactionsWidget(
 
         // operations
         if (transactions.isNotEmpty()) {
-            transactions.forEach {
+            val cardJointMetadata = CardJointHelper.createJointData(
+                itemsCount = transactions.size,
+                getItemGroup = { idx -> transactions[idx].performedDay }
+            )
+
+            transactions.forEachIndexed { idx, transaction ->
+                val cardJoint = cardJointMetadata[idx]
+
                 TransactionCard(
-                    transaction = it,
-                    modifier = Modifier.padding(vertical = 4.dp),
-                    onClicked = { onTransactionClicked?.invoke(it) },
+                    transaction = transaction,
+                    modifier = Modifier.paddingForCardJoint(cardJoint, verticalPadding = 4.dp),
+                    cardJoint = cardJoint,
+                    onClicked = { onTransactionClicked?.invoke(transaction) },
                 )
             }
-        } else {
+
+        } else {  // no transactions
             Text(
                 stringResource(R.string.no_operations),
                 style = MbankTheme.typography.body,

@@ -1,6 +1,7 @@
 package dev.tonycode.composed.mbank.data
 
 import dev.tonycode.composed.common.ui.hoursToMillis
+import dev.tonycode.composed.common.ui.minutesToMillis
 import dev.tonycode.composed.mbank.model.AccountStats
 import dev.tonycode.composed.mbank.model.AccountSummary
 import dev.tonycode.composed.mbank.model.Transaction
@@ -51,10 +52,17 @@ val stubTransactions = listOf(
         icon = "transaction_card.png",
     ),
     Transaction(
-        performedAt = (System.currentTimeMillis() - (2*24).hoursToMillis()),  // 2 days before
+        performedAt = (System.currentTimeMillis() - 24.hoursToMillis() - 30.minutesToMillis()),  // 1 day before
         amount = BigDecimal(21.00),
         isCleared = true,
         merchant = "mTransfer",
         icon = "transaction_transfer.png",
+    ),
+    Transaction(
+        performedAt = (System.currentTimeMillis() - (2*24).hoursToMillis()),  // 2 days before
+        amount = BigDecimal(-12.34),
+        isCleared = true,
+        merchant = "Zabka",
+        icon = "transaction_cart.png",
     ),
 )

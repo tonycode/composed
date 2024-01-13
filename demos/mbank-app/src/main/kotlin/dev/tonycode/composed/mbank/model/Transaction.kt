@@ -1,5 +1,6 @@
 package dev.tonycode.composed.mbank.model
 
+import dev.tonycode.composed.common.ui.fmtAsEpochMillis
 import java.math.BigDecimal
 
 
@@ -17,4 +18,9 @@ data class Transaction(
 
     val icon: String,
 
-)
+) {
+
+    val performedDay: String
+        get() = performedAt.fmtAsEpochMillis(withTime = false)
+
+}

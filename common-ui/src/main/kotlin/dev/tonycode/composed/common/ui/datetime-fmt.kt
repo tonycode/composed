@@ -7,29 +7,34 @@ import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 
-private val defaultDtf = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")
+private val defaultDf = DateTimeFormatter.ofPattern("dd-MM-yyyy")
 private val defaultTf = DateTimeFormatter.ofPattern("HH:mm")
 
 /**
  * epochMillis -> device local date time
  */
 fun Long.fmtAsEpochMillis(
+    withTime: Boolean = true,
     localZoneId: ZoneId = ZoneId.systemDefault(),
-    datetimeFormatter: DateTimeFormatter = defaultDtf,
+    dateFormatter: DateTimeFormatter = defaultDf,
     timeFormatter: DateTimeFormatter = defaultTf,
 ): String {
     val instant = Instant.ofEpochMilli(this)
     val ldt = LocalDateTime.ofInstant(instant, localZoneId)
 
     val todayStart = LocalDateTime.now().with(LocalTime.MIN)
-    return if (ldt >= todayStart) {
-        "today, " + timeFormatter.format(ldt)
+    val fmtDay = if (ldt >= todayStart) {
+        "today"
     } else {
         val yesterdayStart = LocalDateTime.now().minusDays(1).with(LocalTime.MIN)
         if (ldt >= yesterdayStart) {
-            "yesterday, " + timeFormatter.format(ldt)
+            "yesterday"
         } else {
-            datetimeFormatter.format(ldt)
+            dateFormatter.format(ldt)
         }
     }
+
+    return if (withTime) {
+        "$fmtDay, ${ timeFormatter.format(ldt) }"
+    } else fmtDay
 }

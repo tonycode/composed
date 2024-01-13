@@ -11,17 +11,35 @@ class DatetimeFmtUnitTest {
     fun testFmtAsEpochMillis() {
         val utcZoneId = ZoneId.of("UTC")
 
-        assertThat(
-            0L.fmtAsEpochMillis(utcZoneId)
-        ).isEqualTo("01-01-1970 00:00")
+        // zero
 
         assertThat(
-            System.currentTimeMillis().fmtAsEpochMillis(utcZoneId)
+            0L.fmtAsEpochMillis(localZoneId = utcZoneId)
+        ).isEqualTo("01-01-1970, 00:00")
+
+        assertThat(
+            0L.fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+        ).isEqualTo("01-01-1970")
+
+        // today
+
+        assertThat(
+            System.currentTimeMillis().fmtAsEpochMillis(localZoneId = utcZoneId)
         ).startsWith("today, ")
+        assertThat(
+            System.currentTimeMillis().fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+        ).isEqualTo("today")
+
+        // yesterday
 
         assertThat(
-            (System.currentTimeMillis() - 24.hoursToMillis()).fmtAsEpochMillis(utcZoneId)
+            (System.currentTimeMillis() - 24.hoursToMillis()).fmtAsEpochMillis(localZoneId = utcZoneId)
         ).startsWith("yesterday, ")
+
+        assertThat(
+            (System.currentTimeMillis() - 24.hoursToMillis())
+                .fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+        ).isEqualTo("yesterday")
     }
 
 }
