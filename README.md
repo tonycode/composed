@@ -23,6 +23,8 @@ Android JetpackCompose implementations for various apps
 - [`demos/mbank-app`](demos/mbank-app/src/main/kotlin/dev/tonycode/composed/mbank/ui/MbankAppActivity.kt)
 - design by DarkPlayer - [figma](https://www.figma.com/community/file/1189539388777252188)
 
+<a href="docs/mBank-showcase.png"><img src="docs/mBank-showcase.png" /></a>
+
 
 ## License
 
