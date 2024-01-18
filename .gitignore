@@ -10,5 +10,6 @@ build/
 # ignore AndroidStudio files
 /.idea/*
 !/.idea/icon.png
+!/.idea/dictionaries/shared.xml
 *.iml
 /captures/
