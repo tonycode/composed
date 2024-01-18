@@ -7,7 +7,7 @@ import java.math.RoundingMode
 internal const val defaultCurrency: String = "PLN"
 
 fun BigDecimal.fmtAsAmount(
-    withSignForPositive: Boolean = true,
+    withSignForPositive: Boolean = false,
     withCurrency: Boolean = true,
     currency: String = defaultCurrency,
 ): String {

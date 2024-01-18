@@ -85,7 +85,7 @@ fun TransactionCard(
 
         // amount with sign & currency
         Text(
-            transaction.amount.fmtAsAmount(),
+            transaction.amount.fmtAsAmount(withSignForPositive = true),
             style = MbankTheme.typography.bodyEmphasis,
             color = MbankTheme.colorScheme.onCard,
         )

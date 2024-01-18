@@ -11,16 +11,16 @@ class CurrencyFmtUnitTest {
     fun testFmtAsAmount() {
         // simple
 
-        assertThat(BigDecimal(123.45).fmtAsAmount())
+        assertThat(BigDecimal(123.45).fmtAsAmount(withSignForPositive = true))
             .isEqualTo("+123.45${ UnicodeChars.thinSpace }$defaultCurrency")
 
-        assertThat(BigDecimal(123.45).fmtAsAmount(withSignForPositive = false))
+        assertThat(BigDecimal(123.45).fmtAsAmount())
             .isEqualTo("123.45${ UnicodeChars.thinSpace }$defaultCurrency")
 
-        assertThat(BigDecimal(123.45).fmtAsAmount(withCurrency = false))
+        assertThat(BigDecimal(123.45).fmtAsAmount(withSignForPositive = true, withCurrency = false))
             .isEqualTo("+123.45")
 
-        assertThat(BigDecimal(123.45).fmtAsAmount(withSignForPositive = false, withCurrency = false))
+        assertThat(BigDecimal(123.45).fmtAsAmount(withCurrency = false))
             .isEqualTo("123.45")
 
         // zero

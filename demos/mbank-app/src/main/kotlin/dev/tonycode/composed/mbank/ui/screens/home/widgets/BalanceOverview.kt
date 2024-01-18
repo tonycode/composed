@@ -47,7 +47,7 @@ fun BalanceOverview(
 
         if (availableFunds != null) {
             Text(
-                availableFunds.fmtAsAmount(withSignForPositive = false),
+                availableFunds.fmtAsAmount(),
                 style = MbankTheme.typography.valueLarge,
                 color = MbankTheme.colorScheme.onSurface,
             )
@@ -75,7 +75,7 @@ fun BalanceOverview(
 
                 if (spentThisMonth != null) {
                     Text(
-                        spentThisMonth.fmtAsAmount(withSignForPositive = false),
+                        spentThisMonth.fmtAsAmount(),
                         style = MbankTheme.typography.body,
                         color = MbankTheme.colorScheme.onSurfaceAccent,
                     )
