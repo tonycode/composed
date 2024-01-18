@@ -53,6 +53,6 @@ fun Section(
 
 @Preview
 @Composable
-private fun PreviewSection() = ElementPreview {
+private fun SectionPreview() = ElementPreview {
     Section("A Section") { }
 }

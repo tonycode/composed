@@ -65,12 +65,12 @@ fun BadgeCounter(
 
 @Preview
 @Composable
-private fun PreviewBadgeCounter(
-    @PreviewParameter(IntValueProvider::class) value: Int,
+private fun BadgeCounterPreview(
+    @PreviewParameter(BadgeValuePreviewParameterProvider::class) value: Int,
 ) = ElementPreview(maxWidth = false) {
     BadgeCounter(value)
 }
 
-private class IntValueProvider : PreviewParameterProvider<Int> {
+private class BadgeValuePreviewParameterProvider : PreviewParameterProvider<Int> {
     override val values = sequenceOf(1, 5, 17, 88, 123)
 }

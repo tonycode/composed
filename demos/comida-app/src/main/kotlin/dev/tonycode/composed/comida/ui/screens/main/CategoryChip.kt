@@ -79,15 +79,24 @@ fun CategoryChip(
 
 @Preview
 @Composable
-private fun PreviewCategoryChip(
-    @PreviewParameter(CategoryChipStateProvider::class) state: Pair<Category, Boolean>,
+private fun CategoryChipPreview(
+    @PreviewParameter(CategoryChipPreviewStateProvider::class) previewState: CategoryChipPreviewState,
 ) = ElementPreview(maxWidth = false) {
-    CategoryChip(state.first, isSelected = state.second, onClicked = { })
+    CategoryChip(
+        category = previewState.category,
+        isSelected = previewState.isSelected,
+        onClicked = { }
+    )
 }
 
-private class CategoryChipStateProvider : PreviewParameterProvider<Pair<Category, Boolean>> {
+private class CategoryChipPreviewState(
+    val category: Category,
+    val isSelected: Boolean,
+)
+
+private class CategoryChipPreviewStateProvider : PreviewParameterProvider<CategoryChipPreviewState> {
     override val values = sequenceOf(
-        Pair(comidaCategories.first(), false),
-        Pair(comidaCategories.last(), true),
+        CategoryChipPreviewState(comidaCategories.first(), false),
+        CategoryChipPreviewState(comidaCategories.last(), true),
     )
 }

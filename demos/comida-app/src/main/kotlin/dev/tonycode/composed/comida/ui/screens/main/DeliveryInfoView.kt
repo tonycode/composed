@@ -52,6 +52,6 @@ fun DeliveryInfoView(
 
 @Preview
 @Composable
-private fun PreviewDeliveryInfo() = ElementPreview(maxWidth = false) {
+private fun DeliveryInfoViewPreview() = ElementPreview(maxWidth = false) {
     DeliveryInfoView(street = "387 Merdina", onSelectorClicked = { })
 }

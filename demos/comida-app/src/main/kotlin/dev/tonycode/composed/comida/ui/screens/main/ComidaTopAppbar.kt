@@ -54,7 +54,7 @@ fun ComidaTopAppbar(
 
 @Preview
 @Composable
-private fun PreviewComidaTopAppbar() = ElementPreview {
+private fun ComidaTopAppbarPreview() = ElementPreview {
     ComidaTopAppbar(
         modifier = Modifier.padding(horizontal = screenHorizontalPadding),
         onNavMenuClicked = { },

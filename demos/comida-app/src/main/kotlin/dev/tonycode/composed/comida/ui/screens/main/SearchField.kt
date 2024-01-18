@@ -51,6 +51,6 @@ fun SearchField(
 
 @Preview
 @Composable
-private fun PreviewSearchField() = ElementPreview {
+private fun SearchFieldPreview() = ElementPreview {
     SearchField(onChanged = { })
 }

@@ -23,7 +23,7 @@ import dev.tonycode.composed.comida.ui.util.shadowCustom
 fun ImageButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    image: @Composable () -> Unit,
+    image: @Composable (() -> Unit),
 ) {
 
     Surface(
@@ -52,7 +52,7 @@ fun ImageButton(
 
 @Preview
 @Composable
-private fun PreviewIconButton() = ElementPreview(maxWidth = false) {
+private fun ImageButtonPreview() = ElementPreview(maxWidth = false) {
     ImageButton(onClick = { }) {
         Image(
             painterResource(R.drawable.comida_nav_menu_40),

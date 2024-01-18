@@ -149,6 +149,6 @@ private val navItems = listOf(Screen.Home, Screen.Cart, Screen.Profile, Screen.N
 
 @Preview
 @Composable
-private fun PreviewBottomNav() = ElementPreview {
+private fun BottomNavPreview() = ElementPreview {
     BottomNav()
 }

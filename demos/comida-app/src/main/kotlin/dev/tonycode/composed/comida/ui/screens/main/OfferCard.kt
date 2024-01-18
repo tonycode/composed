@@ -41,7 +41,7 @@ import dev.tonycode.composed.comida.data.dummy.dummyOffers
 import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
-import dev.tonycode.composed.common.ui.preview.LoadingPreviewData
+import dev.tonycode.composed.common.ui.preview.LoadingPreviewState
 import dev.tonycode.composed.common.ui.skeleton.LocalSkeletonTheme
 import dev.tonycode.composed.common.ui.skeleton.Skeleton
 import dev.tonycode.composed.common.ui.skeleton.defaultSkeletonTheme
@@ -205,22 +205,22 @@ fun OfferCard(
 
 @Preview
 @Composable
-private fun PreviewOfferCard(
-    @PreviewParameter(OfferCardStateProvider::class) previewData: LoadingPreviewData<Offer>,
+private fun OfferCardPreview(
+    @PreviewParameter(OfferCardPreviewStateProvider::class) previewState: LoadingPreviewState<Offer>,
 ) = ElementPreview {
-    when (previewData) {
-        is LoadingPreviewData.Data ->
-            OfferCard(offer = previewData.data)
+    when (previewState) {
+        is LoadingPreviewState.Data ->
+            OfferCard(offer = previewState.data)
 
-        is LoadingPreviewData.Loading ->
+        is LoadingPreviewState.Loading ->
             OfferCard(isShimming = true)
     }
 }
 
-private class OfferCardStateProvider : PreviewParameterProvider<LoadingPreviewData<Offer>> {
+private class OfferCardPreviewStateProvider : PreviewParameterProvider<LoadingPreviewState<Offer>> {
     override val values = sequenceOf(
-        LoadingPreviewData.Data(dummyOffers.first()),
-        LoadingPreviewData.Data(dummyOffers.last()),
-        LoadingPreviewData.Loading(),
+        LoadingPreviewState.Data(dummyOffers.first()),
+        LoadingPreviewState.Data(dummyOffers.last()),
+        LoadingPreviewState.Loading(),
     )
 }
