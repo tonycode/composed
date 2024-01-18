@@ -27,9 +27,12 @@ import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
 
+/**
+ * @param transactions null means loading
+ */
 @Composable
 fun RecentTransactionsWidget(
-    transactions: List<Transaction>,
+    transactions: List<Transaction>?,
     modifier: Modifier = Modifier,
     onTransactionClicked: ((Transaction) -> Unit)? = null,
     onShowAllClicked: (() -> Unit)? = null,
@@ -47,7 +50,7 @@ fun RecentTransactionsWidget(
                 color = MbankTheme.colorScheme.onSurface,
             )
 
-            if (transactions.isNotEmpty()) {
+            if (!transactions.isNullOrEmpty()) {
                 Text(
                     stringResource(R.string.mbank_full_history),
                     style = MbankTheme.typography.bodyEmphasis,
@@ -59,33 +62,43 @@ fun RecentTransactionsWidget(
 
         Spacer(Modifier.height(8.dp))
 
-        // operations
-        if (transactions.isNotEmpty()) {
-            val cardJointMetadata = CardJointHelper.createJointData(
-                itemsCount = transactions.size,
-                getItemGroup = { idx -> transactions[idx].performedDay }
-            )
-
-            transactions.forEachIndexed { idx, transaction ->
-                val cardJoint = cardJointMetadata[idx]
-
+        // recent transactions
+        when {
+            (transactions == null) -> {  // loading
                 TransactionCard(
-                    transaction = transaction,
-                    modifier = Modifier.paddingForCardJoint(cardJoint, verticalPadding = 4.dp),
-                    cardJoint = cardJoint,
-                    onClicked = { onTransactionClicked?.invoke(transaction) },
+                    transaction = null,
+                    modifier = Modifier.padding(vertical = 4.dp),
                 )
             }
 
-        } else {  // no transactions
-            Text(
-                stringResource(R.string.mbank_no_operations),
-                style = MbankTheme.typography.body,
-                color = MbankTheme.colorScheme.onSurfaceSecondary,
-                modifier = Modifier
-                    .padding(vertical = 24.dp)
-                    .align(Alignment.CenterHorizontally),
-            )
+            transactions.isEmpty() -> {
+                Text(
+                    stringResource(R.string.mbank_no_operations),
+                    style = MbankTheme.typography.body,
+                    color = MbankTheme.colorScheme.onSurfaceSecondary,
+                    modifier = Modifier
+                        .padding(vertical = 24.dp)
+                        .align(Alignment.CenterHorizontally),
+                )
+            }
+
+            else -> {
+                val cardJointMetadata = CardJointHelper.createJointData(
+                    itemsCount = transactions.size,
+                    getItemGroup = { idx -> transactions[idx].performedDay }
+                )
+
+                transactions.forEachIndexed { idx, transaction ->
+                    val cardJoint = cardJointMetadata[idx]
+
+                    TransactionCard(
+                        transaction = transaction,
+                        modifier = Modifier.paddingForCardJoint(cardJoint, verticalPadding = 4.dp),
+                        cardJoint = cardJoint,
+                        onClicked = { onTransactionClicked?.invoke(transaction) },
+                    )
+                }
+            }
         }
     }
 

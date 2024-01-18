@@ -5,12 +5,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.tonycode.composed.mbank.model.AccountStats
+import dev.tonycode.composed.mbank.model.AccountSummary
+import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.model.UserProfile
+import dev.tonycode.composed.mbank.usecase.account.GetAccountStatsUsecase
+import dev.tonycode.composed.mbank.usecase.account.GetAccountSummaryUsecase
+import dev.tonycode.composed.mbank.usecase.account.GetAccountTransactions
 import dev.tonycode.composed.mbank.usecase.user.GetAuthorizedUserIdUsecase
 import dev.tonycode.composed.mbank.usecase.user.GetUserProfileUsecase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+private const val maxRecentTransactions = 4
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
@@ -22,6 +30,25 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     val userProfile: State<UserProfile?>
         get() = _userProfile
 
+    // balance overview
+
+    private val _accountSummary = mutableStateOf<AccountSummary?>(null)
+
+    val accountSummary: State<AccountSummary?>
+        get() = _accountSummary
+
+    private val _accountStats = mutableStateOf<AccountStats?>(null)
+
+    val accountStats: State<AccountStats?>
+        get() = _accountStats
+
+    // transactions
+
+    private val _recentTransactions = mutableStateOf<List<Transaction>?>(null)
+
+    val recentTransactions: State<List<Transaction>?>
+        get() = _recentTransactions
+
 
     init {
         loadData()
@@ -30,7 +57,15 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     private fun loadData() {
         viewModelScope.launch {
             val authorizedUserId = GetAuthorizedUserIdUsecase().execute()
-            _userProfile.value = GetUserProfileUsecase(authorizedUserId).execute()
+
+            GetUserProfileUsecase(authorizedUserId).execute().let { userProfile ->
+                _userProfile.value = userProfile
+
+                _accountSummary.value = GetAccountSummaryUsecase(userProfile.accountId).execute()
+                _accountStats.value = GetAccountStatsUsecase(userProfile.accountId).execute()
+                _recentTransactions.value =
+                    GetAccountTransactions(userProfile.accountId, limit = maxRecentTransactions).execute()
+            }
         }
     }
 

@@ -22,11 +22,11 @@ val stubUserProfile = UserProfile(
 
 val stubAccountSummary = AccountSummary(
     currency = stubCurrency,
-    fundsAvailable = BigDecimal(21.37),
+    fundsAvailable = BigDecimal(12345.67),
 )
 
 val stubAccountStats = AccountStats(
-    spentThisMonth = BigDecimal(420.69),
+    spentThisMonth = BigDecimal(1234.56),
     spentDaily = arrayOf(
         BigDecimal(5),
         BigDecimal(42.25),

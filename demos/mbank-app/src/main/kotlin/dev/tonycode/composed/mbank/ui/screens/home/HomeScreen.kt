@@ -18,17 +18,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
-import dev.tonycode.composed.mbank.data.stubTransactions
+import dev.tonycode.composed.mbank.model.AccountStats
+import dev.tonycode.composed.mbank.model.AccountSummary
+import dev.tonycode.composed.mbank.model.Transaction
 import dev.tonycode.composed.mbank.model.UserProfile
 import dev.tonycode.composed.mbank.ui.preview.ScreenPreview
 import dev.tonycode.composed.mbank.ui.screens.home.components.HomeAppbar
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.BalanceOverview
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.RecentTransactionsWidget
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.SpendingStatsWidget
-import java.math.BigDecimal
 
-
-private const val maxRecentTransactions = 4
 
 @Composable
 fun HomeScreen(
@@ -37,6 +36,9 @@ fun HomeScreen(
 ) {
 
     val userProfile: UserProfile? by remember { homeViewModel.userProfile }
+    val accountSummary: AccountSummary? by remember { homeViewModel.accountSummary }
+    val accountStats: AccountStats? by remember { homeViewModel.accountStats }
+    val recentTransactions: List<Transaction>? by remember { homeViewModel.recentTransactions }
 
     Surface(
         modifier = modifier.fillMaxWidth(),
@@ -59,8 +61,8 @@ fun HomeScreen(
                 // available funds & spending stats
                 Row {
                     BalanceOverview(
-                        availableFunds = BigDecimal(12345.67),
-                        spentThisMonth = BigDecimal(1234.56),
+                        availableFunds = accountSummary?.fundsAvailable,
+                        spentThisMonth = accountStats?.spentThisMonth,
                         modifier = Modifier
                             .weight(2 / 3f)
                             .height(163.dp),
@@ -74,7 +76,7 @@ fun HomeScreen(
                 Spacer(Modifier.height(8.dp))
 
                 RecentTransactionsWidget(
-                    transactions = stubTransactions.take(maxRecentTransactions),
+                    transactions = recentTransactions
                 )
             }
         }
