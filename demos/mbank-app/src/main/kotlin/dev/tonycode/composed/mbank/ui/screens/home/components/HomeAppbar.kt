@@ -77,15 +77,15 @@ fun HomeAppbar(
                     requireNotNull(userName)
 
                     Text(
-                        stringResource(R.string.greeting_pattern, userName),
+                        stringResource(R.string.mbank_greeting_pattern, userName),
                         style = MbankTheme.typography.appbarTitle,
                         color = MbankTheme.colorScheme.onBackground,
                         modifier = Modifier.weight(1f),
                     )
 
                     Image(
-                        painterResource(R.drawable.ic_account_24),
-                        contentDescription = stringResource(R.string.open_account_details),
+                        painterResource(R.drawable.mbank_ic_account_24),
+                        contentDescription = stringResource(R.string.mbank_open_account_details),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
                         modifier = Modifier
                             .clip(CircleShape)
@@ -95,8 +95,8 @@ fun HomeAppbar(
                     )
 
                     Image(
-                        painterResource(R.drawable.ic_settings_24),
-                        contentDescription = stringResource(R.string.open_setting_screen),
+                        painterResource(R.drawable.mbank_ic_settings_24),
+                        contentDescription = stringResource(R.string.mbank_open_setting_screen),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
                         modifier = Modifier
                             .clip(CircleShape)

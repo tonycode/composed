@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace = "dev.tonycode.composed.common.ui"
+    resourcePrefix = "common_ui_"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()

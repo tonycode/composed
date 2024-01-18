@@ -138,10 +138,10 @@ private fun SelectedItemIndicator(
 
 
 private sealed class Screen(val route: String, @DrawableRes val iconRes: Int, val iconDescription: String) {
-    object Home : Screen("home", R.drawable.nav_home_28, "Home screen")
-    object Cart : Screen("cart", R.drawable.nav_cart_28, "Basket screen")
-    object Profile : Screen("profile", R.drawable.nav_profile_28, "Profile screen")
-    object Notifications : Screen("notifications", R.drawable.nav_notifications_28, "Notifications screen")
+    object Home : Screen("home", R.drawable.comida_nav_home_28, "Home screen")
+    object Cart : Screen("cart", R.drawable.comida_nav_cart_28, "Basket screen")
+    object Profile : Screen("profile", R.drawable.comida_nav_profile_28, "Profile screen")
+    object Notifications : Screen("notifications", R.drawable.comida_nav_notifications_28, "Notifications screen")
 }
 
 private val navItems = listOf(Screen.Home, Screen.Cart, Screen.Profile, Screen.Notifications)

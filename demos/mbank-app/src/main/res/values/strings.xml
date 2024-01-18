@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="greeting_pattern">Hello, %s</string>
-    <string name="open_account_details">Open account details</string>
-    <string name="open_setting_screen">Open settings screen</string>
-    <string name="available_funds">Available funds</string>
-    <string name="spent_this_month">Spent this month</string>
-    <string name="recent_operations">Recent operations</string>
-    <string name="full_history">Full history</string>
-    <string name="no_operations">No operations yet</string>
-    <string name="home">Home</string>
-    <string name="payments">Payments</string>
-    <string name="finance">Finance</string>
-    <string name="statistics">Statistics</string>
-    <string name="services">Services</string>
+    <string name="mbank_greeting_pattern">Hello, %s</string>
+    <string name="mbank_open_account_details">Open account details</string>
+    <string name="mbank_open_setting_screen">Open settings screen</string>
+    <string name="mbank_available_funds">Available funds</string>
+    <string name="mbank_spent_this_month">Spent this month</string>
+    <string name="mbank_recent_operations">Recent operations</string>
+    <string name="mbank_full_history">Full history</string>
+    <string name="mbank_no_operations">No operations yet</string>
+    <string name="mbank_home">mbank_home</string>
+    <string name="mbank_payments">Payments</string>
+    <string name="mbank_finance">Finance</string>
+    <string name="mbank_statistics">Statistics</string>
+    <string name="mbank_services">Services</string>
 
 </resources>

@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace = "dev.tonycode.composed.comida"
+    resourcePrefix = "comida_"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()

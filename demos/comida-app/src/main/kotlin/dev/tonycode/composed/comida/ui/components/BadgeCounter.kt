@@ -38,7 +38,7 @@ fun BadgeCounter(
             .height(IntrinsicSize.Min),
     ) {
         Image(
-            painterResource(R.drawable.badge_background),
+            painterResource(R.drawable.comida_badge_background),
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
             modifier = Modifier.fillMaxSize(),

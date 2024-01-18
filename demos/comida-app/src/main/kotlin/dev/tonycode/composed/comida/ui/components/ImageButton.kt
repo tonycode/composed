@@ -55,7 +55,7 @@ fun ImageButton(
 private fun PreviewIconButton() = ElementPreview(maxWidth = false) {
     ImageButton(onClick = { }) {
         Image(
-            painterResource(R.drawable.nav_menu_40),
+            painterResource(R.drawable.comida_nav_menu_40),
             contentDescription = "open nav menu",
         )
     }

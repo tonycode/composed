@@ -5,9 +5,9 @@ import dev.tonycode.composed.comida.model.Category
 
 
 val comidaCategories = listOf(
-    Category("Burger", R.drawable.pic_burger),
-    Category("Donuts", R.drawable.pic_donut),
-    Category("Pizza", R.drawable.pic_pizza),
-    Category("Hot Dog", R.drawable.pic_hotdog),
-    Category("Pasta", R.drawable.pic_pasta),
+    Category("Burger", R.drawable.comida_pic_burger),
+    Category("Donuts", R.drawable.comida_pic_donut),
+    Category("Pizza", R.drawable.comida_pic_pizza),
+    Category("Hot Dog", R.drawable.comida_pic_hotdog),
+    Category("Pasta", R.drawable.comida_pic_pasta),
 )

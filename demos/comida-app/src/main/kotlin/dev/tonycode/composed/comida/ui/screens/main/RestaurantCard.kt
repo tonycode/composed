@@ -116,7 +116,7 @@ fun RestaurantCard(
                 // rating
                 if (!isShimming) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
-                        Image(painterResource(R.drawable.ic_star), "Rating is")
+                        Image(painterResource(R.drawable.comida_ic_star), "Rating is")
 
                         Spacer(Modifier.width(4.dp))
 
@@ -139,7 +139,7 @@ fun RestaurantCard(
                 // delivery-price
                 if (restaurant.deliveryInfo.isFree) {
                     if (!isShimming) {
-                        Image(painterResource(R.drawable.ic_delivery), "Delivery is")
+                        Image(painterResource(R.drawable.comida_ic_delivery), "Delivery is")
 
                         Spacer(Modifier.width(6.dp))
 
@@ -157,7 +157,7 @@ fun RestaurantCard(
 
                 // delivery-time
                 if (!isShimming) {
-                    Image(painterResource(R.drawable.ic_clock), "Approximate delivery time is")
+                    Image(painterResource(R.drawable.comida_ic_clock), "Approximate delivery time is")
 
                     Spacer(Modifier.width(6.dp))
 

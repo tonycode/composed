@@ -52,7 +52,7 @@ fun CartScreen() {
                 }
             ) {
                 Image(
-                    painterResource(id = R.drawable.nav_back),
+                    painterResource(id = R.drawable.comida_nav_back),
                     contentDescription = "Navigate back",
                 )
             }

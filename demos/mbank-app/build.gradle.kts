@@ -8,6 +8,7 @@ plugins {
 
 android {
     namespace = "dev.tonycode.composed.mbank"
+    resourcePrefix = "mbank_"
 
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()

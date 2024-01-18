@@ -35,7 +35,7 @@ fun SearchField(
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Image(painterResource(R.drawable.ic_search_17), null)
+            Image(painterResource(R.drawable.comida_ic_search_17), null)
 
             Spacer(Modifier.width(12.dp))
 

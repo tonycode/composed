@@ -101,7 +101,7 @@ fun OfferCard(
                     // rating
                     if (!isShimming) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Image(painterResource(R.drawable.ic_star), "Rating is")
+                            Image(painterResource(R.drawable.comida_ic_star), "Rating is")
 
                             Spacer(Modifier.width(4.dp))
 
@@ -135,7 +135,7 @@ fun OfferCard(
                         if (!isShimming) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Image(
-                                    painterResource(R.drawable.ic_delivery),
+                                    painterResource(R.drawable.comida_ic_delivery),
                                     contentDescription = "Delivery is",
                                     colorFilter = ColorFilter.tint(ComidaPalette.WhiteA75),
                                 )

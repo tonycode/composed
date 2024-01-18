@@ -39,7 +39,7 @@ fun DeliveryInfoView(
                 color = MaterialTheme.colorScheme.secondary,
             )
 
-            Image(painterResource(R.drawable.ic_arrow_down_20), null)
+            Image(painterResource(R.drawable.comida_ic_arrow_down_20), null)
         }
 
         Text(

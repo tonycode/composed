@@ -10,15 +10,15 @@ sealed class Screen(
     @DrawableRes val iconRes: Int,
 ) {
 
-    data object Home : Screen(R.string.home, R.drawable.nav_home_24)
+    data object Home : Screen(R.string.mbank_home, R.drawable.mbank_nav_home_24)
 
-    data object Payments : Screen(R.string.payments, R.drawable.nav_payments_24)
+    data object Payments : Screen(R.string.mbank_payments, R.drawable.mbank_nav_payments_24)
 
-    data object Finance : Screen(R.string.finance, R.drawable.nav_finances_24)
+    data object Finance : Screen(R.string.mbank_finance, R.drawable.mbank_nav_finances_24)
 
-    data object Statistics : Screen(R.string.statistics, R.drawable.nav_statistics_24)
+    data object Statistics : Screen(R.string.mbank_statistics, R.drawable.mbank_nav_statistics_24)
 
-    data object Services : Screen(R.string.services, R.drawable.nav_services_24)
+    data object Services : Screen(R.string.mbank_services, R.drawable.mbank_nav_services_24)
 
 }
 

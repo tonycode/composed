@@ -42,14 +42,14 @@ fun RecentTransactionsWidget(
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             Text(
-                stringResource(R.string.recent_operations),
+                stringResource(R.string.mbank_recent_operations),
                 style = MbankTheme.typography.bodyEmphasis,
                 color = MbankTheme.colorScheme.onSurface,
             )
 
             if (transactions.isNotEmpty()) {
                 Text(
-                    stringResource(R.string.full_history),
+                    stringResource(R.string.mbank_full_history),
                     style = MbankTheme.typography.bodyEmphasis,
                     color = MbankTheme.colorScheme.onSurfaceAccent,
                     modifier = Modifier.clickable { onShowAllClicked?.invoke() }
@@ -79,7 +79,7 @@ fun RecentTransactionsWidget(
 
         } else {  // no transactions
             Text(
-                stringResource(R.string.no_operations),
+                stringResource(R.string.mbank_no_operations),
                 style = MbankTheme.typography.body,
                 color = MbankTheme.colorScheme.onSurfaceSecondary,
                 modifier = Modifier

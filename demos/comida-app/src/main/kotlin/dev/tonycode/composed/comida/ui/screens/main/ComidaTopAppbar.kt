@@ -32,7 +32,7 @@ fun ComidaTopAppbar(
     ) {
         ImageButton(onClick = { onNavMenuClicked.invoke() }) {
             Image(
-                painterResource(R.drawable.nav_menu_40),
+                painterResource(R.drawable.comida_nav_menu_40),
                 contentDescription = "open nav menu",
             )
         }
