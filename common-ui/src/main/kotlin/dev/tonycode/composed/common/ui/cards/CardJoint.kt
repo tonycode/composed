@@ -1,7 +1,6 @@
 package dev.tonycode.composed.common.ui.cards
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 
@@ -24,12 +23,10 @@ enum class CardJoint {
 }
 
 
-@Composable
 fun Modifier.paddingForCardJoint(
     cardJoint: CardJoint,
     verticalPadding: Dp,
 ): Modifier = when (cardJoint) {
-
     CardJoint.Single ->
         this.padding(vertical = verticalPadding)
 
@@ -39,5 +36,4 @@ fun Modifier.paddingForCardJoint(
         this
     CardJoint.Bottom ->
         this.padding(bottom = verticalPadding)
-
 }
