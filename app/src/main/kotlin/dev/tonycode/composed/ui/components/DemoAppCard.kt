@@ -181,13 +181,13 @@ private fun String.getUrlIconRes(): Int = when {
 
 @LightDarkPreviews
 @Composable
-private fun PreviewDemoAppCard(
-    @PreviewParameter(DemoAppProvider::class) demoApp: DemoApp,
+private fun DemoAppCardPreview(
+    @PreviewParameter(DemoAppPreviewParameterProvider::class) demoApp: DemoApp,
 ) = ElementPreview {
     DemoAppCard(demoApp) { /* do nothing onClick */ }
 }
 
-private class DemoAppProvider : PreviewParameterProvider<DemoApp> {
+private class DemoAppPreviewParameterProvider : PreviewParameterProvider<DemoApp> {
     override val values = sequenceOf(
         DemoApp("App with no design-author & -url", null, null) { /* launch nothing */ },
         DemoApp("App with no design-url", "MrCreative", null) { /* launch nothing */ },

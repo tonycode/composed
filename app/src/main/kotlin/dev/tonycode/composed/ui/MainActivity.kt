@@ -63,6 +63,6 @@ private fun ComposedApp() {
 @LightDarkPreviews
 @FontScalePreviews
 @Composable
-private fun PreviewComposedApp() {
+private fun ComposedAppPreview() {
     ComposedApp()
 }
