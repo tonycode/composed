@@ -85,6 +85,6 @@ fun HomeScreen(
 
 @LightDarkPreviews
 @Composable
-fun PreviewHomeScreen() = ScreenPreview {
+private fun HomeScreenPreview() = ScreenPreview {
     HomeScreen()
 }

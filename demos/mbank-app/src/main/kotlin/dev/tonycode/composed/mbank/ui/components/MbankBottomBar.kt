@@ -31,8 +31,8 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.ui.Screen
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.screens
@@ -92,7 +92,7 @@ private fun NavItem(
     ) {
         Crossfade(
             targetState = isSelected,
-            label = "bottom-nav $titleRes cressfade",
+            label = "bottom-nav $titleRes crossfade",
         ) { isSelected ->
             Box(
                 modifier = Modifier
@@ -138,9 +138,9 @@ private fun NavItem(
 }
 
 
-@Preview
+@LightDarkPreviews
 @Composable
-fun PreviewMbankBottomBar() = ElementPreview(usePadding = false) {
+private fun MbankBottomBarPreview() = ElementPreview(usePadding = false) {
     var selectedItem: Screen by remember { mutableStateOf(Screen.Home) }
 
     MbankBottomBar(

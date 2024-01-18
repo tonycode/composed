@@ -9,13 +9,13 @@ private const val GROUP_FONT_SCALES = "Font scales"
 
 
 @Preview(
-    name = "Light mode",
+    name = "ui-mode-1 Light",
     group = GROUP_UI_MODE,
     uiMode = Configuration.UI_MODE_NIGHT_NO or Configuration.UI_MODE_TYPE_NORMAL,
     showBackground = true,
 )
 @Preview(
-    name = "Dark mode",
+    name = "ui-mode-2 Dark",
     group = GROUP_UI_MODE,
     uiMode = Configuration.UI_MODE_NIGHT_YES or Configuration.UI_MODE_TYPE_NORMAL,
     showBackground = true,
@@ -24,12 +24,12 @@ annotation class LightDarkPreviews
 
 
 @Preview(
-    name = "Large font",
+    name = "font-scale-1 Large",
     group = GROUP_FONT_SCALES,
     fontScale = 1.5f,
 )
 @Preview(
-    name = "Small font",
+    name = "font-scale-2 Small",
     group = GROUP_FONT_SCALES,
     fontScale = 0.5f,
 )

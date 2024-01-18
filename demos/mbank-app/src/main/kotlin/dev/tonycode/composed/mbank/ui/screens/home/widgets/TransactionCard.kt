@@ -96,8 +96,8 @@ fun TransactionCard(
 
 @LightDarkPreviews
 @Composable
-private fun PreviewTransactionCard(
-    @PreviewParameter(PreviewStateProvider::class) previewState: PreviewState,
+private fun TransactionCardPreview(
+    @PreviewParameter(TransactionCardPreviewStateProvider::class) previewState: TransactionCardPreviewState,
 ) = ElementPreview(backgroundColor = MbankTheme.colorScheme.surface) {
     TransactionCard(
         transaction = previewState.transaction,
@@ -105,16 +105,16 @@ private fun PreviewTransactionCard(
     )
 }
 
-private class PreviewState(
+private class TransactionCardPreviewState(
     val transaction: Transaction,
     val cardJoint: CardJoint,
 )
 
-private class PreviewStateProvider : PreviewParameterProvider<PreviewState> {
+private class TransactionCardPreviewStateProvider : PreviewParameterProvider<TransactionCardPreviewState> {
     override val values = sequenceOf(
-        PreviewState(transaction = stubTransactions.first(), CardJoint.Single),
-        PreviewState(transaction = stubTransactions[1], CardJoint.Top),
-        PreviewState(transaction = stubTransactions[2], CardJoint.Middle),
-        PreviewState(transaction = stubTransactions.last(), CardJoint.Bottom),
+        TransactionCardPreviewState(transaction = stubTransactions.first(), CardJoint.Single),
+        TransactionCardPreviewState(transaction = stubTransactions[1], CardJoint.Top),
+        TransactionCardPreviewState(transaction = stubTransactions[2], CardJoint.Middle),
+        TransactionCardPreviewState(transaction = stubTransactions.last(), CardJoint.Bottom),
     )
 }

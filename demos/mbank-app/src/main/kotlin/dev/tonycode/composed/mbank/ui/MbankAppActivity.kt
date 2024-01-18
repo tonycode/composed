@@ -66,4 +66,4 @@ private fun MbankApp() {
 
 @LightDarkPreviews
 @Composable
-fun PreviewMbankApp() = MbankApp()
+private fun MbankAppPreview() = MbankApp()

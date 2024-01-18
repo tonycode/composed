@@ -77,8 +77,8 @@ fun MbankCard(
 
 @LightDarkPreviews
 @Composable
-fun PreviewMbankCard(
-    @PreviewParameter(CardJointPreviewProvider::class) cardJoint: CardJoint,
+private fun MbankCardPreview(
+    @PreviewParameter(CardJointPreviewParameterProvider::class) cardJoint: CardJoint,
 ) = ElementPreview {
     MbankCard(cardJoint = cardJoint) {
         Text(
@@ -89,6 +89,6 @@ fun PreviewMbankCard(
     }
 }
 
-private class CardJointPreviewProvider : PreviewParameterProvider<CardJoint> {
+private class CardJointPreviewParameterProvider : PreviewParameterProvider<CardJoint> {
     override val values = CardJoint.entries.asSequence()
 }

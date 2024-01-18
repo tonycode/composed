@@ -113,8 +113,8 @@ fun HomeAppbar(
 
 @LightDarkPreviews
 @Composable
-private fun PreviewHomeAppbar(
-    @PreviewParameter(PreviewStateProvider::class) previewState: PreviewState,
+private fun HomeAppbarPreview(
+    @PreviewParameter(HomeAppbarPreviewStateProvider::class) previewState: HomeAppbarPreviewState,
 ) = ElementPreview(usePadding = false) {
     HomeAppbar(
         isLoading = previewState.isLoading,
@@ -122,14 +122,14 @@ private fun PreviewHomeAppbar(
     )
 }
 
-private class PreviewState(
+private class HomeAppbarPreviewState(
     val isLoading: Boolean = true,
     val userName: String? = null,
 )
 
-private class PreviewStateProvider : PreviewParameterProvider<PreviewState> {
+private class HomeAppbarPreviewStateProvider : PreviewParameterProvider<HomeAppbarPreviewState> {
     override val values = sequenceOf(
-        PreviewState(isLoading = true),
-        PreviewState(isLoading = false, userName = stubUserProfile.name),
+        HomeAppbarPreviewState(isLoading = true),
+        HomeAppbarPreviewState(isLoading = false, userName = stubUserProfile.name),
     )
 }

@@ -13,12 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.common.ui.cards.CardJointHelper
 import dev.tonycode.composed.common.ui.cards.paddingForCardJoint
+import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.R
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction
@@ -92,15 +92,15 @@ fun RecentTransactionsWidget(
 }
 
 
-@Preview
+@LightDarkPreviews
 @Composable
-private fun PreviewRecentTransactionsWidget(
-    @PreviewParameter(TransactionsPreviewProvider::class) transactions: List<Transaction>
+private fun RecentTransactionWidgetPreview(
+    @PreviewParameter(TransactionsPreviewParameterProvider::class) transactions: List<Transaction>
 ) = ElementPreview {
     RecentTransactionsWidget(transactions)
 }
 
-private class TransactionsPreviewProvider : PreviewParameterProvider<List<Transaction>> {
+private class TransactionsPreviewParameterProvider : PreviewParameterProvider<List<Transaction>> {
     override val values = sequenceOf(
         stubTransactions,
         emptyList()
