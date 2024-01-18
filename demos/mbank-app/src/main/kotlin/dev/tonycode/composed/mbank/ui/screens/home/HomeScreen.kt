@@ -22,7 +22,7 @@ import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.UserProfile
 import dev.tonycode.composed.mbank.ui.preview.ScreenPreview
 import dev.tonycode.composed.mbank.ui.screens.home.components.HomeAppbar
-import dev.tonycode.composed.mbank.ui.screens.home.widgets.AvailableFundsWidget
+import dev.tonycode.composed.mbank.ui.screens.home.widgets.BalanceOverview
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.RecentTransactionsWidget
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.SpendingStatsWidget
 import java.math.BigDecimal
@@ -58,8 +58,9 @@ fun HomeScreen(
             ) {
                 // available funds & spending stats
                 Row {
-                    AvailableFundsWidget(
-                        availableFunds = BigDecimal(123.45),
+                    BalanceOverview(
+                        availableFunds = BigDecimal(12345.67),
+                        spentThisMonth = BigDecimal(1234.56),
                         modifier = Modifier
                             .weight(2 / 3f)
                             .height(163.dp),

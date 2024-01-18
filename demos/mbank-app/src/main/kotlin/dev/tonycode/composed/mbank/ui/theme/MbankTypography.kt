@@ -16,6 +16,17 @@ class MbankTypography(
         lineHeight = 28.sp,
     ),
 
+    val title: TextStyle = DefaultTextStyle.copy(
+        fontSize = 17.sp,
+        lineHeight = 22.sp,
+    ),
+
+    val valueLarge: TextStyle = DefaultTextStyle.copy(
+        fontWeight = FontWeight.Bold,
+        fontSize = 32.sp,
+        lineHeight = 32.sp,
+    ),
+
     val bodyEmphasis: TextStyle = DefaultTextStyle.copy(
         fontWeight = FontWeight.Bold,
     ),
