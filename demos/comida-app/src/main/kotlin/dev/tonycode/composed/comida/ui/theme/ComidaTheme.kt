@@ -49,7 +49,7 @@ private val LightColorScheme = lightColorScheme(
 
 
 @Composable
-fun ComidaAppTheme(
+fun ComidaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+ (API 31+)
     dynamicColor: Boolean = false,

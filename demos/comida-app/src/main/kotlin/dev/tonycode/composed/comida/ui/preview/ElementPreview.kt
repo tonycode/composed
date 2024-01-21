@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.theme.ComidaTheme
 import dev.tonycode.composed.common.ui.thenIf
 
 
@@ -25,7 +25,7 @@ fun ElementPreview(
     content: @Composable (() -> Unit),
 ) {
 
-    ComidaAppTheme {
+    ComidaTheme {
         when {
             showBackground -> {
                 Surface(

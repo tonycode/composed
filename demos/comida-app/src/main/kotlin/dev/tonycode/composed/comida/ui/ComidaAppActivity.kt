@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.tonycode.composed.comida.ui.components.BottomNav
 import dev.tonycode.composed.comida.ui.screens.main.ComidaTopAppbar
 import dev.tonycode.composed.comida.ui.screens.main.MainScreen
-import dev.tonycode.composed.comida.ui.theme.ComidaAppTheme
+import dev.tonycode.composed.comida.ui.theme.ComidaTheme
 
 
 @AndroidEntryPoint
@@ -48,7 +48,7 @@ val screenHorizontalPadding = 22.dp
 
 @Composable
 private fun ComidaApp() {
-    ComidaAppTheme {
+    ComidaTheme {
         Surface(
             color = MaterialTheme.colorScheme.background,
             modifier = Modifier.fillMaxSize(),
