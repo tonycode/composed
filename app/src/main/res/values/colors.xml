@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Must be equal to Palette.PianoBlack -->
+    <color name="splashscreen_bg_dark">#FF161718</color>
+    <!-- Must be equal to Palette.GhostWhite -->
+    <color name="splashscreen_bg_light">#FFF7F9FC</color>
+
+</resources>

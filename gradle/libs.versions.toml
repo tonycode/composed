@@ -15,6 +15,7 @@ composeCompilerExtension = "1.5.8"
 jacoco = "0.8.9"
 
 [libraries]
+android-material = "com.google.android.material:material:1.11.0"
 androidx-activity-compose = "androidx.activity:activity-compose:1.8.2"
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
 androidx-compose-material-icons-extended = { module = "androidx.compose.material:material-icons-extended" }
@@ -24,6 +25,7 @@ androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-constraintLayout-compose = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 androidx-core-ktx = "androidx.core:core-ktx:1.12.0"
+androidx-core-splash = "androidx.core:core-splashscreen:1.0.1"
 androidx-lifecycle-viewmodel-compose = "androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0"
 androidx-navigation-compose = "androidx.navigation:navigation-compose:2.7.6"
 coil-compose = "io.coil-kt:coil-compose:2.5.0"

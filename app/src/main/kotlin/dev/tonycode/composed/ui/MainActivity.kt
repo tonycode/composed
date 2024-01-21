@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dev.tonycode.composed.common.ui.preview.FontScalePreviews
 import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.components.DemoAppCard
@@ -24,6 +25,7 @@ import dev.tonycode.composed.ui.theme.ComposedAppTheme
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
 
         setContent {
