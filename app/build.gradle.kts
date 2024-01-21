@@ -77,18 +77,26 @@ android {
 
     buildTypes {
         debug {
+            resValue("string", "app_name", "Composed dbg")
+            applicationIdSuffix = ".debug"
+
             isDebuggable = true
             isMinifyEnabled = false
             isShrinkResources = false
         }
 
         release {
+            resValue("string", "app_name", "Composed")
             signingConfig = signingConfigs.getByName("release")
+
             isDebuggable = false
             // https://developer.android.com/studio/build/shrink-code
             isMinifyEnabled = true
             isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }

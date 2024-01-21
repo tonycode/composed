@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Composed</string>
-
     <string name="design_by">design by</string>
     <string name="launch_design_url">Launch design url</string>
     <string name="launch_demo_app">Launch this demo app</string>
