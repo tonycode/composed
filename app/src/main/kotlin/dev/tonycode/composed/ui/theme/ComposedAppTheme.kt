@@ -50,11 +50,10 @@ private val LightColorScheme = lightColorScheme(
 )
 
 
-@Suppress("DEPRECATION")
 @Composable
 fun ComposedAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
+    // Dynamic color is available on Android 12+ (API 31+)
     dynamicColor: Boolean = true,
     content: @Composable (() -> Unit)
 ) {
@@ -74,6 +73,7 @@ fun ComposedAppTheme(
         SideEffect {
             (view.context as Activity).window.statusBarColor =
                 (if (darkTheme) colorScheme.background else Palette.Walrus).toArgb()
+            @Suppress("DEPRECATION")
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = darkTheme
         }
     }

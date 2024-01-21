@@ -13,7 +13,7 @@ plugins {
 
 
 //region tasks
-/* generate gradle-wrapper with `gradle wrapper` */
+/* generates gradle-wrapper via `gradle wrapper` */
 tasks.wrapper {
     gradleVersion = "8.5"
     distributionType = Wrapper.DistributionType.ALL
