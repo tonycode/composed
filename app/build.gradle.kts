@@ -112,8 +112,9 @@ dependencies {
 
     //// UI
     implementation(libs.androidx.core.splash)
-    implementation(libs.androidx.activity.compose)
+
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.android.material)

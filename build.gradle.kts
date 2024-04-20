@@ -15,7 +15,7 @@ plugins {
 //region tasks
 /* generates gradle-wrapper via `gradle wrapper` */
 tasks.wrapper {
-    gradleVersion = "8.5"
+    gradleVersion = "8.7"
     distributionType = Wrapper.DistributionType.ALL
 }
 
@@ -23,13 +23,13 @@ tasks.register("clean", Delete::class) {
     delete(rootProject.layout.buildDirectory)
 }
 
-fun String.isStable(): Boolean {
+private fun String.isStable(): Boolean {
     val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { this.uppercase().contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     return (stableKeyword || regex.matches(this))
 }
 
-fun String.isNonStable(): Boolean = isStable().not()
+private fun String.isNonStable(): Boolean = isStable().not()
 
 tasks.withType<DependencyUpdatesTask> {
     rejectVersionIf {
