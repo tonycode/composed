@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.pm20.util.archivesName
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.TimeZone
@@ -7,8 +6,9 @@ import java.util.TimeZone
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.compose.compiler)
 
     alias(libs.plugins.grgit)
 }
@@ -21,7 +21,7 @@ android {
         applicationId = "dev.tonycode.composed"
         versionCode = 1
         versionName = "1.0.0"
-        archivesName = "composed-v$versionName-build_$versionCode"
+        base.archivesName = "composed-v$versionName-build_$versionCode"
 
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
@@ -61,10 +61,6 @@ android {
         buildConfig = true
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompilerExtension.get()
-    }
-
 
     signingConfigs {
         create("release") {
@@ -106,8 +102,8 @@ dependencies {
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
     implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
-    implementation(libs.hilt.android.base)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
     coreLibraryDesugaring(libs.desugar.jdkLibs)
 
     //// UI
@@ -129,9 +125,4 @@ dependencies {
 
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

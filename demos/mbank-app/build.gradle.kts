@@ -1,8 +1,9 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.compose.compiler)
 }
 
 
@@ -37,9 +38,6 @@ android {
     buildFeatures {
         compose = true
     }
-    composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.composeCompilerExtension.get()
-    }
 }
 
 dependencies {
@@ -48,8 +46,8 @@ dependencies {
     implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
-    implementation(libs.hilt.android.base)
-    kapt(libs.hilt.android.compiler)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
     coreLibraryDesugaring(libs.desugar.jdkLibs)
 
     //// UI
@@ -68,9 +66,4 @@ dependencies {
 
     //// Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
-}
-
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
 }

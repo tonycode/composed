@@ -1,4 +1,4 @@
-package dev.tonycode.composed.comida.util
+package dev.tonycode.composed.common.ui.util
 
 
 /**
