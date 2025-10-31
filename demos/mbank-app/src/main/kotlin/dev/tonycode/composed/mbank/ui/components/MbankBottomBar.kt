@@ -38,7 +38,6 @@ import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.screens
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
-
 @Composable
 fun MbankBottomBar(
     items: List<Screen>,
@@ -51,10 +50,11 @@ fun MbankBottomBar(
     ) {
         Column {
             Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(1.dp)
-                    .background(color = MbankTheme.colorScheme.bottomNavigationStroke)
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(1.dp)
+                        .background(color = MbankTheme.colorScheme.bottomNavigationStroke),
             )
 
             Row(
@@ -68,7 +68,7 @@ fun MbankBottomBar(
                         isSelected = (it == selectedItem),
                         onSelected = {
                             onItemSelected.invoke(it)
-                        }
+                        },
                     )
                 }
             }
@@ -84,10 +84,11 @@ private fun NavItem(
     onSelected: () -> Unit,
 ) {
     Column(
-        modifier = Modifier
-            .clip(RoundedCornerShape(26.dp))
-            .clickable { onSelected.invoke() }
-            .padding(vertical = 12.dp),
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(26.dp))
+                .clickable { onSelected.invoke() }
+                .padding(vertical = 12.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Crossfade(
@@ -95,29 +96,32 @@ private fun NavItem(
             label = "bottom-nav $titleRes crossfade",
         ) { isSelected ->
             Box(
-                modifier = Modifier
-                    .size(width = 64.dp, height = 32.dp)
-                    .background(
-                        color = if (isSelected) {
-                            MbankTheme.colorScheme.onBottomNavigationAccent
-                        } else {
-                            Color.Unspecified
-                        },
-                        shape = RoundedCornerShape(20.dp),
-                    ),
+                modifier =
+                    Modifier
+                        .size(width = 64.dp, height = 32.dp)
+                        .background(
+                            color =
+                                if (isSelected) {
+                                    MbankTheme.colorScheme.onBottomNavigationAccent
+                                } else {
+                                    Color.Unspecified
+                                },
+                            shape = RoundedCornerShape(20.dp),
+                        ),
                 contentAlignment = Alignment.Center,
             ) {
-
                 Image(
                     painterResource(iconRes),
                     contentDescription = null,
-                    colorFilter = ColorFilter.tint(
-                        color = if (!isSelected) {
-                            MbankTheme.colorScheme.onBottomNavigation
-                        } else {
-                            MbankTheme.colorScheme.bottomNavigation
-                        }
-                    ),
+                    colorFilter =
+                        ColorFilter.tint(
+                            color =
+                                if (!isSelected) {
+                                    MbankTheme.colorScheme.onBottomNavigation
+                                } else {
+                                    MbankTheme.colorScheme.bottomNavigation
+                                },
+                        ),
                     modifier = Modifier.size(24.dp),
                 )
             }
@@ -128,26 +132,27 @@ private fun NavItem(
         Text(
             stringResource(titleRes),
             style = MbankTheme.typography.label,
-            color = if (!isSelected) {
-                MbankTheme.colorScheme.onBottomNavigation
-            } else {
-                MbankTheme.colorScheme.onBottomNavigationAccent
-            },
+            color =
+                if (!isSelected) {
+                    MbankTheme.colorScheme.onBottomNavigation
+                } else {
+                    MbankTheme.colorScheme.onBottomNavigationAccent
+                },
         )
     }
 }
 
-
 @LightDarkPreviews
 @Composable
-private fun MbankBottomBarPreview() = ElementPreview(usePadding = false) {
-    var selectedItem: Screen by remember { mutableStateOf(Screen.Home) }
+private fun MbankBottomBarPreview() =
+    ElementPreview(usePadding = false) {
+        var selectedItem: Screen by remember { mutableStateOf(Screen.Home) }
 
-    MbankBottomBar(
-        items = screens,
-        selectedItem = selectedItem,
-        onItemSelected = {
-            selectedItem = it
-        }
-    )
-}
+        MbankBottomBar(
+            items = screens,
+            selectedItem = selectedItem,
+            onItemSelected = {
+                selectedItem = it
+            },
+        )
+    }

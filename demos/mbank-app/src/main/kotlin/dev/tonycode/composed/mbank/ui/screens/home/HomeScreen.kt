@@ -28,13 +28,11 @@ import dev.tonycode.composed.mbank.ui.screens.home.widgets.BalanceOverview
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.RecentTransactionsWidget
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.SpendingStatsWidget
 
-
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = viewModel(),
 ) {
-
     val userProfile: UserProfile? by remember { homeViewModel.userProfile }
     val accountSummary: AccountSummary? by remember { homeViewModel.accountSummary }
     val accountStats: AccountStats? by remember { homeViewModel.accountStats }
@@ -54,18 +52,20 @@ fun HomeScreen(
             }
 
             Column(
-                modifier = Modifier
-                    .verticalScroll(rememberScrollState())
-                    .padding(start = 8.dp, top = 8.dp, end = 8.dp, bottom = 24.dp),
+                modifier =
+                    Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(start = 8.dp, top = 8.dp, end = 8.dp, bottom = 24.dp),
             ) {
                 // available funds & spending stats
                 Row {
                     BalanceOverview(
                         availableFunds = accountSummary?.fundsAvailable,
                         spentThisMonth = accountStats?.spentThisMonth,
-                        modifier = Modifier
-                            .weight(2 / 3f)
-                            .height(163.dp),
+                        modifier =
+                            Modifier
+                                .weight(2 / 3f)
+                                .height(163.dp),
                     )
 
                     Spacer(Modifier.width(8.dp))
@@ -76,17 +76,16 @@ fun HomeScreen(
                 Spacer(Modifier.height(8.dp))
 
                 RecentTransactionsWidget(
-                    transactions = recentTransactions
+                    transactions = recentTransactions,
                 )
             }
         }
     }
-
 }
-
 
 @LightDarkPreviews
 @Composable
-private fun HomeScreenPreview() = ScreenPreview {
-    HomeScreen()
-}
+private fun HomeScreenPreview() =
+    ScreenPreview {
+        HomeScreen()
+    }

@@ -1,6 +1,5 @@
 package dev.tonycode.composed.common.designsystem.ui.util
 
-
 /**
  * This is really just `?.let` but follows the Kotlin way by being more explicit
  *

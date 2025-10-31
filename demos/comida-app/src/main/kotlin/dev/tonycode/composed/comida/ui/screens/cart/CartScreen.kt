@@ -29,27 +29,32 @@ import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-
 @Composable
 fun CartScreen() {
-
     Column {
         // top bar
         ConstraintLayout(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = screenHorizontalPadding, top = 12.dp, end = screenHorizontalPadding, bottom = 0.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = screenHorizontalPadding,
+                        top = 12.dp,
+                        end = screenHorizontalPadding,
+                        bottom = 0.dp,
+                    ),
         ) {
             val (backButton, title) = createRefs()
 
             // back button
             ImageButton(
                 onClick = { },
-                modifier = Modifier.constrainAs(backButton) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                }
+                modifier =
+                    Modifier.constrainAs(backButton) {
+                        start.linkTo(parent.start)
+                        top.linkTo(parent.top)
+                        bottom.linkTo(parent.bottom)
+                    },
             ) {
                 Image(
                     painterResource(id = R.drawable.comida_nav_back),
@@ -61,12 +66,13 @@ fun CartScreen() {
             Text(
                 "Cart",
                 style = MaterialTheme.typography.titleMedium,
-                modifier = Modifier.constrainAs(title) {
-                    start.linkTo(parent.start)
-                    top.linkTo(parent.top)
-                    end.linkTo(parent.end)
-                    bottom.linkTo(parent.bottom)
-                }
+                modifier =
+                    Modifier.constrainAs(title) {
+                        start.linkTo(parent.start)
+                        top.linkTo(parent.top)
+                        end.linkTo(parent.end)
+                        bottom.linkTo(parent.bottom)
+                    },
             )
         }
 
@@ -82,13 +88,10 @@ fun CartScreen() {
 
         BottomBlock()
     }
-
 }
 
 @Composable
-private fun BillBlock(
-    modifier: Modifier = Modifier,
-) {
+private fun BillBlock(modifier: Modifier = Modifier) {
     Column(modifier) {
         BillRow("Subtotal", BigDecimal(12.20))
         Spacer(Modifier.height(4.dp))
@@ -156,9 +159,13 @@ private fun BottomBlock() {
                 color = ComidaPalette.Black,
             ) {
                 Row(
-                    modifier = Modifier.padding(
-                        start = screenHorizontalPadding, top = 20.dp, end = screenHorizontalPadding, bottom = 24.dp
-                    ),
+                    modifier =
+                        Modifier.padding(
+                            start = screenHorizontalPadding,
+                            top = 20.dp,
+                            end = screenHorizontalPadding,
+                            bottom = 24.dp,
+                        ),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
@@ -177,9 +184,10 @@ private fun BottomBlock() {
                         onClick = { },
                         modifier = Modifier.height(48.dp),
                         border = null,
-                        colors = ButtonDefaults.elevatedButtonColors(
-                            containerColor = MaterialTheme.colorScheme.primary,
-                        ),
+                        colors =
+                            ButtonDefaults.elevatedButtonColors(
+                                containerColor = MaterialTheme.colorScheme.primary,
+                            ),
                         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp),
                     ) {
                         Text(
@@ -194,9 +202,9 @@ private fun BottomBlock() {
     }
 }
 
-
 @Preview
 @Composable
-private fun CartScreenPreview() = ScreenPreview {
-    CartScreen()
-}
+private fun CartScreenPreview() =
+    ScreenPreview {
+        CartScreen()
+    }

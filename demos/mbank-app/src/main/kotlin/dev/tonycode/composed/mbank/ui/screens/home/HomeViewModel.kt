@@ -17,12 +17,10 @@ import dev.tonycode.composed.mbank.usecase.user.GetUserProfileUsecase
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
-private const val maxRecentTransactions = 4
+private const val MAX_RECENT_TRANSACTIONS = 4
 
 @HiltViewModel
 class HomeViewModel @Inject constructor() : ViewModel() {
-
     // user
 
     private val _userProfile = mutableStateOf<UserProfile?>(null)
@@ -49,7 +47,6 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     val recentTransactions: State<List<Transaction>?>
         get() = _recentTransactions
 
-
     init {
         loadData()
     }
@@ -64,9 +61,8 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                 _accountSummary.value = GetAccountSummaryUsecase(userProfile.accountId).execute()
                 _accountStats.value = GetAccountStatsUsecase(userProfile.accountId).execute()
                 _recentTransactions.value =
-                    GetAccountTransactions(userProfile.accountId, limit = maxRecentTransactions).execute()
+                    GetAccountTransactions(userProfile.accountId, limit = MAX_RECENT_TRANSACTIONS).execute()
             }
         }
     }
-
 }

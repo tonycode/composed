@@ -6,13 +6,12 @@ import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class RestaurantsRepository @Inject constructor() {
-
-    suspend fun getRestaurants(): List<Restaurant> {
-        delay(5000L)
-        return dummyRestaurants
+class RestaurantsRepository
+    @Inject
+    constructor() {
+        suspend fun getRestaurants(): List<Restaurant> {
+            delay(5000L)
+            return dummyRestaurants
+        }
     }
-
-}

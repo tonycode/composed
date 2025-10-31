@@ -21,7 +21,6 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-
 // origin: https://gist.github.com/Andrew0000/3edb9c25ebc20a2935c9ff4805e05f5d
 fun Modifier.shadowCustom(
     color: Color = Color.Black,
@@ -32,9 +31,10 @@ fun Modifier.shadowCustom(
 ) = composed {
     val paint: Paint = remember { Paint() }
     val blurRadiusPx = blurRadius.px(LocalDensity.current)
-    val maskFilter = remember {
-        BlurMaskFilter(blurRadiusPx, BlurMaskFilter.Blur.NORMAL)
-    }
+    val maskFilter =
+        remember {
+            BlurMaskFilter(blurRadiusPx, BlurMaskFilter.Blur.NORMAL)
+        }
 
     drawBehind {
         drawIntoCanvas { canvas ->
@@ -73,9 +73,7 @@ fun Modifier.shadowCustom(
     }
 }
 
-private fun Dp.px(density: Density): Float =
-    with(density) { toPx() }
-
+private fun Dp.px(density: Density): Float = with(density) { toPx() }
 
 @Preview(
     widthDp = 160,
@@ -86,26 +84,28 @@ private fun Dp.px(density: Density): Float =
 @Composable
 private fun Preview() {
     Box(
-        modifier = Modifier
-            .requiredSize(100.dp)
-            .background(Color.Yellow),
+        modifier =
+            Modifier
+                .requiredSize(100.dp)
+                .background(Color.Yellow),
     ) {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(25.dp)
-                .shadowCustom(
-                    offsetX = 0.dp,
-                    offsetY = 6.dp,
-                    blurRadius = 8.dp,
-                ),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(25.dp)
+                    .shadowCustom(
+                        offsetX = 0.dp,
+                        offsetY = 6.dp,
+                        blurRadius = 8.dp,
+                    ),
         ) {
             Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Blue),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .background(Color.Blue),
             ) {
-
             }
         }
     }

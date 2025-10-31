@@ -23,7 +23,6 @@ import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 import java.math.BigDecimal
 
-
 /**
  * @param availableFunds null means loading
  * @param spentThisMonth null means loading
@@ -34,7 +33,6 @@ fun BalanceOverview(
     spentThisMonth: BigDecimal?,
     modifier: Modifier = Modifier,
 ) = MbankCard(modifier) {
-
     Column {
         //region Available funds
         Text(
@@ -51,7 +49,7 @@ fun BalanceOverview(
                 style = MbankTheme.typography.valueLarge,
                 color = MbankTheme.colorScheme.onSurface,
             )
-        } else {  // loading
+        } else { // loading
             Skeleton(
                 width = 64.dp,
                 height = MbankTheme.typography.valueLarge.lineHeight.value.dp,
@@ -61,7 +59,7 @@ fun BalanceOverview(
         //endregion
 
         // Spent this month
-        if (availableFunds != null) {  // display "spend this month" only if "available funds" was loaded
+        if (availableFunds != null) { // display "spend this month" only if "available funds" was loaded
             Spacer(Modifier.height(12.dp))
 
             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -79,7 +77,7 @@ fun BalanceOverview(
                         style = MbankTheme.typography.body,
                         color = MbankTheme.colorScheme.onSurfaceAccent,
                     )
-                } else {  // loading
+                } else { // loading
                     Skeleton(
                         width = 42.dp,
                         height = MbankTheme.typography.body.lineHeight.value.dp,
@@ -89,47 +87,46 @@ fun BalanceOverview(
             }
         }
     }
-
 }
-
 
 @LightDarkPreviews
 @Composable
 private fun BalanceOverviewPreview(
-    @PreviewParameter(BalanceOverviewPreviewStateProvider::class) previewState: BalanceOverviewPreviewState
+    @PreviewParameter(BalanceOverviewPreviewStateProvider::class) previewState: BalanceOverviewPreviewState,
 ) = ElementPreview {
     BalanceOverview(
         availableFunds = previewState.availableFunds,
-        spentThisMonth = previewState.spentThisMonth
+        spentThisMonth = previewState.spentThisMonth,
     )
 }
 
 private data class BalanceOverviewPreviewState(
     val availableFunds: BigDecimal?,
-    val spentThisMonth: BigDecimal?
+    val spentThisMonth: BigDecimal?,
 )
 
 private class BalanceOverviewPreviewStateProvider : PreviewParameterProvider<BalanceOverviewPreviewState> {
-    override val values = sequenceOf(
-        BalanceOverviewPreviewState(
-            availableFunds = null,
-            spentThisMonth = null
-        ),
-        BalanceOverviewPreviewState(
-            availableFunds = BigDecimal.ZERO,
-            spentThisMonth = null
-        ),
-        BalanceOverviewPreviewState(
-            availableFunds = BigDecimal(123.45),
-            spentThisMonth = null
-        ),
-        BalanceOverviewPreviewState(
-            availableFunds = BigDecimal(1234.56),
-            spentThisMonth = BigDecimal.ZERO
-        ),
-        BalanceOverviewPreviewState(
-            availableFunds = BigDecimal(123456.78),
-            spentThisMonth = BigDecimal(1234.56)
-        ),
-    )
+    override val values =
+        sequenceOf(
+            BalanceOverviewPreviewState(
+                availableFunds = null,
+                spentThisMonth = null,
+            ),
+            BalanceOverviewPreviewState(
+                availableFunds = BigDecimal.ZERO,
+                spentThisMonth = null,
+            ),
+            BalanceOverviewPreviewState(
+                availableFunds = BigDecimal(123.45),
+                spentThisMonth = null,
+            ),
+            BalanceOverviewPreviewState(
+                availableFunds = BigDecimal(1234.56),
+                spentThisMonth = BigDecimal.ZERO,
+            ),
+            BalanceOverviewPreviewState(
+                availableFunds = BigDecimal(123456.78),
+                spentThisMonth = BigDecimal(1234.56),
+            ),
+        )
 }

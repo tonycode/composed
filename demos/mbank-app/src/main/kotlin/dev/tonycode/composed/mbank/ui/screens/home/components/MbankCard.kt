@@ -22,7 +22,6 @@ import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
-
 private val defaultCornerRadius = 16.dp
 private val defaultPadding = 14.dp
 
@@ -46,34 +45,30 @@ fun MbankCard(
     onClicked: (() -> Unit)? = null,
     content: @Composable (() -> Unit),
 ) {
-
     Box(
-        modifier = modifier
-            .clip(
-                when (cardJoint) {
-                    CardJoint.Single ->
-                        RoundedCornerShape(defaultCornerRadius)
+        modifier =
+            modifier
+                .clip(
+                    when (cardJoint) {
+                        CardJoint.Single ->
+                            RoundedCornerShape(defaultCornerRadius)
 
-                    CardJoint.Top ->
-                        RoundedCornerShape(topStart = defaultCornerRadius, topEnd = defaultCornerRadius)
-                    CardJoint.Middle ->
-                        RectangleShape
-                    CardJoint.Bottom ->
-                        RoundedCornerShape(bottomStart = defaultCornerRadius, bottomEnd = defaultCornerRadius)
-                }
-            )
-            .background(color = backgroundColor)
-            .thenIf(onClicked != null) {
-                clickable { onClicked?.invoke() }
-            }
-            .padding(horizontalPadding, verticalPadding),
+                        CardJoint.Top ->
+                            RoundedCornerShape(topStart = defaultCornerRadius, topEnd = defaultCornerRadius)
+                        CardJoint.Middle ->
+                            RectangleShape
+                        CardJoint.Bottom ->
+                            RoundedCornerShape(bottomStart = defaultCornerRadius, bottomEnd = defaultCornerRadius)
+                    },
+                ).background(color = backgroundColor)
+                .thenIf(onClicked != null) {
+                    clickable { onClicked?.invoke() }
+                }.padding(horizontalPadding, verticalPadding),
         contentAlignment = Alignment.CenterStart,
     ) {
         content()
     }
-
 }
-
 
 @LightDarkPreviews
 @Composable

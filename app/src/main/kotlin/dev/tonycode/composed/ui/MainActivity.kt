@@ -21,9 +21,7 @@ import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.components.DemoAppCard
 import dev.tonycode.composed.ui.theme.ComposedAppTheme
 
-
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
@@ -32,13 +30,10 @@ class MainActivity : ComponentActivity() {
             ComposedApp()
         }
     }
-
 }
-
 
 @Composable
 private fun ComposedApp() {
-
     ComposedAppTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
@@ -59,7 +54,6 @@ private fun ComposedApp() {
             }
         }
     }
-
 }
 
 @LightDarkPreviews

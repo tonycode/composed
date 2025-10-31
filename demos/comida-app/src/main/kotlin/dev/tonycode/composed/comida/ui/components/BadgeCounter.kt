@@ -26,16 +26,16 @@ import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.common.designsystem.ui.poppinsFamily
 
-
 @Composable
 fun BadgeCounter(
     value: Int,
     modifier: Modifier = Modifier,
 ) {
     Box(
-        modifier = modifier
-            .width(IntrinsicSize.Min)
-            .height(IntrinsicSize.Min),
+        modifier =
+            modifier
+                .width(IntrinsicSize.Min)
+                .height(IntrinsicSize.Min),
     ) {
         Image(
             painterResource(R.drawable.comida_badge_background),
@@ -46,22 +46,24 @@ fun BadgeCounter(
 
         Text(
             text = if (value < 99) value.toString() else "99+",
-            style = TextStyle(
-                fontFamily = poppinsFamily,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 10.sp,
-                platformStyle = PlatformTextStyle(
-                    includeFontPadding = false
-                )
-            ),
+            style =
+                TextStyle(
+                    fontFamily = poppinsFamily,
+                    fontWeight = FontWeight.SemiBold,
+                    fontSize = 10.sp,
+                    platformStyle =
+                        PlatformTextStyle(
+                            includeFontPadding = false,
+                        ),
+                ),
             color = ComidaPalette.White,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(horizontal = 2.dp),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = 2.dp),
         )
     }
 }
-
 
 @Preview
 @Composable

@@ -13,8 +13,7 @@ import androidx.core.view.ViewCompat
 import dev.tonycode.composed.common.designsystem.ui.skeleton.LocalSkeletonTheme
 import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonTheme
 
-
-//private val DarkColorScheme = darkColorScheme(
+// private val DarkColorScheme = darkColorScheme(
 //    background = ComidaPalette.Dark,
 //    onBackground = ComidaPalette.White,
 //    surface = ComidaPalette.PianoBlack,
@@ -28,34 +27,34 @@ import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonThem
 //    onSecondary = ComidaPalette.GhostWhite,
 //    tertiary = ComidaPalette.Walrus,
 //    onTertiary = ComidaPalette.Tamahagane,
-//)
+// )
 
-private val LightColorScheme = lightColorScheme(
-    background = ComidaPalette.White,
-    onBackground = ComidaPalette.PrimaryText,
-    surface = ComidaPalette.PrimaryText,
-    onSurface = ComidaPalette.White,
-    secondaryContainer = ComidaPalette.MistyBlue,
-    onSecondaryContainer = ComidaPalette.Black,
-    surfaceVariant = ComidaPalette.Doctor,
-
-    primary = ComidaPalette.Primary,
-    onPrimary = ComidaPalette.White,
-    secondary = ComidaPalette.ParisPaving,
-    onSecondary = ComidaPalette.White,
+private val LightColorScheme =
+    lightColorScheme(
+        background = ComidaPalette.White,
+        onBackground = ComidaPalette.PrimaryText,
+        surface = ComidaPalette.PrimaryText,
+        onSurface = ComidaPalette.White,
+        secondaryContainer = ComidaPalette.MistyBlue,
+        onSecondaryContainer = ComidaPalette.Black,
+        surfaceVariant = ComidaPalette.Doctor,
+        primary = ComidaPalette.Primary,
+        onPrimary = ComidaPalette.White,
+        secondary = ComidaPalette.ParisPaving,
+        onSecondary = ComidaPalette.White,
 //    tertiary = ComidaPalette.PianoBlack,
 //    onTertiary = ComidaPalette.DiscoBall,
-)
-
+    )
 
 @Composable
 fun ComidaTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+ (API 31+)
     dynamicColor: Boolean = false,
-    content: @Composable (() -> Unit)
+    content: @Composable (() -> Unit),
 ) {
-    val colorScheme = when {
+    val colorScheme =
+        when {
 //        dynamicColor && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
 //            val context = LocalContext.current
 //            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
@@ -63,8 +62,8 @@ fun ComidaTheme(
 //
 //        darkTheme -> DarkColorScheme
 
-        else -> LightColorScheme
-    }
+            else -> LightColorScheme
+        }
 
     // setup status-bar colors
     val view = LocalView.current
@@ -83,7 +82,7 @@ fun ComidaTheme(
             colorScheme = colorScheme,
             typography = comidaTypography,
             shapes = comidaShapes,
-            content = content
+            content = content,
         )
     }
 }

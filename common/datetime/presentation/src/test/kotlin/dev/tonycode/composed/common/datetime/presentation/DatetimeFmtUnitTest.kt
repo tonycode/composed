@@ -12,30 +12,30 @@ class DatetimeFmtUnitTest {
 
         // zero
         assertThat(
-            0L.fmtAsEpochMillis(localZoneId = utcZoneId)
+            0L.fmtAsEpochMillis(localZoneId = utcZoneId),
         ).isEqualTo("01-01-1970, 00:00")
 
         assertThat(
-            0L.fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+            0L.fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId),
         ).isEqualTo("01-01-1970")
 
         // today
         assertThat(
-            System.currentTimeMillis().fmtAsEpochMillis(localZoneId = utcZoneId)
+            System.currentTimeMillis().fmtAsEpochMillis(localZoneId = utcZoneId),
         ).startsWith("today, ")
 
         assertThat(
-            System.currentTimeMillis().fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+            System.currentTimeMillis().fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId),
         ).isEqualTo("today")
 
         // yesterday
         assertThat(
-            (System.currentTimeMillis() - 24.hoursToMillis()).fmtAsEpochMillis(localZoneId = utcZoneId)
+            (System.currentTimeMillis() - 24.hoursToMillis()).fmtAsEpochMillis(localZoneId = utcZoneId),
         ).startsWith("yesterday, ")
 
         assertThat(
             (System.currentTimeMillis() - 24.hoursToMillis())
-                .fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId)
+                .fmtAsEpochMillis(withTime = false, localZoneId = utcZoneId),
         ).isEqualTo("yesterday")
     }
 }

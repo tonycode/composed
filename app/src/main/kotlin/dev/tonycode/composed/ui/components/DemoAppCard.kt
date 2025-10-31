@@ -38,13 +38,11 @@ import dev.tonycode.composed.ui.icons.ArrowRight
 import dev.tonycode.composed.ui.preview.ElementPreview
 import dev.tonycode.composed.util.openUrlInExternalApp
 
-
 @Composable
 fun DemoAppCard(
     demoApp: DemoApp,
     onClick: () -> Unit,
 ) {
-
     val hasUrl = demoApp.designUrl.isNullOrBlank().not()
 
     Surface(
@@ -57,18 +55,20 @@ fun DemoAppCard(
         ) {
             // app details
             Column(
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(
-                        start = 16.dp,
-                        top = 16.dp,
-                        end = 0.dp,
-                        bottom = if (hasUrl) {
-                            10.dp  // for design-author-url button
-                        } else {
-                            16.dp
-                        }
-                    ),
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .padding(
+                            start = 16.dp,
+                            top = 16.dp,
+                            end = 0.dp,
+                            bottom =
+                                if (hasUrl) {
+                                    10.dp // for design-author-url button
+                                } else {
+                                    16.dp
+                                },
+                        ),
             ) {
                 Text(
                     text = demoApp.appName,
@@ -84,29 +84,33 @@ fun DemoAppCard(
 
             // right arrow
             Box(
-                modifier = Modifier
-                    .padding(16.dp)
-                    .size(36.dp)
-                    .background(
-                        color = MaterialTheme.colorScheme.secondaryContainer,
-                        shape = CircleShape,
-                    ),
+                modifier =
+                    Modifier
+                        .padding(16.dp)
+                        .size(36.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.secondaryContainer,
+                            shape = CircleShape,
+                        ),
             ) {
                 Image(
                     imageVector = AppIconPack.ArrowRight,
                     contentDescription = stringResource(R.string.launch_demo_app),
-                    modifier = Modifier
-                        .align(Alignment.Center)
-                        .padding(start = 2.dp),
+                    modifier =
+                        Modifier
+                            .align(Alignment.Center)
+                            .padding(start = 2.dp),
                 )
             }
         }
     }
-
 }
 
 @Composable
-private fun DesignAuthorBlock(name: String, url: String?) {
+private fun DesignAuthorBlock(
+    name: String,
+    url: String?,
+) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         // "design by" label
         Text(
@@ -116,31 +120,32 @@ private fun DesignAuthorBlock(name: String, url: String?) {
         )
 
         // design-author info
-        if (url != null) {  // clickable design-author
+        if (url != null) { // clickable design-author
             val context = LocalContext.current
 
             // button that opens [url]
             Row(
-                modifier = Modifier
-                    .clip(MaterialTheme.shapes.medium)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
-                    ) {
-                        context.openUrlInExternalApp(url)
-                    }
-                    .padding(8.dp),
+                modifier =
+                    Modifier
+                        .clip(MaterialTheme.shapes.medium)
+                        .clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
+                        ) {
+                            context.openUrlInExternalApp(url)
+                        }.padding(8.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Image(
                     painterResource(url.getUrlIconRes()),
                     contentDescription = stringResource(R.string.launch_design_url),
-                    modifier = Modifier
-                        .size(20.dp)
-                        .background(
-                            color = MaterialTheme.colorScheme.secondaryContainer,
-                            shape = CircleShape,
-                        ).padding(3.dp),
+                    modifier =
+                        Modifier
+                            .size(20.dp)
+                            .background(
+                                color = MaterialTheme.colorScheme.secondaryContainer,
+                                shape = CircleShape,
+                            ).padding(3.dp),
                 )
 
                 Spacer(Modifier.width(4.dp))
@@ -152,8 +157,7 @@ private fun DesignAuthorBlock(name: String, url: String?) {
                     color = MaterialTheme.colorScheme.onSurface,
                 )
             }
-
-        } else {  // no url - show just design-author name
+        } else { // no url - show just design-author name
             Spacer(Modifier.width(6.dp))
 
             Text(
@@ -167,17 +171,17 @@ private fun DesignAuthorBlock(name: String, url: String?) {
 }
 
 @DrawableRes
-private fun String.getUrlIconRes(): Int = when {
-    this.contains("dribbble.com") ->
-        R.drawable.logo_dribbble
+private fun String.getUrlIconRes(): Int =
+    when {
+        this.contains("dribbble.com") ->
+            R.drawable.logo_dribbble
 
-    this.contains("figma.com") ->
-        R.drawable.logo_figma
+        this.contains("figma.com") ->
+            R.drawable.logo_figma
 
-    else ->
-        R.drawable.logo_global
-}
-
+        else ->
+            R.drawable.logo_global
+    }
 
 @LightDarkPreviews
 @Composable
@@ -188,11 +192,32 @@ private fun DemoAppCardPreview(
 }
 
 private class DemoAppPreviewParameterProvider : PreviewParameterProvider<DemoApp> {
-    override val values = sequenceOf(
-        DemoApp("App with no design-author & -url", null, null) { /* launch nothing */ },
-        DemoApp("App with no design-url", "MrCreative", null) { /* launch nothing */ },
-        DemoApp("App with dribbble design-url", "MrCreative", "https://dribbble.com/1a2b3c") { /* launch nothing */ },
-        DemoApp("App with figma design-url", "MrCreative", "https://figma.com/1a2b3c") { /* launch nothing */ },
-        DemoApp("App with unknown design-url", "MrCreative", "https://somesite.com/1a2b3c") { /* launch nothing */ },
-    )
+    override val values =
+        sequenceOf(
+            DemoApp(
+                "App with no design-author & -url",
+                null,
+                null,
+            ) { /* launch nothing */ },
+            DemoApp(
+                "App with no design-url",
+                "MrCreative",
+                null,
+            ) { /* launch nothing */ },
+            DemoApp(
+                "App with dribbble design-url",
+                "MrCreative",
+                "https://dribbble.com/1a2b3c",
+            ) { /* launch nothing */ },
+            DemoApp(
+                "App with figma design-url",
+                "MrCreative",
+                "https://figma.com/1a2b3c",
+            ) { /* launch nothing */ },
+            DemoApp(
+                "App with unknown design-url",
+                "MrCreative",
+                "https://somesite.com/1a2b3c",
+            ) { /* launch nothing */ },
+        )
 }

@@ -20,10 +20,8 @@ import dev.tonycode.composed.mbank.ui.screens.home.HomeScreen
 import dev.tonycode.composed.mbank.ui.theme.MbankAppTheme
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
-
 @AndroidEntryPoint
 class MbankAppActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,13 +33,11 @@ class MbankAppActivity : ComponentActivity() {
     companion object {
         fun launch(context: Context) {
             context.startActivity(
-                Intent(context, MbankAppActivity::class.java)
+                Intent(context, MbankAppActivity::class.java),
             )
         }
     }
-
 }
-
 
 @Composable
 private fun MbankApp() {
@@ -56,8 +52,9 @@ private fun MbankApp() {
                     selectedItem = selectedScreen,
                     onItemSelected = {
                         selectedScreen = it
-                    })
-            }
+                    },
+                )
+            },
         ) { innerPadding ->
             HomeScreen(modifier = Modifier.padding(innerPadding))
         }

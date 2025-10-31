@@ -17,14 +17,12 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 
-
 @Composable
 fun Section(
     title: String,
     modifier: Modifier = Modifier,
     onViewAllClicked: () -> Unit,
 ) {
-
     Row(
         modifier = modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,20 +37,19 @@ fun Section(
             text = stringResource(R.string.comida_view_all),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.primary,
-            modifier = Modifier
-                .clip(MaterialTheme.shapes.small)
-                .clickable {
-                    onViewAllClicked.invoke()
-                }
-                .padding(horizontal = 8.dp, vertical = 6.dp),
+            modifier =
+                Modifier
+                    .clip(MaterialTheme.shapes.small)
+                    .clickable {
+                        onViewAllClicked.invoke()
+                    }.padding(horizontal = 8.dp, vertical = 6.dp),
         )
     }
-
 }
-
 
 @Preview
 @Composable
-private fun SectionPreview() = ElementPreview {
-    Section("A Section") { }
-}
+private fun SectionPreview() =
+    ElementPreview {
+        Section("A Section") { }
+    }

@@ -36,7 +36,6 @@ import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-
 /**
  * @param transaction null means loading
  */
@@ -53,7 +52,6 @@ fun TransactionCard(
     padding = 12.dp,
     onClicked = onClicked,
 ) {
-
     val viewBoundsShimmer = rememberShimmer(shimmerBounds = ShimmerBounds.View)
 
     Row(
@@ -62,17 +60,18 @@ fun TransactionCard(
     ) {
         // transaction-icon
         Box(
-            modifier = Modifier
-                .size(32.dp)
-                .clip(RoundedCornerShape(8.dp))
-                .thenIf(transaction == null) { shimmer(customShimmer = viewBoundsShimmer) }
-                .background(
-                    when {
-                        (transaction == null) -> defaultSkeletonTheme.color
-                        transaction.isCleared -> MbankTheme.colorScheme.primary
-                        else -> MbankTheme.colorScheme.accent
-                    }
-                )
+            modifier =
+                Modifier
+                    .size(32.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .thenIf(transaction == null) { shimmer(customShimmer = viewBoundsShimmer) }
+                    .background(
+                        when {
+                            (transaction == null) -> defaultSkeletonTheme.color
+                            transaction.isCleared -> MbankTheme.colorScheme.primary
+                            else -> MbankTheme.colorScheme.accent
+                        },
+                    ),
         )
 
         Spacer(Modifier.width(12.dp))
@@ -87,16 +86,17 @@ fun TransactionCard(
                 )
 
                 // performed-at
-                val fmtPerformedAt = transaction.performedAt.fmtAsEpochMillis(
-                    dateFormatter = DateTimeFormatter.ofPattern("MMMM dd", Locale.ENGLISH),
-                    timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH)
-                )
+                val fmtPerformedAt =
+                    transaction.performedAt.fmtAsEpochMillis(
+                        dateFormatter = DateTimeFormatter.ofPattern("MMMM dd", Locale.ENGLISH),
+                        timeFormatter = DateTimeFormatter.ofPattern("HH:mm", Locale.ENGLISH),
+                    )
                 Text(
                     fmtPerformedAt,
                     style = MbankTheme.typography.body,
                     color = MbankTheme.colorScheme.onCardSecondary,
                 )
-            } else {  // loading
+            } else { // loading
                 Skeleton(
                     width = 72.dp,
                     height = MbankTheme.typography.bodyEmphasis.lineHeight.value.dp,
@@ -122,7 +122,7 @@ fun TransactionCard(
                 style = MbankTheme.typography.bodyEmphasis,
                 color = MbankTheme.colorScheme.onCard,
             )
-        } else {  // loading
+        } else { // loading
             Skeleton(
                 width = 64.dp,
                 height = MbankTheme.typography.bodyEmphasis.lineHeight.value.dp,
@@ -130,9 +130,7 @@ fun TransactionCard(
             )
         }
     }
-
 }
-
 
 @LightDarkPreviews
 @Composable
@@ -151,11 +149,12 @@ private class TransactionCardPreviewState(
 )
 
 private class TransactionCardPreviewStateProvider : PreviewParameterProvider<TransactionCardPreviewState> {
-    override val values = sequenceOf(
-        TransactionCardPreviewState(transaction = null, CardJoint.Single),
-        TransactionCardPreviewState(transaction = stubTransactions.first(), CardJoint.Single),
-        TransactionCardPreviewState(transaction = stubTransactions[1], CardJoint.Top),
-        TransactionCardPreviewState(transaction = stubTransactions[2], CardJoint.Middle),
-        TransactionCardPreviewState(transaction = stubTransactions.last(), CardJoint.Bottom),
-    )
+    override val values =
+        sequenceOf(
+            TransactionCardPreviewState(transaction = null, CardJoint.Single),
+            TransactionCardPreviewState(transaction = stubTransactions.first(), CardJoint.Single),
+            TransactionCardPreviewState(transaction = stubTransactions[1], CardJoint.Top),
+            TransactionCardPreviewState(transaction = stubTransactions[2], CardJoint.Middle),
+            TransactionCardPreviewState(transaction = stubTransactions.last(), CardJoint.Bottom),
+        )
 }

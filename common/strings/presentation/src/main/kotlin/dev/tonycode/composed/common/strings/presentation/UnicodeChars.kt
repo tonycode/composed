@@ -1,6 +1,6 @@
 package dev.tonycode.composed.common.strings.presentation
 
 object UnicodeChars {
-    const val thinSpace = '\u2009'
-    const val hairSpace = '\u200A'
+    const val THIN_SPACE = '\u2009'
+    const val HAIR_SPACE = '\u200A'
 }

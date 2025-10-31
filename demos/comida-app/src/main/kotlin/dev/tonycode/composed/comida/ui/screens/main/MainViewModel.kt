@@ -12,13 +12,11 @@ import dev.tonycode.composed.comida.model.Restaurant
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val restaurantsRepository: RestaurantsRepository,
     private val offersRepository: OffersRepository,
 ) : ViewModel() {
-
     // restaurants
 
     private val _restaurants = mutableStateOf<List<Restaurant>>(emptyList())
@@ -42,7 +40,6 @@ class MainViewModel @Inject constructor(
 
     val loadingOffers: State<Boolean>
         get() = _loadingOffers
-
 
     init {
         fetchRestaurants()
@@ -68,5 +65,4 @@ class MainViewModel @Inject constructor(
             _loadingOffers.value = false
         }
     }
-
 }

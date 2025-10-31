@@ -29,40 +29,42 @@ import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 import dev.tonycode.composed.comida.ui.util.shadowCustom
 
-
 @Composable
 fun CategoryChip(
     category: Category,
     isSelected: Boolean = false,
     onClicked: () -> Unit,
 ) {
-
     val textStyle = MaterialTheme.typography.bodySmall
 
     Column(
-        modifier = Modifier
-            .clip(RoundedCornerShape(100))
-            .clickable { onClicked.invoke() }
-            .background(if (isSelected) Color(0xFF6ED39D) else Color.Transparent)
-            .then(
-                if (isSelected) Modifier.padding(start = 6.dp, top = 4.dp, end = 6.dp, bottom = 14.dp)
-                else Modifier.padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 12.dp)
-            )
-        ,
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(100))
+                .clickable { onClicked.invoke() }
+                .background(if (isSelected) Color(0xFF6ED39D) else Color.Transparent)
+                .then(
+                    if (isSelected) {
+                        Modifier.padding(start = 6.dp, top = 4.dp, end = 6.dp, bottom = 14.dp)
+                    } else {
+                        Modifier.padding(start = 8.dp, top = 12.dp, end = 8.dp, bottom = 12.dp)
+                    },
+                ),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Image(
             painterResource(id = category.iconRes),
             contentDescription = null,
-            modifier = Modifier
-                .size(50.dp)
-                .shadowCustom(
-                    Color(0x3FD3D1D8),
-                    offsetX = 0.dp, offsetY = 8.dp,
-                    blurRadius = 12.dp
-                )
-                .clip(CircleShape)
-                .background(color = Color.White),
+            modifier =
+                Modifier
+                    .size(50.dp)
+                    .shadowCustom(
+                        Color(0x3FD3D1D8),
+                        offsetX = 0.dp,
+                        offsetY = 8.dp,
+                        blurRadius = 12.dp,
+                    ).clip(CircleShape)
+                    .background(color = Color.White),
         )
 
         Spacer(Modifier.height(if (!isSelected) 4.dp else 8.dp))
@@ -73,9 +75,7 @@ fun CategoryChip(
             color = if (!isSelected) MaterialTheme.colorScheme.onBackground else ComidaPalette.White,
         )
     }
-
 }
-
 
 @Preview
 @Composable
@@ -85,7 +85,7 @@ private fun CategoryChipPreview(
     CategoryChip(
         category = previewState.category,
         isSelected = previewState.isSelected,
-        onClicked = { }
+        onClicked = { },
     )
 }
 
@@ -95,8 +95,9 @@ private class CategoryChipPreviewState(
 )
 
 private class CategoryChipPreviewStateProvider : PreviewParameterProvider<CategoryChipPreviewState> {
-    override val values = sequenceOf(
-        CategoryChipPreviewState(comidaCategories.first(), false),
-        CategoryChipPreviewState(comidaCategories.last(), true),
-    )
+    override val values =
+        sequenceOf(
+            CategoryChipPreviewState(comidaCategories.first(), false),
+            CategoryChipPreviewState(comidaCategories.last(), true),
+        )
 }

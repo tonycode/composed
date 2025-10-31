@@ -16,57 +16,56 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
 
+private val DarkColorScheme =
+    darkColorScheme(
+        background = Palette.PianoBlack,
+        onBackground = Palette.GhostWhite,
+        surface = Palette.Nero,
+        onSurface = Palette.GhostWhite,
+        secondaryContainer = Palette.Tamahagane,
+        onSecondaryContainer = Palette.GhostWhite,
+        primary = Palette.SilverPhoenix,
+        onPrimary = Palette.Walrus,
+        secondary = Palette.GhostWhite,
+        onSecondary = Palette.DiscoBall,
+        tertiary = Palette.Walrus,
+        onTertiary = Palette.Tamahagane,
+    )
 
-private val DarkColorScheme = darkColorScheme(
-    background = Palette.PianoBlack,
-    onBackground = Palette.GhostWhite,
-    surface = Palette.Nero,
-    onSurface = Palette.GhostWhite,
-    secondaryContainer = Palette.Tamahagane,
-    onSecondaryContainer = Palette.GhostWhite,
-
-    primary = Palette.SilverPhoenix,
-    onPrimary = Palette.Walrus,
-    secondary = Palette.GhostWhite,
-    onSecondary = Palette.DiscoBall,
-    tertiary = Palette.Walrus,
-    onTertiary = Palette.Tamahagane,
-)
-
-private val LightColorScheme = lightColorScheme(
-    background = Palette.GhostWhite,
-    onBackground = Palette.PianoBlack,
-    surface = Palette.FirstSnow,
-    onSurface = Palette.PianoBlack,
-    secondaryContainer = Palette.CottonBall,
-    onSecondaryContainer = Palette.PianoBlack,
-
-    primary = Palette.DepthOfNight,
-    onPrimary = Palette.SilverPhoenix,
-    secondary = Palette.Walrus,
-    onSecondary = Palette.GhostWhite,
-    tertiary = Palette.PianoBlack,
-    onTertiary = Palette.DiscoBall,
-)
-
+private val LightColorScheme =
+    lightColorScheme(
+        background = Palette.GhostWhite,
+        onBackground = Palette.PianoBlack,
+        surface = Palette.FirstSnow,
+        onSurface = Palette.PianoBlack,
+        secondaryContainer = Palette.CottonBall,
+        onSecondaryContainer = Palette.PianoBlack,
+        primary = Palette.DepthOfNight,
+        onPrimary = Palette.SilverPhoenix,
+        secondary = Palette.Walrus,
+        onSecondary = Palette.GhostWhite,
+        tertiary = Palette.PianoBlack,
+        onTertiary = Palette.DiscoBall,
+    )
 
 @Composable
 fun ComposedAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+ (API 31+)
     dynamicColor: Boolean = true,
-    content: @Composable (() -> Unit)
+    content: @Composable (() -> Unit),
 ) {
-    val colorScheme = when {
-        dynamicColor && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+    val colorScheme =
+        when {
+            dynamicColor && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
+                val context = LocalContext.current
+                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            }
+
+            darkTheme -> DarkColorScheme
+
+            else -> LightColorScheme
         }
-
-        darkTheme -> DarkColorScheme
-
-        else -> LightColorScheme
-    }
 
     val view = LocalView.current
     if (!view.isInEditMode) {
@@ -81,6 +80,6 @@ fun ComposedAppTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography(),
-        content = content
+        content = content,
     )
 }

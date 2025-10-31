@@ -9,24 +9,24 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 
-
 @Composable
 fun <T> T.AnimationBox(
     enter: EnterTransition = fadeIn(),
     exit: ExitTransition = fadeOut(),
-    content: @Composable T.() -> Unit
+    content: @Composable T.() -> Unit,
 ) {
-    val state = remember {
-        MutableTransitionState(false).apply {
-            // Start the animation immediately.
-            targetState = true
+    val state =
+        remember {
+            MutableTransitionState(false).apply {
+                // Start the animation immediately.
+                targetState = true
+            }
         }
-    }
 
     AnimatedVisibility(
         visibleState = state,
         enter = enter,
-        exit = exit
+        exit = exit,
     ) {
         content()
     }

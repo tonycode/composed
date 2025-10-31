@@ -22,18 +22,21 @@ fun Long.fmtAsEpochMillis(
     val ldt = LocalDateTime.ofInstant(instant, localZoneId)
 
     val todayStart = LocalDateTime.now().with(LocalTime.MIN)
-    val fmtDay = if (ldt >= todayStart) {
-        "today"
-    } else {
-        val yesterdayStart = LocalDateTime.now().minusDays(1).with(LocalTime.MIN)
-        if (ldt >= yesterdayStart) {
-            "yesterday"
+    val fmtDay =
+        if (ldt >= todayStart) {
+            "today"
         } else {
-            dateFormatter.format(ldt)
+            val yesterdayStart = LocalDateTime.now().minusDays(1).with(LocalTime.MIN)
+            if (ldt >= yesterdayStart) {
+                "yesterday"
+            } else {
+                dateFormatter.format(ldt)
+            }
         }
-    }
 
     return if (withTime) {
         "$fmtDay, ${ timeFormatter.format(ldt) }"
-    } else fmtDay
+    } else {
+        fmtDay
+    }
 }

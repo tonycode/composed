@@ -3,10 +3,8 @@ package dev.tonycode.composed.common.designsystem.ui.preview
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview
 
-
 private const val GROUP_UI_MODE = "UI mode"
 private const val GROUP_FONT_SCALES = "Font scales"
-
 
 @Preview(
     name = "ui-mode-1 Light",
@@ -21,7 +19,6 @@ private const val GROUP_FONT_SCALES = "Font scales"
     showBackground = true,
 )
 annotation class LightDarkPreviews
-
 
 @Preview(
     name = "font-scale-1 Large",

@@ -6,13 +6,10 @@ import kotlinx.coroutines.delay
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
 class OffersRepository @Inject constructor() {
-
     suspend fun getOffers(): List<Offer> {
         delay(7500L)
         return dummyOffers
     }
-
 }

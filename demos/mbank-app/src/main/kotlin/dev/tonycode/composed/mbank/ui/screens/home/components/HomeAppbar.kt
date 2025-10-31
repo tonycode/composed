@@ -30,7 +30,6 @@ import dev.tonycode.composed.mbank.data.stubUserProfile
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
-
 private val iconContentSize = 24.dp
 private val iconTouchMargin = 6.dp
 
@@ -46,9 +45,10 @@ fun HomeAppbar(
     onSettingsScreenClicked: (() -> Unit)? = null,
 ) {
     Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(appbarHeight),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .height(appbarHeight),
         color = Color.Unspecified,
     ) {
         Crossfade(
@@ -57,14 +57,15 @@ fun HomeAppbar(
         ) { isLoading ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        start = 14.dp,
-                        top = appbarPaddingTop - iconTouchMargin,
-                        end = 14.dp,
-                        bottom = appbarPaddingBottom - iconTouchMargin
-                    ),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            start = 14.dp,
+                            top = appbarPaddingTop - iconTouchMargin,
+                            end = 14.dp,
+                            bottom = appbarPaddingBottom - iconTouchMargin,
+                        ),
             ) {
                 if (isLoading) {
                     Skeleton(
@@ -72,8 +73,7 @@ fun HomeAppbar(
                         height = MbankTheme.typography.appbarTitle.lineHeight.value.dp,
                         modifier = Modifier.shimmer(),
                     )
-
-                } else {  // data for HomeAppbar was loaded
+                } else { // data for HomeAppbar was loaded
                     requireNotNull(userName)
 
                     Text(
@@ -87,29 +87,30 @@ fun HomeAppbar(
                         painterResource(R.drawable.mbank_ic_account_24),
                         contentDescription = stringResource(R.string.mbank_open_account_details),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .clickable { onAccountDetailsClicked?.invoke() }
-                            .size(24.dp + iconTouchMargin * 2)
-                            .padding(iconTouchMargin),
+                        modifier =
+                            Modifier
+                                .clip(CircleShape)
+                                .clickable { onAccountDetailsClicked?.invoke() }
+                                .size(24.dp + iconTouchMargin * 2)
+                                .padding(iconTouchMargin),
                     )
 
                     Image(
                         painterResource(R.drawable.mbank_ic_settings_24),
                         contentDescription = stringResource(R.string.mbank_open_setting_screen),
                         colorFilter = ColorFilter.tint(MbankTheme.colorScheme.onBackground),
-                        modifier = Modifier
-                            .clip(CircleShape)
-                            .clickable { onSettingsScreenClicked?.invoke() }
-                            .size(36.dp)
-                            .padding(6.dp),
+                        modifier =
+                            Modifier
+                                .clip(CircleShape)
+                                .clickable { onSettingsScreenClicked?.invoke() }
+                                .size(36.dp)
+                                .padding(6.dp),
                     )
                 }
             }
         }
     }
 }
-
 
 @LightDarkPreviews
 @Composable
@@ -128,8 +129,9 @@ private class HomeAppbarPreviewState(
 )
 
 private class HomeAppbarPreviewStateProvider : PreviewParameterProvider<HomeAppbarPreviewState> {
-    override val values = sequenceOf(
-        HomeAppbarPreviewState(isLoading = true),
-        HomeAppbarPreviewState(isLoading = false, userName = stubUserProfile.name),
-    )
+    override val values =
+        sequenceOf(
+            HomeAppbarPreviewState(isLoading = true),
+            HomeAppbarPreviewState(isLoading = false, userName = stubUserProfile.name),
+        )
 }

@@ -2,16 +2,11 @@ package dev.tonycode.composed.mbank.model
 
 import java.math.BigDecimal
 
-
 data class AccountStats(
-
     val spentThisMonth: BigDecimal,
-
     /** last 5 daily spendings */
     val spentDaily: Array<BigDecimal>,
-
 ) {
-
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -28,5 +23,4 @@ data class AccountStats(
 
         return result
     }
-
 }

@@ -5,7 +5,6 @@ plugins {
     id("convention.ktlint")
 }
 
-
 android {
     namespace = "dev.tonycode.composed.mbank"
     resourcePrefix = "mbank_"

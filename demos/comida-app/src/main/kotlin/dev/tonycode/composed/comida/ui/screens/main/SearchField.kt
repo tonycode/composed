@@ -19,13 +19,11 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 
-
 @Composable
 fun SearchField(
     modifier: Modifier = Modifier,
     onChanged: (text: String) -> Unit,
 ) {
-
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = MaterialTheme.colorScheme.surfaceVariant,
@@ -46,11 +44,11 @@ fun SearchField(
             )
         }
     }
-
 }
 
 @Preview
 @Composable
-private fun SearchFieldPreview() = ElementPreview {
-    SearchField(onChanged = { })
-}
+private fun SearchFieldPreview() =
+    ElementPreview {
+        SearchField(onChanged = { })
+    }

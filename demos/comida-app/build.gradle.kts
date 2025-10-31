@@ -7,18 +7,23 @@ plugins {
     id("convention.ktlint")
 }
 
-
 android {
     namespace = "dev.tonycode.composed.comida"
     resourcePrefix = "comida_"
 
     defaultConfig {
-        minSdk = libs.versions.minSdk.get().toInt()
+        minSdk =
+            libs.versions.minSdk
+                .get()
+                .toInt()
         resourceConfigurations.addAll(listOf("en"))
         consumerProguardFile("consumer-rules.pro")
     }
 
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk =
+        libs.versions.compileSdk
+            .get()
+            .toInt()
     buildToolsVersion = libs.versions.buildTools.get()
 
     sourceSets {
@@ -43,15 +48,15 @@ android {
 }
 
 dependencies {
-    //// Core
-    implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
-    implementation(libs.kotlin.stdlib)  // Use the Kotlin standard library
+    // Core
+    implementation(platform(libs.kotlin.bom)) // Align versions of all Kotlin components
+    implementation(libs.kotlin.stdlib) // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
-    //// UI
+    // UI
     implementation(projects.common.designsystem.ui)
 
     implementation(libs.androidx.activity.compose)
@@ -65,6 +70,6 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.valentinilk.compose.shimmer)
 
-    //// Debug
+    // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

@@ -21,10 +21,8 @@ import dev.tonycode.composed.comida.ui.screens.main.ComidaTopAppbar
 import dev.tonycode.composed.comida.ui.screens.main.MainScreen
 import dev.tonycode.composed.comida.ui.theme.ComidaTheme
 
-
 @AndroidEntryPoint
 class ComidaAppActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -36,13 +34,11 @@ class ComidaAppActivity : ComponentActivity() {
     companion object {
         fun launch(context: Context) {
             context.startActivity(
-                Intent(context, ComidaAppActivity::class.java)
+                Intent(context, ComidaAppActivity::class.java),
             )
         }
     }
-
 }
-
 
 val screenHorizontalPadding = 22.dp
 
@@ -56,18 +52,20 @@ private fun ComidaApp() {
             Scaffold(
                 topBar = {
                     ComidaTopAppbar(
-                        modifier = Modifier
-                            .padding(start = screenHorizontalPadding, top = 8.dp, end = screenHorizontalPadding),
+                        modifier =
+                            Modifier
+                                .padding(start = screenHorizontalPadding, top = 8.dp, end = screenHorizontalPadding),
                         onNavMenuClicked = { },
                     )
                 },
                 bottomBar = {
                     BottomNav(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(start = 18.dp, top = 0.dp, end = 18.dp, bottom = 18.dp),
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(start = 18.dp, top = 0.dp, end = 18.dp, bottom = 18.dp),
                     )
-                }
+                },
             ) { innerPadding ->
                 MainScreen(modifier = Modifier.padding(innerPadding))
             }

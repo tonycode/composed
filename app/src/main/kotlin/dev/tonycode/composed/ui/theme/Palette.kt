@@ -2,9 +2,7 @@ package dev.tonycode.composed.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-
 object Palette {
-
     val DepthOfNight = Color(0xFF242F9B)
     val FrostFairy = Color(0xFFC1C5F1)
     val SilverPhoenix = Color(0xFFE6EAF6)
@@ -17,5 +15,4 @@ object Palette {
     val Tamahagane = Color(0xFF3D3E40)
     val Nero = Color(0xFF242424)
     val PianoBlack = Color(0xFF161718)
-
 }

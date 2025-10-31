@@ -11,7 +11,6 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
 import dev.tonycode.composed.ui.theme.ComposedAppTheme
 
-
 private val paddingSize = 8.dp
 
 @Composable
@@ -21,16 +20,16 @@ fun ElementPreview(
     usePadding: Boolean = true,
     content: @Composable (() -> Unit),
 ) {
-
     ComposedAppTheme {
         when {
             showBackground -> {
                 Surface(
                     color = MaterialTheme.colorScheme.background,
-                    modifier = Modifier
-                        .thenIf(maxWidth) { fillMaxWidth() }
-                        .thenIf(usePadding) { padding(paddingSize) },
-                    content = content
+                    modifier =
+                        Modifier
+                            .thenIf(maxWidth) { fillMaxWidth() }
+                            .thenIf(usePadding) { padding(paddingSize) },
+                    content = content,
                 )
             }
 
@@ -45,5 +44,4 @@ fun ElementPreview(
             }
         }
     }
-
 }

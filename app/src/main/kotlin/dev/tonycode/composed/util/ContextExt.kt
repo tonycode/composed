@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 
-
 /**
  * Open the specified [url] in an external browser (usually the default browser on user device)
  *

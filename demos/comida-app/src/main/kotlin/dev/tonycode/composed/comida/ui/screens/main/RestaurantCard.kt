@@ -42,7 +42,6 @@ import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
 import dev.tonycode.composed.common.designsystem.ui.preview.LoadingPreviewState
 import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 
-
 private val cardWidth = 264.dp
 private val cardHeight = 176.dp
 private val imageHeight = 112.dp
@@ -53,38 +52,42 @@ fun RestaurantCard(
     isShimming: Boolean = false,
     shimmer: Shimmer? = null,
 ) {
-
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = ComidaPalette.White,
-        modifier = Modifier
-            .size(width = cardWidth, height = cardHeight)
-            .shadow(
-                elevation = 2.dp,
-                shape = MaterialTheme.shapes.medium,
-                spotColor = Color(0xFFABABAB),
-            ),
+        modifier =
+            Modifier
+                .size(width = cardWidth, height = cardHeight)
+                .shadow(
+                    elevation = 2.dp,
+                    shape = MaterialTheme.shapes.medium,
+                    spotColor = Color(0xFFABABAB),
+                ),
     ) {
         Column(
             verticalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier
-                .thenIf(isShimming) { shimmer(customShimmer = shimmer) }
-                .thenIf(!isShimming) { clickable { } }
-                .padding(bottom = 12.dp),
+            modifier =
+                Modifier
+                    .thenIf(isShimming) { shimmer(customShimmer = shimmer) }
+                    .thenIf(!isShimming) { clickable { } }
+                    .padding(bottom = 12.dp),
         ) {
             // image
             if (!isShimming) {
                 AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(restaurant.coverUrl)
-                        .crossfade(true)
-                        .build(),
+                    model =
+                        ImageRequest
+                            .Builder(LocalContext.current)
+                            .data(restaurant.coverUrl)
+                            .crossfade(true)
+                            .build(),
                     placeholder = ColorPainter(ComidaPalette.ParisPaving),
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(imageHeight),
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .height(imageHeight),
                 )
             } else {
                 Skeleton(
@@ -97,17 +100,19 @@ fun RestaurantCard(
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
             ) {
                 // title
                 if (!isShimming) {
                     Text(
                         restaurant.title,
-                        style = MaterialTheme.typography.headlineSmall.copy(
-                            platformStyle = PlatformTextStyle(includeFontPadding = false),
-                        ),
+                        style =
+                            MaterialTheme.typography.headlineSmall.copy(
+                                platformStyle = PlatformTextStyle(includeFontPadding = false),
+                            ),
                     )
                 } else {
                     Skeleton(width = 120.dp, height = 18.dp)
@@ -172,9 +177,7 @@ fun RestaurantCard(
             }
         }
     }
-
 }
-
 
 @Preview
 @Composable
@@ -191,8 +194,9 @@ private fun RestaurantCardPreview(
 }
 
 private class RestaurantCardPreviewStateProvider : PreviewParameterProvider<LoadingPreviewState<Restaurant>> {
-    override val values = sequenceOf(
-        LoadingPreviewState.Data(dummyRestaurants.first()),
-        LoadingPreviewState.Loading()
-    )
+    override val values =
+        sequenceOf(
+            LoadingPreviewState.Data(dummyRestaurants.first()),
+            LoadingPreviewState.Loading(),
+        )
 }

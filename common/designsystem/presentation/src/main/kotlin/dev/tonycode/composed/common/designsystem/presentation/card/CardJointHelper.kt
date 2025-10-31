@@ -23,16 +23,14 @@ object CardJointHelper {
 
                     // handle current item
                     // ...nothing
-
-                } else {  // prev item was not joined => it is a top item
+                } else { // prev item was not joined => it is a top item
                     // put prev item
                     result.add(CardJoint.Top)
 
                     // handle current item
                     prevItemIsJoined = true
                 }
-
-            } else {  // different group
+            } else { // different group
                 // put prev item
                 if (!prevItemIsJoined) {
                     result.add(CardJoint.Single)

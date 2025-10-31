@@ -1,6 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
-
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.android.library) apply false
@@ -14,7 +13,7 @@ plugins {
 
 
 //region tasks
-/* generates gradle-wrapper via `gradle wrapper` */
+// Generates gradle-wrapper via `gradle wrapper`.
 tasks.wrapper {
     gradleVersion = libs.versions.gradle.get()
     distributionType = Wrapper.DistributionType.ALL
@@ -38,7 +37,7 @@ tasks.withType<DependencyUpdatesTask> {
     }
 
     checkForGradleUpdate = true
-    outputFormatter = "html"  // https://github.com/ben-manes/gradle-versions-plugin#report-format
+    outputFormatter = "html" // https://github.com/ben-manes/gradle-versions-plugin#report-format
     outputDir = "build/dependencyUpdates"
     reportfileName = "report"
 }
@@ -49,7 +48,7 @@ tasks.register("showDependencyUpdates") {
         exec {
             commandLine(
                 "open",
-                "build/dependencyUpdates/report.html"
+                "build/dependencyUpdates/report.html",
             )
         }
     }

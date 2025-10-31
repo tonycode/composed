@@ -29,12 +29,8 @@ import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
 
-
 @Composable
-fun BottomNav(
-    modifier: Modifier = Modifier,
-) {
-
+fun BottomNav(modifier: Modifier = Modifier) {
     var selectedRoute by rememberSaveable { mutableStateOf(navItems.first().route) }
 
     Surface(
@@ -43,9 +39,10 @@ fun BottomNav(
         modifier = modifier,
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             navItems.forEach { screen ->
@@ -58,7 +55,6 @@ fun BottomNav(
             }
         }
     }
-
 }
 
 @Composable
@@ -69,10 +65,11 @@ private fun BottomNavItem(
     onSelected: () -> Unit,
 ) {
     Box(
-        modifier = Modifier
-            .clip(MaterialTheme.shapes.medium)
-            .clickable { onSelected.invoke() }
-            .padding(horizontal = 16.dp),
+        modifier =
+            Modifier
+                .clip(MaterialTheme.shapes.medium)
+                .clickable { onSelected.invoke() }
+                .padding(horizontal = 16.dp),
     ) {
         IconWithBadge(
             iconRes = screen.iconRes,
@@ -104,16 +101,18 @@ private fun IconWithBadge(
         Image(
             painterResource(id = iconRes),
             contentDescription = iconDescription,
-            colorFilter = ColorFilter.tint(
-                if (isSelected) ComidaPalette.Primary else ComidaPalette.ParisPaving
-            ),
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(horizontal = badgeHorizontalPadding, vertical = badgeVerticalPadding)
-                .requiredSize(
-                    width = iconSize + badgeHorizontalPadding*2,
-                    height = iconSize + badgeVerticalPadding*2,
+            colorFilter =
+                ColorFilter.tint(
+                    if (isSelected) ComidaPalette.Primary else ComidaPalette.ParisPaving,
                 ),
+            modifier =
+                Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = badgeHorizontalPadding, vertical = badgeVerticalPadding)
+                    .requiredSize(
+                        width = iconSize + badgeHorizontalPadding * 2,
+                        height = iconSize + badgeVerticalPadding * 2,
+                    ),
         )
 
         if (badgeCounter != null) {
@@ -126,9 +125,7 @@ private fun IconWithBadge(
 }
 
 @Composable
-private fun SelectedItemIndicator(
-    modifier: Modifier = Modifier,
-) {
+private fun SelectedItemIndicator(modifier: Modifier = Modifier) {
     Surface(
         shape = MaterialTheme.shapes.small,
         color = MaterialTheme.colorScheme.primary,
@@ -136,19 +133,25 @@ private fun SelectedItemIndicator(
     ) { }
 }
 
-
-private sealed class Screen(val route: String, @DrawableRes val iconRes: Int, val iconDescription: String) {
+private sealed class Screen(
+    val route: String,
+    @DrawableRes val iconRes: Int,
+    val iconDescription: String,
+) {
     object Home : Screen("home", R.drawable.comida_nav_home_28, "Home screen")
+
     object Cart : Screen("cart", R.drawable.comida_nav_cart_28, "Basket screen")
+
     object Profile : Screen("profile", R.drawable.comida_nav_profile_28, "Profile screen")
+
     object Notifications : Screen("notifications", R.drawable.comida_nav_notifications_28, "Notifications screen")
 }
 
 private val navItems = listOf(Screen.Home, Screen.Cart, Screen.Profile, Screen.Notifications)
 
-
 @Preview
 @Composable
-private fun BottomNavPreview() = ElementPreview {
-    BottomNav()
-}
+private fun BottomNavPreview() =
+    ElementPreview {
+        BottomNav()
+    }

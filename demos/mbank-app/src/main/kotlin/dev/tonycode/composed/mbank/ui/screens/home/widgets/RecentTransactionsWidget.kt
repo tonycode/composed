@@ -26,7 +26,6 @@ import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 
-
 /**
  * @param transactions null means loading
  */
@@ -37,7 +36,6 @@ fun RecentTransactionsWidget(
     onTransactionClicked: ((Transaction) -> Unit)? = null,
     onShowAllClicked: (() -> Unit)? = null,
 ) = MbankCard(modifier) {
-
     Column {
         // header
         Row(
@@ -55,7 +53,7 @@ fun RecentTransactionsWidget(
                     stringResource(R.string.mbank_full_history),
                     style = MbankTheme.typography.bodyEmphasis,
                     color = MbankTheme.colorScheme.onSurfaceAccent,
-                    modifier = Modifier.clickable { onShowAllClicked?.invoke() }
+                    modifier = Modifier.clickable { onShowAllClicked?.invoke() },
                 )
             }
         }
@@ -64,7 +62,7 @@ fun RecentTransactionsWidget(
 
         // recent transactions
         when {
-            (transactions == null) -> {  // loading
+            (transactions == null) -> { // loading
                 TransactionCard(
                     transaction = null,
                     modifier = Modifier.padding(vertical = 4.dp),
@@ -76,17 +74,19 @@ fun RecentTransactionsWidget(
                     stringResource(R.string.mbank_no_operations),
                     style = MbankTheme.typography.body,
                     color = MbankTheme.colorScheme.onSurfaceSecondary,
-                    modifier = Modifier
-                        .padding(vertical = 24.dp)
-                        .align(Alignment.CenterHorizontally),
+                    modifier =
+                        Modifier
+                            .padding(vertical = 24.dp)
+                            .align(Alignment.CenterHorizontally),
                 )
             }
 
             else -> {
-                val cardJointMetadata = CardJointHelper.createJointData(
-                    itemsCount = transactions.size,
-                    getItemGroup = { idx -> transactions[idx].performedDay }
-                )
+                val cardJointMetadata =
+                    CardJointHelper.createJointData(
+                        itemsCount = transactions.size,
+                        getItemGroup = { idx -> transactions[idx].performedDay },
+                    )
 
                 transactions.forEachIndexed { idx, transaction ->
                     val cardJoint = cardJointMetadata[idx]
@@ -101,21 +101,20 @@ fun RecentTransactionsWidget(
             }
         }
     }
-
 }
-
 
 @LightDarkPreviews
 @Composable
 private fun RecentTransactionWidgetPreview(
-    @PreviewParameter(TransactionsPreviewParameterProvider::class) transactions: List<Transaction>
+    @PreviewParameter(TransactionsPreviewParameterProvider::class) transactions: List<Transaction>,
 ) = ElementPreview {
     RecentTransactionsWidget(transactions)
 }
 
 private class TransactionsPreviewParameterProvider : PreviewParameterProvider<List<Transaction>> {
-    override val values = sequenceOf(
-        stubTransactions,
-        emptyList()
-    )
+    override val values =
+        sequenceOf(
+            stubTransactions,
+            emptyList(),
+        )
 }

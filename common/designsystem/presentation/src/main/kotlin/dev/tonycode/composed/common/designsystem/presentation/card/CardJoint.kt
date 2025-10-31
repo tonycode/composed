@@ -11,5 +11,5 @@ enum class CardJoint {
     Middle,
 
     /** Bottom card in a joined list */
-    Bottom
+    Bottom,
 }

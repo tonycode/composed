@@ -47,26 +47,23 @@ import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.util.AnimationBox
 import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 
-
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
     mainViewModel: MainViewModel = viewModel(),
 ) {
-
     val restaurantsLoading by remember { mainViewModel.loadingRestaurants }
     val restaurants by remember { mainViewModel.restaurants }
 
     val offersLoading by remember { mainViewModel.loadingOffers }
     val offers by remember { mainViewModel.offers }
 
-
     Column(
-        modifier = modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(top = 16.dp, bottom = 24.dp)
-        ,
+        modifier =
+            modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(top = 16.dp, bottom = 24.dp),
     ) {
         Text(
             stringResource(R.string.comida_good_afternoon),
@@ -94,7 +91,6 @@ fun MainScreen(
 
         RestaurantsBlock(restaurantsLoading, restaurants)
     }
-
 }
 
 @Composable
@@ -112,7 +108,7 @@ private fun CategoriesBlock() {
                 isSelected = (it.title == selectedCategoryTitle),
                 onClicked = {
                     selectedCategoryTitle = it.title
-                }
+                },
             )
         }
     }
@@ -124,16 +120,19 @@ private fun ColumnScope.OffersBlock(
     offers: List<Offer>,
 ) {
     val shimmer = rememberShimmer(shimmerBounds = ShimmerBounds.Window)
-    val shimmerLightContent = rememberShimmer(
-        shimmerBounds = ShimmerBounds.Window,
-        theme = defaultShimmerTheme.copy(
-            shaderColors = listOf(
-                Color.Unspecified.copy(alpha = 1.0f),
-                Color.Unspecified.copy(alpha = 0.0f),
-                Color.Unspecified.copy(alpha = 1.0f),
-            ),
-        ),
-    )
+    val shimmerLightContent =
+        rememberShimmer(
+            shimmerBounds = ShimmerBounds.Window,
+            theme =
+                defaultShimmerTheme.copy(
+                    shaderColors =
+                        listOf(
+                            Color.Unspecified.copy(alpha = 1.0f),
+                            Color.Unspecified.copy(alpha = 0.0f),
+                            Color.Unspecified.copy(alpha = 1.0f),
+                        ),
+                ),
+        )
 
     // section title
     AnimatedContent(
@@ -151,9 +150,10 @@ private fun ColumnScope.OffersBlock(
             Skeleton(
                 width = 160.dp,
                 height = 29.dp,
-                modifier = Modifier
-                    .padding(start = screenHorizontalPadding)
-                    .shimmer(customShimmer = shimmer),
+                modifier =
+                    Modifier
+                        .padding(start = screenHorizontalPadding)
+                        .shimmer(customShimmer = shimmer),
             )
         }
     }
@@ -203,9 +203,10 @@ private fun ColumnScope.RestaurantsBlock(
             Skeleton(
                 width = 160.dp,
                 height = 29.dp,
-                modifier = Modifier
-                    .padding(start = screenHorizontalPadding)
-                    .shimmer(customShimmer = shimmer),
+                modifier =
+                    Modifier
+                        .padding(start = screenHorizontalPadding)
+                        .shimmer(customShimmer = shimmer),
             )
         }
     }
@@ -232,9 +233,9 @@ private fun ColumnScope.RestaurantsBlock(
     }
 }
 
-
 @Preview
 @Composable
-private fun MainScreenPreview() = ScreenPreview {
-    MainScreen()
-}
+private fun MainScreenPreview() =
+    ScreenPreview {
+        MainScreen()
+    }

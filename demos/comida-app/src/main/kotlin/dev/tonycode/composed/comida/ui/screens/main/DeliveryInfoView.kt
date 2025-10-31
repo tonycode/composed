@@ -18,20 +18,19 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 
-
 @Composable
 fun DeliveryInfoView(
     street: String,
     onSelectorClicked: () -> Unit,
 ) {
-
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .clip(MaterialTheme.shapes.small)
-                .clickable { onSelectorClicked.invoke() }
-                .padding(horizontal = 6.dp, vertical = 2.dp),
+            modifier =
+                Modifier
+                    .clip(MaterialTheme.shapes.small)
+                    .clickable { onSelectorClicked.invoke() }
+                    .padding(horizontal = 6.dp, vertical = 2.dp),
         ) {
             Text(
                 stringResource(R.string.comida_deliver_to),
@@ -47,11 +46,11 @@ fun DeliveryInfoView(
             style = MaterialTheme.typography.titleSmall,
         )
     }
-
 }
 
 @Preview
 @Composable
-private fun DeliveryInfoViewPreview() = ElementPreview(maxWidth = false) {
-    DeliveryInfoView(street = "387 Merdina", onSelectorClicked = { })
-}
+private fun DeliveryInfoViewPreview() =
+    ElementPreview(maxWidth = false) {
+        DeliveryInfoView(street = "387 Merdina", onSelectorClicked = { })
+    }

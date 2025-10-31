@@ -16,11 +16,11 @@ dependencyResolutionManagement {
     repositories {
         // https://mvnrepository.com/ - find repository & artifact version for a given package
 
-        google()  // https://maven.google.com/web/index.html - Android-specific artifacts
-        mavenCentral()  // https://repo.maven.apache.org/maven2/
-        //maven("https://jitpack.io")
+        google() // https://maven.google.com/web/index.html - Android-specific artifacts
+        mavenCentral() // https://repo.maven.apache.org/maven2/
+        // maven("https://jitpack.io")
 
-        //mavenLocal()  // ~/.m2/repository
+        // mavenLocal()  // ~/.m2/repository
     }
 }
 

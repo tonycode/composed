@@ -47,7 +47,6 @@ import dev.tonycode.composed.common.designsystem.ui.skeleton.LocalSkeletonTheme
 import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonTheme
 
-
 private val cardWidth = 256.dp
 private val cardHeight = 110.dp
 
@@ -57,7 +56,6 @@ fun OfferCard(
     isShimming: Boolean = false,
     shimmer: Shimmer? = null,
 ) {
-
     Surface(
         shape = MaterialTheme.shapes.medium,
         color = if (!isShimming) offer.backgroundColor else ComidaPalette.KinglyCloud.copy(alpha = 0.25f),
@@ -67,19 +65,22 @@ fun OfferCard(
             LocalSkeletonTheme provides defaultSkeletonTheme.copy(color = ComidaPalette.White),
         ) {
             Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .thenIf(isShimming) { shimmer(customShimmer = shimmer) }
-                    .thenIf(!isShimming) { clickable { } },
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .thenIf(isShimming) { shimmer(customShimmer = shimmer) }
+                        .thenIf(!isShimming) { clickable { } },
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 // offer-pic
                 if (!isShimming) {
                     AsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(offer.imageUrl)
-                            .crossfade(true)
-                            .build(),
+                        model =
+                            ImageRequest
+                                .Builder(LocalContext.current)
+                                .data(offer.imageUrl)
+                                .crossfade(true)
+                                .build(),
                         placeholder = ColorPainter(Color.Transparent),
                         contentDescription = null,
                         contentScale = ContentScale.Fit,
@@ -162,9 +163,10 @@ fun OfferCard(
                                 onClick = { },
                                 modifier = Modifier.height(28.dp),
                                 border = null,
-                                colors = ButtonDefaults.elevatedButtonColors(
-                                    containerColor = ComidaPalette.BlackA33,
-                                ),
+                                colors =
+                                    ButtonDefaults.elevatedButtonColors(
+                                        containerColor = ComidaPalette.BlackA33,
+                                    ),
                                 contentPadding = PaddingValues(horizontal = 16.dp, vertical = 0.dp),
                             ) {
                                 Text(
@@ -199,9 +201,7 @@ fun OfferCard(
             }
         }
     }
-
 }
-
 
 @Preview
 @Composable
@@ -218,9 +218,10 @@ private fun OfferCardPreview(
 }
 
 private class OfferCardPreviewStateProvider : PreviewParameterProvider<LoadingPreviewState<Offer>> {
-    override val values = sequenceOf(
-        LoadingPreviewState.Data(dummyOffers.first()),
-        LoadingPreviewState.Data(dummyOffers.last()),
-        LoadingPreviewState.Loading(),
-    )
+    override val values =
+        sequenceOf(
+            LoadingPreviewState.Data(dummyOffers.first()),
+            LoadingPreviewState.Data(dummyOffers.last()),
+            LoadingPreviewState.Loading(),
+        )
 }

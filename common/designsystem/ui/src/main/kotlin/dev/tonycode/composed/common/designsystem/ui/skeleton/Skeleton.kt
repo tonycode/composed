@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 
-
 @Composable
 fun Skeleton(
     modifier: Modifier = Modifier,
@@ -21,17 +20,14 @@ fun Skeleton(
     shape: Shape = LocalSkeletonTheme.current.shape,
     color: Color = LocalSkeletonTheme.current.color,
 ) {
-
     Box(
-        modifier = Modifier
-            .then(
-                if (width != null) Modifier.width(width) else Modifier.fillMaxWidth()
-            )
-            .then(
-                if (height != null) Modifier.height(height) else Modifier.fillMaxHeight()
-            )
-            .then(modifier)
-            .background(color = color, shape = shape),
+        modifier =
+            Modifier
+                .then(
+                    if (width != null) Modifier.width(width) else Modifier.fillMaxWidth(),
+                ).then(
+                    if (height != null) Modifier.height(height) else Modifier.fillMaxHeight(),
+                ).then(modifier)
+                .background(color = color, shape = shape),
     )
-
 }

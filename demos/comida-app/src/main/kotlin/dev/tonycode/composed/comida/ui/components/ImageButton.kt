@@ -18,45 +18,46 @@ import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.util.shadowCustom
 
-
 @Composable
 fun ImageButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     image: @Composable (() -> Unit),
 ) {
-
     Surface(
         shape = MaterialTheme.shapes.small,
         color = MaterialTheme.colorScheme.background,
-        modifier = modifier
-            .size(40.dp)
-            .shadowCustom(
-                Color(0x55D3D1D8),
-                offsetX = 4.dp, offsetY = 12.dp,
-                blurRadius = 20.dp
-            ),
+        modifier =
+            modifier
+                .size(40.dp)
+                .shadowCustom(
+                    Color(0x55D3D1D8),
+                    offsetX = 4.dp,
+                    offsetY = 12.dp,
+                    blurRadius = 20.dp,
+                ),
     ) {
         Box(
-            modifier = Modifier
-                .size(40.dp)
-                .clip(MaterialTheme.shapes.small)
-                .clickable { onClick.invoke() },
+            modifier =
+                Modifier
+                    .size(40.dp)
+                    .clip(MaterialTheme.shapes.small)
+                    .clickable { onClick.invoke() },
             contentAlignment = Alignment.Center,
         ) {
             image()
         }
     }
-
 }
 
 @Preview
 @Composable
-private fun ImageButtonPreview() = ElementPreview(maxWidth = false) {
-    ImageButton(onClick = { }) {
-        Image(
-            painterResource(R.drawable.comida_nav_menu_40),
-            contentDescription = "open nav menu",
-        )
+private fun ImageButtonPreview() =
+    ElementPreview(maxWidth = false) {
+        ImageButton(onClick = { }) {
+            Image(
+                painterResource(R.drawable.comida_nav_menu_40),
+                contentDescription = "open nav menu",
+            )
+        }
     }
-}

@@ -5,19 +5,15 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 
-
 data class SkeletonTheme(
-
     val shape: Shape,
-
-    val color: Color
-
+    val color: Color,
 )
 
-
-val defaultSkeletonTheme = SkeletonTheme(
-    shape = RoundedCornerShape(33),
-    color = Color.LightGray,
-)
+val defaultSkeletonTheme =
+    SkeletonTheme(
+        shape = RoundedCornerShape(33),
+        color = Color.LightGray,
+    )
 
 val LocalSkeletonTheme = staticCompositionLocalOf { defaultSkeletonTheme }

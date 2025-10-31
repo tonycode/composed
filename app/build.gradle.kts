@@ -14,7 +14,6 @@ plugins {
     id("convention.ktlint")
 }
 
-
 android {
     namespace = "dev.tonycode.composed"
 
@@ -24,23 +23,36 @@ android {
         versionName = "1.0.0"
         base.archivesName = "composed-v$versionName-build_$versionCode"
 
-        minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
+        minSdk =
+            libs.versions.minSdk
+                .get()
+                .toInt()
+        targetSdk =
+            libs.versions.targetSdk
+                .get()
+                .toInt()
         resourceConfigurations.addAll(listOf("en"))
 
         // build info
         buildConfigField("String", "APP_NAME", "\"${ rootProject.name }\"")
         buildConfigField("String", "GIT_BRANCH_NAME", "\"${ grgit.branch.current().name }\"")
         buildConfigField("String", "GIT_COMMIT_ID", "\"${ grgit.head().abbreviatedId }\"")
-        buildConfigField("String", "BUILD_TIME", "\"${
-            SimpleDateFormat("yyyy.MM.dd EEE 'at' HH:mm:ss.SSS z").apply {
-                timeZone = TimeZone.getTimeZone("GMT")
-            }.format(Date(System.currentTimeMillis()))
-        }\"")
+        buildConfigField(
+            "String",
+            "BUILD_TIME",
+            "\"${
+                SimpleDateFormat("yyyy.MM.dd EEE 'at' HH:mm:ss.SSS z")
+                    .apply { timeZone = TimeZone.getTimeZone("GMT") }
+                    .format(Date(System.currentTimeMillis()))
+            }\"",
+        )
         buildConfigField("long", "BUILD_TIME_MILLIS", "${ System.currentTimeMillis() }L")
     }
 
-    compileSdk = libs.versions.compileSdk.get().toInt()
+    compileSdk =
+        libs.versions.compileSdk
+            .get()
+            .toInt()
     buildToolsVersion = libs.versions.buildTools.get()
 
     sourceSets {
@@ -55,7 +67,8 @@ android {
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
 
-        isCoreLibraryDesugaringEnabled = true  // https://developer.android.com/studio/write/java8-support#library-desugaring
+        // https://developer.android.com/studio/write/java8-support#library-desugaring
+        isCoreLibraryDesugaringEnabled = true
     }
     kotlinOptions {
         jvmTarget = javaVersionString
@@ -95,22 +108,22 @@ android {
             isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
 }
 
 dependencies {
-    //// Core
-    implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
-    implementation(libs.kotlin.stdlib)  // Use the Kotlin standard library
+    // Core
+    implementation(platform(libs.kotlin.bom)) // Align versions of all Kotlin components
+    implementation(libs.kotlin.stdlib) // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     coreLibraryDesugaring(libs.desugar.jdkLibs)
 
-    //// UI
+    // UI
     implementation(projects.common.designsystem.ui)
 
     implementation(libs.androidx.core.splash)
@@ -123,10 +136,10 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
 
-    //// Demos
+    // Demos
     implementation(projects.demos.comidaApp)
     implementation(projects.demos.mbankApp)
 
-    //// Debug
+    // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

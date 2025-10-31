@@ -13,7 +13,6 @@ import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.ui.theme.ComidaTheme
 import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
 
-
 private val paddingSize = 8.dp
 
 @Composable
@@ -24,25 +23,26 @@ fun ElementPreview(
     usePadding: Boolean = true,
     content: @Composable (() -> Unit),
 ) {
-
     ComidaTheme {
         when {
             showBackground -> {
                 Surface(
                     color = backgroundColor,
-                    modifier = Modifier
-                        .background(color = backgroundColor)  // otherwise padding will be not filled
-                        .thenIf(maxWidth) { fillMaxWidth() }
-                        .thenIf(usePadding) { padding(paddingSize) },
-                    content = content
+                    modifier =
+                        Modifier
+                            .background(color = backgroundColor) // otherwise padding will be not filled
+                            .thenIf(maxWidth) { fillMaxWidth() }
+                            .thenIf(usePadding) { padding(paddingSize) },
+                    content = content,
                 )
             }
 
             usePadding -> {
                 Box(
-                    modifier = Modifier
-                        .background(color = backgroundColor)  // otherwise padding will be not filled
-                        .padding(paddingSize),
+                    modifier =
+                        Modifier
+                            .background(color = backgroundColor) // otherwise padding will be not filled
+                            .padding(paddingSize),
                 ) {
                     content()
                 }
@@ -53,5 +53,4 @@ fun ElementPreview(
             }
         }
     }
-
 }

@@ -11,9 +11,9 @@ class CardJointHelperUnitTest {
             CardJointHelper.createJointData(
                 itemsCount = 0,
                 getItemGroup = { _ -> null },
-            )
+            ),
         ).isEqualTo(
-            emptyList<CardJoint>()
+            emptyList<CardJoint>(),
         )
 
         // one item
@@ -21,9 +21,9 @@ class CardJointHelperUnitTest {
             CardJointHelper.createJointData(
                 itemsCount = 1,
                 getItemGroup = { _ -> "single" },
-            )
+            ),
         ).isEqualTo(
-            listOf(CardJoint.Single)
+            listOf(CardJoint.Single),
         )
 
         // only singles
@@ -31,18 +31,18 @@ class CardJointHelperUnitTest {
             CardJointHelper.createJointData(
                 itemsCount = 2,
                 getItemGroup = { idx -> "single-$idx" },
-            )
+            ),
         ).isEqualTo(
-            List(2) { _ -> CardJoint.Single }
+            List(2) { _ -> CardJoint.Single },
         )
 
         assertThat(
             CardJointHelper.createJointData(
                 itemsCount = 5,
                 getItemGroup = { idx -> "single-$idx" },
-            )
+            ),
         ).isEqualTo(
-            List(5) { _ -> CardJoint.Single }
+            List(5) { _ -> CardJoint.Single },
         )
 
         // only N joint items
@@ -50,27 +50,27 @@ class CardJointHelperUnitTest {
             CardJointHelper.createJointData(
                 itemsCount = 2,
                 getItemGroup = { _ -> "group-1" },
-            )
+            ),
         ).isEqualTo(
-            listOf(CardJoint.Top, CardJoint.Bottom)
+            listOf(CardJoint.Top, CardJoint.Bottom),
         )
 
         assertThat(
             CardJointHelper.createJointData(
                 itemsCount = 3,
                 getItemGroup = { _ -> "group-1" },
-            )
+            ),
         ).isEqualTo(
-            listOf(CardJoint.Top, CardJoint.Middle, CardJoint.Bottom)
+            listOf(CardJoint.Top, CardJoint.Middle, CardJoint.Bottom),
         )
 
         assertThat(
             CardJointHelper.createJointData(
                 itemsCount = 5,
                 getItemGroup = { _ -> "group-1" },
-            )
+            ),
         ).isEqualTo(
-            listOf(CardJoint.Top, CardJoint.Middle, CardJoint.Middle, CardJoint.Middle, CardJoint.Bottom)
+            listOf(CardJoint.Top, CardJoint.Middle, CardJoint.Middle, CardJoint.Middle, CardJoint.Bottom),
         )
 
         // mixed
@@ -85,13 +85,13 @@ class CardJointHelperUnitTest {
                         else -> "2-joined"
                     }
                 },
-            )
+            ),
         ).isEqualTo(
             listOf(
                 CardJoint.Single,
                 CardJoint.Top,
                 CardJoint.Bottom,
-            )
+            ),
         )
 
         assertThat(
@@ -116,25 +116,25 @@ class CardJointHelperUnitTest {
                         else -> "7-single"
                     }
                 },
-            )
+            ),
         ).isEqualTo(
             listOf(
-                CardJoint.Single,  // [0]
-                CardJoint.Top,     // [1]
-                CardJoint.Bottom,  // [2]
-                CardJoint.Single,  // [3]
-                CardJoint.Top,     // [4]
-                CardJoint.Middle,  // [5]
-                CardJoint.Bottom,  // [6]
-                CardJoint.Top,     // [7]
-                CardJoint.Bottom,  // [8]
-                CardJoint.Top,     // [9]
-                CardJoint.Middle,  // [10]
-                CardJoint.Middle,  // [11]
-                CardJoint.Middle,  // [12]
-                CardJoint.Bottom,  // [13]
-                CardJoint.Single,  // [14]
-            )
+                CardJoint.Single, // [0]
+                CardJoint.Top, // [1]
+                CardJoint.Bottom, // [2]
+                CardJoint.Single, // [3]
+                CardJoint.Top, // [4]
+                CardJoint.Middle, // [5]
+                CardJoint.Bottom, // [6]
+                CardJoint.Top, // [7]
+                CardJoint.Bottom, // [8]
+                CardJoint.Top, // [9]
+                CardJoint.Middle, // [10]
+                CardJoint.Middle, // [11]
+                CardJoint.Middle, // [12]
+                CardJoint.Bottom, // [13]
+                CardJoint.Single, // [14]
+            ),
         )
     }
 }

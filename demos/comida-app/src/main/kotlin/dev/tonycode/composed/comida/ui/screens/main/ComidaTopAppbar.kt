@@ -19,7 +19,6 @@ import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 
-
 @Composable
 fun ComidaTopAppbar(
     modifier: Modifier = Modifier,
@@ -54,9 +53,10 @@ fun ComidaTopAppbar(
 
 @Preview
 @Composable
-private fun ComidaTopAppbarPreview() = ElementPreview {
-    ComidaTopAppbar(
-        modifier = Modifier.padding(horizontal = screenHorizontalPadding),
-        onNavMenuClicked = { },
-    )
-}
+private fun ComidaTopAppbarPreview() =
+    ElementPreview {
+        ComidaTopAppbar(
+            modifier = Modifier.padding(horizontal = screenHorizontalPadding),
+            onNavMenuClicked = { },
+        )
+    }
