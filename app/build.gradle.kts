@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
 
     alias(libs.plugins.grgit)
+    id("convention.ktlint")
 }
 
 

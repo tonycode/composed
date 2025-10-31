@@ -7,6 +7,8 @@
 - `./gradlew app:dependencies` - view dependencies hierarchy
     - `./gradlew app:dependencies --configuration debugCompileClasspath`
 
+- `./gradlew ktlintFormat`
+
 - `./gradlew test`
     - ~~with coverage: `./gradlew createDebugUnitTestCoverageReport`~~
 - ~~`./gradlew connectedAndroidTest`~~

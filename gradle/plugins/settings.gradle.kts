@@ -20,6 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
+include(":checks")
 include(":convention-module-data")
 include(":convention-module-domain")
 include(":convention-module-presentation")

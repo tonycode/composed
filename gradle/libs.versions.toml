@@ -47,6 +47,7 @@ coil-compose = "io.coil-kt:coil-compose:2.6.0"
 junit = "junit:junit:4.13.2"
 google-truth = "com.google.truth:truth:1.4.2"
 
+ktlint-gradlePlugin = "org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin:13.1.0" # https://github.com/JLLeitschuh/ktlint-gradle
 
 [bundles]
 

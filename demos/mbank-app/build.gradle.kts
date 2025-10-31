@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.convention.module.ui)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
+    id("convention.ktlint")
 }
 
 

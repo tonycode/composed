@@ -1,12 +1,12 @@
 rootProject.name = "composed"
 
 pluginManagement {
+    includeBuild("gradle/plugins")
     repositories {
         gradlePluginPortal() // https://plugins.gradle.org
         google()
         mavenCentral()
     }
-    includeBuild("gradle/plugins")
 }
 
 @Suppress("UnstableApiUsage")

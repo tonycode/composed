@@ -18,5 +18,11 @@ insert_final_newline = true
 trim_trailing_whitespace = true
 max_line_length = 120
 
+ktlint_code_style = ktlint_official
+
 [*.{java,kt}]
-ij_continuation_indent_size = 4  # https://github.com/editorconfig/editorconfig/issues/412
+ij_continuation_indent_size = 4 # https://github.com/editorconfig/editorconfig/issues/412
+
+[*.kt]
+ktlint_standard_annotation = disabled # To allow `class FooViewModel @Inject constructor()` on the same line.
+ktlint_function_naming_ignore_when_annotated_with = Composable
