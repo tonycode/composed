@@ -10,8 +10,8 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.ViewCompat
-import dev.tonycode.composed.common.ui.skeleton.LocalSkeletonTheme
-import dev.tonycode.composed.common.ui.skeleton.defaultSkeletonTheme
+import dev.tonycode.composed.common.designsystem.ui.skeleton.LocalSkeletonTheme
+import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonTheme
 
 
 //private val DarkColorScheme = darkColorScheme(

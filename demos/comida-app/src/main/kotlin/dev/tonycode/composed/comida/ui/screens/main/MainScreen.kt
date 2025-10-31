@@ -45,7 +45,7 @@ import dev.tonycode.composed.comida.ui.components.Section
 import dev.tonycode.composed.comida.ui.preview.ScreenPreview
 import dev.tonycode.composed.comida.ui.screenHorizontalPadding
 import dev.tonycode.composed.comida.ui.util.AnimationBox
-import dev.tonycode.composed.common.ui.skeleton.Skeleton
+import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 
 
 @Composable

@@ -1,11 +1,14 @@
-# ignore Gradle local props
-/local.properties
-
-# ignore Gradle project-specific cache directory
-/.gradle/
+# ignore Gradle project-specific cache directories
+.gradle/
 
 # ignore Gradle build output directories
 build/
+
+# ignore Gradle local propertiers
+/local.properties
+
+# ignore Kotlin project-specific cache directory
+/.kotlin/
 
 # ignore AndroidStudio files
 /.idea/*

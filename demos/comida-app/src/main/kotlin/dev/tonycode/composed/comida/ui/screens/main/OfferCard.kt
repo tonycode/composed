@@ -41,11 +41,11 @@ import dev.tonycode.composed.comida.data.dummy.dummyOffers
 import dev.tonycode.composed.comida.model.Offer
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
-import dev.tonycode.composed.common.ui.preview.LoadingPreviewState
-import dev.tonycode.composed.common.ui.skeleton.LocalSkeletonTheme
-import dev.tonycode.composed.common.ui.skeleton.Skeleton
-import dev.tonycode.composed.common.ui.skeleton.defaultSkeletonTheme
-import dev.tonycode.composed.common.ui.thenIf
+import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
+import dev.tonycode.composed.common.designsystem.ui.preview.LoadingPreviewState
+import dev.tonycode.composed.common.designsystem.ui.skeleton.LocalSkeletonTheme
+import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
+import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonTheme
 
 
 private val cardWidth = 256.dp

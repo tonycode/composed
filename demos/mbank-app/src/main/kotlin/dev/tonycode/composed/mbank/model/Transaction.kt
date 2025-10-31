@@ -1,6 +1,6 @@
 package dev.tonycode.composed.mbank.model
 
-import dev.tonycode.composed.common.ui.fmtAsEpochMillis
+import dev.tonycode.composed.common.datetime.presentation.fmtAsEpochMillis
 import java.math.BigDecimal
 
 

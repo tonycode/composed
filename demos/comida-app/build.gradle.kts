@@ -25,12 +25,15 @@ android {
             kotlin.srcDir("src/$name/kotlin")
         }
     }
+
+    val javaVersionString = libs.versions.java.get()
+    val javaVersion = JavaVersion.toVersion(javaVersionString.toInt())
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = javaVersionString
     }
 
     buildFeatures {
@@ -41,13 +44,15 @@ android {
 dependencies {
     //// Core
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
-    implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
+    implementation(libs.kotlin.stdlib)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
 
     //// UI
+    implementation(projects.common.designsystem.ui)
+
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
@@ -55,8 +60,6 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.constraintLayout.compose)
-
-    implementation(projects.commonUi)
 
     implementation(libs.coil.compose)
     implementation(libs.valentinilk.compose.shimmer)

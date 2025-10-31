@@ -16,9 +16,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import dev.tonycode.composed.common.ui.cards.CardJoint
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
-import dev.tonycode.composed.common.ui.thenIf
+import dev.tonycode.composed.common.designsystem.presentation.card.CardJoint
+import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.theme.MbankTheme
 

@@ -5,7 +5,7 @@ import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import dev.tonycode.composed.common.ui.nunitoSansFamily
+import dev.tonycode.composed.common.designsystem.ui.nunitoSansFamily
 
 
 class MbankTypography(

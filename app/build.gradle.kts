@@ -47,14 +47,17 @@ android {
             kotlin.srcDir("src/$name/kotlin")
         }
     }
+
+    val javaVersionString = libs.versions.java.get()
+    val javaVersion = JavaVersion.toVersion(javaVersionString.toInt())
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
 
         isCoreLibraryDesugaringEnabled = true  // https://developer.android.com/studio/write/java8-support#library-desugaring
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = javaVersionString
     }
 
     buildFeatures {
@@ -100,13 +103,15 @@ android {
 dependencies {
     //// Core
     implementation(platform(libs.kotlin.bom))  // Align versions of all Kotlin components
-    implementation(libs.kotlin.stdlib.jdk8)  // Use the Kotlin standard library
+    implementation(libs.kotlin.stdlib)  // Use the Kotlin standard library
     implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     coreLibraryDesugaring(libs.desugar.jdkLibs)
 
     //// UI
+    implementation(projects.common.designsystem.ui)
+
     implementation(libs.androidx.core.splash)
 
     implementation(platform(libs.androidx.compose.bom))
@@ -116,8 +121,6 @@ dependencies {
     implementation(libs.android.material)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
-
-    implementation(projects.commonUi)
 
     //// Demos
     implementation(projects.demos.comidaApp)

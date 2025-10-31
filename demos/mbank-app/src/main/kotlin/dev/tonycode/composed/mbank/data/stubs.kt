@@ -1,7 +1,7 @@
 package dev.tonycode.composed.mbank.data
 
-import dev.tonycode.composed.common.ui.hoursToMillis
-import dev.tonycode.composed.common.ui.minutesToMillis
+import dev.tonycode.composed.common.datetime.domain.hoursToMillis
+import dev.tonycode.composed.common.datetime.domain.minutesToMillis
 import dev.tonycode.composed.mbank.model.AccountStats
 import dev.tonycode.composed.mbank.model.AccountSummary
 import dev.tonycode.composed.mbank.model.Transaction

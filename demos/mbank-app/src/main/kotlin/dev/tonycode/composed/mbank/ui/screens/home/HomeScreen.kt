@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.model.AccountStats
 import dev.tonycode.composed.mbank.model.AccountSummary
 import dev.tonycode.composed.mbank.model.Transaction

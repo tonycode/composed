@@ -2,11 +2,9 @@
 
 [versions]
 gradle = "8.8"  # https://gradle.org/releases/
+java = "17"
 kotlin = "2.0.0"
 ksp = "2.0.0-1.0.22"  # https://github.com/google/ksp/releases
-
-## jvm
-java = "11"
 jacoco = "0.8.12"
 
 ## android
@@ -21,7 +19,8 @@ composeBom = "2024.06.00"  # https://developer.android.com/jetpack/compose/bom/b
 
 [libraries]
 kotlin-bom = { module = "org.jetbrains.kotlin:kotlin-bom", version.ref = "kotlin" }
-kotlin-stdlib-jdk8 = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
+kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
 desugar-jdkLibs = "com.android.tools:desugar_jdk_libs:2.0.4"
 
 androidx-core-ktx = "androidx.core:core-ktx:1.13.1"
@@ -58,7 +57,14 @@ grgit = { id = "org.ajoberstar.grgit", version = "5.2.2" }  # Manipulate with pr
 
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }  # bom issue - https://youtrack.jetbrains.com/issue/KT-55884
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# Plugins defined by this project
+convention-module-data = { id = "convention.module-data", version = "unspecified" }
+convention-module-domain = { id = "convention.module-domain", version = "unspecified" }
+convention-module-presentation = { id = "convention.module-presentation", version = "unspecified" }
+convention-module-ui = { id = "convention.module-ui", version = "unspecified" }

@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.ui.components.MbankBottomBar
 import dev.tonycode.composed.mbank.ui.screens.home.HomeScreen
 import dev.tonycode.composed.mbank.ui.theme.MbankAppTheme

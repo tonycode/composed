@@ -3,16 +3,13 @@
 - `./gradlew clean` - delete build dirs (`./build/`, `./app/build/`, `./**/build/`)
 - `./gradlew dependencyUpdates` - check for dependency updates, result will be printed in console
     - `./gradlew showDependencyUpdates` - show generated report in web-browser
-        - or `xdg-open build/dependencyUpdates/report.html`
+        - or open `build/dependencyUpdates/report.html`
 - `./gradlew app:dependencies` - view dependencies hierarchy
     - `./gradlew app:dependencies --configuration debugCompileClasspath`
 
 - `./gradlew test`
-    - or narrow: `./gradlew common-ui:testDebugUnitTest`
-        - then: `xdg-open common-ui/build/reports/tests/testDebugUnitTest/index.html`
-    - with coverage: `./gradlew common-ui:createDebugUnitTestCoverageReport`
-        - then: `xdg-open common-ui/build/reports/coverage/test/debug/index.html`
-- `./gradlew connectedAndroidTest`
+    - ~~with coverage: `./gradlew createDebugUnitTestCoverageReport`~~
+- ~~`./gradlew connectedAndroidTest`~~
 
 - `./gradlew installDebug`
 - `./gradlew installRelease`

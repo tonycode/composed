@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.comida.ui.theme.ComidaTheme
-import dev.tonycode.composed.common.ui.thenIf
+import dev.tonycode.composed.common.designsystem.ui.modifier.thenIf
 
 
 private val paddingSize = 8.dp

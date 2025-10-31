@@ -31,7 +31,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import dev.tonycode.composed.R
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.ui.DemoApp
 import dev.tonycode.composed.ui.icons.AppIconPack
 import dev.tonycode.composed.ui.icons.ArrowRight

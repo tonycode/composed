@@ -48,7 +48,7 @@ tasks.register("showDependencyUpdates") {
     doLast {
         exec {
             commandLine(
-                "xdg-open",
+                "open",
                 "build/dependencyUpdates/report.html"
             )
         }

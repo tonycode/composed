@@ -14,9 +14,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import com.valentinilk.shimmer.shimmer
-import dev.tonycode.composed.common.ui.fmtAsAmount
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
-import dev.tonycode.composed.common.ui.skeleton.Skeleton
+import dev.tonycode.composed.common.currency.presentation.fmtAsAmount
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.ui.skeleton.Skeleton
 import dev.tonycode.composed.mbank.R
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.screens.home.components.MbankCard

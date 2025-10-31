@@ -32,7 +32,7 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.ui.Screen
 import dev.tonycode.composed.mbank.ui.preview.ElementPreview
 import dev.tonycode.composed.mbank.ui.screens

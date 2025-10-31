@@ -1,12 +1,12 @@
 rootProject.name = "composed"
 
-
 pluginManagement {
     repositories {
-        gradlePluginPortal()
+        gradlePluginPortal() // https://plugins.gradle.org
         google()
         mavenCentral()
     }
+    includeBuild("gradle/plugins")
 }
 
 @Suppress("UnstableApiUsage")
@@ -27,10 +27,13 @@ dependencyResolutionManagement {
 // https://docs.gradle.org/current/userguide/declaring_dependencies.html#sec:type-safe-project-accessors
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
-
-include(
-    "common-ui",
-    "demos:comida-app",
-    "demos:mbank-app",
-    "app",
-)
+include("app")
+include("common:currency:domain")
+include("common:currency:presentation")
+include("common:datetime:domain")
+include("common:datetime:presentation")
+include("common:designsystem:presentation")
+include("common:designsystem:ui")
+include("common:strings:presentation")
+include("demos:comida-app")
+include("demos:mbank-app")

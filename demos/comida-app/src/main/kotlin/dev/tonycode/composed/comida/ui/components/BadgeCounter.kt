@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 import dev.tonycode.composed.comida.R
 import dev.tonycode.composed.comida.ui.preview.ElementPreview
 import dev.tonycode.composed.comida.ui.theme.ComidaPalette
-import dev.tonycode.composed.common.ui.poppinsFamily
+import dev.tonycode.composed.common.designsystem.ui.poppinsFamily
 
 
 @Composable

@@ -16,9 +16,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import dev.tonycode.composed.common.ui.cards.CardJointHelper
-import dev.tonycode.composed.common.ui.cards.paddingForCardJoint
-import dev.tonycode.composed.common.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.common.designsystem.presentation.card.CardJointHelper
+import dev.tonycode.composed.common.designsystem.ui.card.paddingForCardJoint
+import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
 import dev.tonycode.composed.mbank.R
 import dev.tonycode.composed.mbank.data.stubTransactions
 import dev.tonycode.composed.mbank.model.Transaction

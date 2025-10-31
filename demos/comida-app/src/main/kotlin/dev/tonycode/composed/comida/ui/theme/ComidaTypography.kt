@@ -5,8 +5,8 @@ import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import dev.tonycode.composed.common.ui.poppinsFamily
-import dev.tonycode.composed.common.ui.robotoFamily
+import dev.tonycode.composed.common.designsystem.ui.poppinsFamily
+import dev.tonycode.composed.common.designsystem.ui.robotoFamily
 
 
 val comidaTypography = Typography(
