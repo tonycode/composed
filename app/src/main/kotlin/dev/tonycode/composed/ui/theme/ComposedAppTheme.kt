@@ -70,6 +70,8 @@ fun ComposedAppTheme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
+            // TODO: Migrate to edge-to-edge
+            @Suppress("DEPRECATION")
             (view.context as Activity).window.statusBarColor =
                 (if (darkTheme) colorScheme.background else Palette.Walrus).toArgb()
             @Suppress("DEPRECATION")

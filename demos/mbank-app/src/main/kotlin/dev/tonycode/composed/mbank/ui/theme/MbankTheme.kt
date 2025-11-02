@@ -1,9 +1,7 @@
 package dev.tonycode.composed.mbank.ui.theme
 
 import android.app.Activity
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -85,18 +83,17 @@ fun MbankAppTheme(
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
+            // TODO: Migrate to edge-to-edge
+            @Suppress("DEPRECATION")
             (view.context as Activity).window.statusBarColor = colorScheme.background.toArgb()
             @Suppress("DEPRECATION")
             ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = !darkTheme
         }
     }
 
-    val rippleIndication = rememberRipple()
-
     CompositionLocalProvider(
         LocalColorScheme provides colorScheme,
         LocalTypography provides MbankTypography(),
-        LocalIndication provides rippleIndication,
         content = content,
     )
 }

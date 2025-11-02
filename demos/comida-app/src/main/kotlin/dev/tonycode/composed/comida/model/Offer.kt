@@ -8,7 +8,7 @@ data class Offer(
     val title: String,
     val imageUrl: String,
     val backgroundColor: Color,
-    @FloatRange(1.0, 5.0)
+    @param:FloatRange(1.0, 5.0)
     val rating: Double,
     val deliveryInfo: DeliveryInfo,
     val price: BigDecimal,

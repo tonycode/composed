@@ -1,7 +1,7 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.TimeZone
-
 
 plugins {
     alias(libs.plugins.android.application)
@@ -31,7 +31,9 @@ android {
             libs.versions.targetSdk
                 .get()
                 .toInt()
-        resourceConfigurations.addAll(listOf("en"))
+
+        @Suppress("UnstableApiUsage")
+        androidResources.localeFilters += listOf("en")
 
         // build info
         buildConfigField("String", "APP_NAME", "\"${ rootProject.name }\"")
@@ -70,8 +72,10 @@ android {
         // https://developer.android.com/studio/write/java8-support#library-desugaring
         isCoreLibraryDesugaringEnabled = true
     }
-    kotlinOptions {
-        jvmTarget = javaVersionString
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(javaVersionString))
+        }
     }
 
     buildFeatures {

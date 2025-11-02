@@ -1,20 +1,20 @@
 # More about this file: https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-gradle = "9.2.0"  # https://gradle.org/releases/
+gradle = "9.2.0" # https://gradle.org/releases/
 java = "17"
-kotlin = "2.0.0"
-ksp = "2.0.0-1.0.22"  # https://github.com/google/ksp/releases
+kotlin = "2.2.21" # https://github.com/JetBrains/kotlin/releases
+ksp = "2.2.21-2.0.4" # https://github.com/google/ksp/releases
 jacoco = "0.8.12"
 
 ## android
 minSdk = "21"  # Lollipop (required for Jetpack Compose)
-targetSdk = "34"  # Upside Down Cake
-compileSdk = "34"  # Upside Down Cake
-buildTools = "34.0.0"
-androidGradlePlugin = "8.5.0"
-hilt = "2.51.1"
-composeBom = "2024.06.00"  # https://developer.android.com/jetpack/compose/bom/bom-mapping
+targetSdk = "36"  # Upside Down Cake
+compileSdk = "36"  # Upside Down Cake
+buildTools = "36.1.0"
+androidGradlePlugin = "8.13.0" # https://developer.android.com/build/releases/gradle-plugin
+hilt = "2.57.2"
+composeBom = "2025.10.01"  # https://developer.android.com/jetpack/compose/bom/bom-mapping
 
 
 [libraries]
@@ -41,6 +41,7 @@ androidx-compose-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-constraintLayout-compose = "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+google-accompanist-systemuicontroller = "com.google.accompanist:accompanist-systemuicontroller:0.36.0"
 valentinilk-compose-shimmer = "com.valentinilk.shimmer:compose-shimmer:1.3.0"
 coil-compose = "io.coil-kt:coil-compose:2.6.0"
 

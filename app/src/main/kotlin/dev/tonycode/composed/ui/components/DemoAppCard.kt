@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -130,7 +129,6 @@ private fun DesignAuthorBlock(
                         .clip(MaterialTheme.shapes.medium)
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
-                            indication = rememberRipple(color = MaterialTheme.colorScheme.primary),
                         ) {
                             context.openUrlInExternalApp(url)
                         }.padding(8.dp),

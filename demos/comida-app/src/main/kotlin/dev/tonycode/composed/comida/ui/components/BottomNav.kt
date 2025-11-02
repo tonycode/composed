@@ -135,7 +135,7 @@ private fun SelectedItemIndicator(modifier: Modifier = Modifier) {
 
 private sealed class Screen(
     val route: String,
-    @DrawableRes val iconRes: Int,
+    @param:DrawableRes val iconRes: Int,
     val iconDescription: String,
 ) {
     object Home : Screen("home", R.drawable.comida_nav_home_28, "Home screen")

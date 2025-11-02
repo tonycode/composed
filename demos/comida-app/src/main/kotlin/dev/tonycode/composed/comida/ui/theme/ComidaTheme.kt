@@ -1,15 +1,13 @@
 package dev.tonycode.composed.comida.ui.theme
 
-import android.app.Activity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
-import androidx.core.view.ViewCompat
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import dev.tonycode.composed.common.designsystem.ui.skeleton.LocalSkeletonTheme
 import dev.tonycode.composed.common.designsystem.ui.skeleton.defaultSkeletonTheme
 
@@ -68,10 +66,17 @@ fun ComidaTheme(
     // setup status-bar colors
     val view = LocalView.current
     if (!view.isInEditMode) {
+        // TODO: Migrate to edge-to-edge
+        @Suppress("DEPRECATION")
+        val systemUiController = rememberSystemUiController()
+        val useDarkIcons = true
+        val color = ComidaPalette.White
+
         SideEffect {
-            (view.context as Activity).window.statusBarColor = ComidaPalette.White.toArgb()
-            @Suppress("DEPRECATION")
-            ViewCompat.getWindowInsetsController(view)?.isAppearanceLightStatusBars = true
+            systemUiController.setStatusBarColor(
+                color = color,
+                darkIcons = useDarkIcons,
+            )
         }
     }
 

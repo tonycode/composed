@@ -3,7 +3,7 @@
 - `./gradlew clean` - delete build dirs (`./build/`, `./app/build/`, `./**/build/`)
 
 ### Dependencies
-- `./gradlew dependencyUpdates` - check for dependency updates, result will be printed in console
+- `./gradlew dependencyUpdates --no-parallel` - check for dependency updates, result will be printed in console
     - open `build/dependencyUpdates/report.html`
 - `./gradlew app:dependencies` - view dependencies hierarchy
     - `./gradlew app:dependencies --configuration debugCompileClasspath`

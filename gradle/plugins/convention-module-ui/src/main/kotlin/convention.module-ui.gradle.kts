@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -12,7 +14,6 @@ kotlin {
 android {
     defaultConfig {
         minSdk = libs.versions.minSdk.get().toInt()
-        resourceConfigurations.addAll(listOf("en"))
         consumerProguardFile("consumer-rules.pro")
 
         // testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -35,8 +36,10 @@ android {
 
         isCoreLibraryDesugaringEnabled = true  // https://developer.android.com/studio/write/java8-support#library-desugaring
     }
-    kotlinOptions {
-        jvmTarget = javaVersionString
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(javaVersionString))
+        }
     }
 
     buildFeatures {

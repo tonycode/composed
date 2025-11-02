@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -16,7 +18,7 @@ android {
             libs.versions.minSdk
                 .get()
                 .toInt()
-        resourceConfigurations.addAll(listOf("en"))
+
         consumerProguardFile("consumer-rules.pro")
     }
 
@@ -38,8 +40,10 @@ android {
         sourceCompatibility = javaVersion
         targetCompatibility = javaVersion
     }
-    kotlinOptions {
-        jvmTarget = javaVersionString
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(javaVersionString))
+        }
     }
 
     buildFeatures {
@@ -66,6 +70,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.constraintLayout.compose)
+    implementation(libs.google.accompanist.systemuicontroller)
 
     implementation(libs.coil.compose)
     implementation(libs.valentinilk.compose.shimmer)

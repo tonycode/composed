@@ -5,8 +5,8 @@ import androidx.annotation.StringRes
 import dev.tonycode.composed.mbank.R
 
 sealed class Screen(
-    @StringRes val titleRes: Int,
-    @DrawableRes val iconRes: Int,
+    @param:StringRes val titleRes: Int,
+    @param:DrawableRes val iconRes: Int,
 ) {
     data object Home : Screen(R.string.mbank_home, R.drawable.mbank_nav_home_24)
 
