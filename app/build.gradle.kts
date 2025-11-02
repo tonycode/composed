@@ -142,7 +142,7 @@ dependencies {
 
     // Demos
     implementation(projects.demos.comidaApp)
-    implementation(projects.demos.mbankApp)
+    implementation(projects.demos.mbankApp.ui)
 
     // Debug
     debugImplementation(libs.androidx.compose.ui.tooling)
