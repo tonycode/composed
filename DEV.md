@@ -1,18 +1,22 @@
 ## Frequently used Gradle tasks
 
 - `./gradlew clean` - delete build dirs (`./build/`, `./app/build/`, `./**/build/`)
+
+### Dependencies
 - `./gradlew dependencyUpdates` - check for dependency updates, result will be printed in console
-    - `./gradlew showDependencyUpdates` - show generated report in web-browser
-        - or open `build/dependencyUpdates/report.html`
+    - open `build/dependencyUpdates/report.html`
 - `./gradlew app:dependencies` - view dependencies hierarchy
     - `./gradlew app:dependencies --configuration debugCompileClasspath`
 
+### Code-style
 - `./gradlew ktlintFormat`
 
+### Unit-tests
 - `./gradlew test`
     - ~~with coverage: `./gradlew createDebugUnitTestCoverageReport`~~
 - ~~`./gradlew connectedAndroidTest`~~
 
+### App install/uninstall
 - `./gradlew installDebug`
 - `./gradlew installRelease`
 - `./gradlew uninstallDebug`
