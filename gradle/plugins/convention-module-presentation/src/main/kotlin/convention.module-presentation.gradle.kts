@@ -12,6 +12,7 @@ dependencies {
     // Core
     implementation(platform(libs.kotlin.bom)) // Align versions of all Kotlin components
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlinx.coroutines.core)
 
     // UnitTests
     testImplementation(libs.junit)

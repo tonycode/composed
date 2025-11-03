@@ -11,18 +11,27 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
-import dev.tonycode.composed.mbank.domain.entity.AccountStats
-import dev.tonycode.composed.mbank.domain.entity.AccountSummary
-import dev.tonycode.composed.mbank.domain.entity.Transaction
-import dev.tonycode.composed.mbank.domain.entity.UserProfile
-import dev.tonycode.composed.mbank.ui.preview.ScreenPreview
+import com.arkivanov.essenty.instancekeeper.InstanceKeeper
+import com.arkivanov.essenty.lifecycle.Lifecycle
+import com.arkivanov.mvikotlin.core.store.StoreFactory
+import dev.tonycode.composed.mbank.data.usecase.account.GetAccountStatsUsecaseImpl
+import dev.tonycode.composed.mbank.data.usecase.account.GetAccountSummaryUsecaseImpl
+import dev.tonycode.composed.mbank.data.usecase.account.GetAccountTransactionsUsecaseImpl
+import dev.tonycode.composed.mbank.data.usecase.user.GetAuthorizedUserIdUsecaseImpl
+import dev.tonycode.composed.mbank.data.usecase.user.GetUserProfileUsecaseImpl
+import dev.tonycode.composed.mbank.presentation.IDispatchers
+import dev.tonycode.composed.mbank.presentation.ViewProxy
+import dev.tonycode.composed.mbank.presentation.home.HomeController
+import dev.tonycode.composed.mbank.presentation.home.HomeView
+import dev.tonycode.composed.mbank.presentation.home.store.HomeStore
 import dev.tonycode.composed.mbank.ui.screens.home.components.HomeAppbar
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.BalanceOverview
 import dev.tonycode.composed.mbank.ui.screens.home.widgets.RecentTransactionsWidget
@@ -31,12 +40,41 @@ import dev.tonycode.composed.mbank.ui.screens.home.widgets.SpendingStatsWidget
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    homeViewModel: HomeViewModel = viewModel(),
+    storeFactory: StoreFactory,
+    lifecycle: Lifecycle,
+    instanceKeeper: InstanceKeeper,
+    dispatches: IDispatchers,
 ) {
-    val userProfile: UserProfile? by remember { homeViewModel.userProfile }
-    val accountSummary: AccountSummary? by remember { homeViewModel.accountSummary }
-    val accountStats: AccountStats? by remember { homeViewModel.accountStats }
-    val recentTransactions: List<Transaction>? by remember { homeViewModel.recentTransactions }
+    val controller: HomeController by remember {
+        mutableStateOf(
+            HomeController(
+                GetAuthorizedUserIdUsecaseImpl(),
+                GetUserProfileUsecaseImpl(),
+                GetAccountSummaryUsecaseImpl(),
+                GetAccountStatsUsecaseImpl(),
+                GetAccountTransactionsUsecaseImpl(),
+                storeFactory,
+                instanceKeeper,
+                dispatches,
+            ),
+        )
+    }
+
+    var model: HomeStore.State by remember { mutableStateOf(HomeStore.State()) }
+
+    val view by remember {
+        mutableStateOf(
+            object :
+                ViewProxy<HomeStore.State, HomeStore.Intent>(
+                    render = { model = it },
+                ),
+                HomeView {},
+        )
+    }
+
+    LaunchedEffect(true) {
+        controller.onViewCreated(view, lifecycle)
+    }
 
     Surface(
         modifier = modifier.fillMaxWidth(),
@@ -44,10 +82,10 @@ fun HomeScreen(
     ) {
         Column {
             // top app-bar
-            userProfile.let {
+            model.userProfile?.name.let {
                 HomeAppbar(
-                    isLoading = (it == null),
-                    userName = it?.name,
+                    isLoading = it.isNullOrBlank(),
+                    userName = it,
                 )
             }
 
@@ -60,8 +98,8 @@ fun HomeScreen(
                 // available funds & spending stats
                 Row {
                     BalanceOverview(
-                        availableFunds = accountSummary?.fundsAvailable,
-                        spentThisMonth = accountStats?.spentThisMonth,
+                        availableFunds = model.accountSummary?.fundsAvailable,
+                        spentThisMonth = model.accountStats?.spentThisMonth,
                         modifier =
                             Modifier
                                 .weight(2 / 3f)
@@ -76,16 +114,9 @@ fun HomeScreen(
                 Spacer(Modifier.height(8.dp))
 
                 RecentTransactionsWidget(
-                    transactions = recentTransactions,
+                    transactions = model.recentTransactions,
                 )
             }
         }
     }
 }
-
-@LightDarkPreviews
-@Composable
-private fun HomeScreenPreview() =
-    ScreenPreview {
-        HomeScreen()
-    }

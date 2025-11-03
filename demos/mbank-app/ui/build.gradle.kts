@@ -18,9 +18,13 @@ dependencies {
     implementation(projects.common.designsystem.presentation)
     implementation(projects.common.designsystem.ui)
 
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
+
+    implementation(libs.mvikotlin)
+    implementation(libs.mvikotlin.main)
+    implementation(libs.mvikotlin.logging)
+    implementation(libs.essenty)
 
     // UI
     implementation(libs.androidx.activity.compose)

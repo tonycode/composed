@@ -13,8 +13,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import com.arkivanov.essenty.instancekeeper.instanceKeeper
+import com.arkivanov.essenty.lifecycle.essentyLifecycle
+import com.arkivanov.mvikotlin.logging.store.LoggingStoreFactory
+import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import dagger.hilt.android.AndroidEntryPoint
-import dev.tonycode.composed.common.designsystem.ui.preview.LightDarkPreviews
+import dev.tonycode.composed.mbank.presentation.DefaultDispatchers
 import dev.tonycode.composed.mbank.ui.components.MbankBottomBar
 import dev.tonycode.composed.mbank.ui.screens.home.HomeScreen
 import dev.tonycode.composed.mbank.ui.theme.MbankAppTheme
@@ -26,7 +30,7 @@ class MbankAppActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            MbankApp()
+            MbankApp(debugMvi = true) // TODO: Pass BuildConfig.DEBUG
         }
     }
 
@@ -40,7 +44,7 @@ class MbankAppActivity : ComponentActivity() {
 }
 
 @Composable
-private fun MbankApp() {
+private fun ComponentActivity.MbankApp(debugMvi: Boolean) {
     MbankAppTheme {
         var selectedScreen: Screen by remember { mutableStateOf(Screen.Home) }
 
@@ -56,11 +60,13 @@ private fun MbankApp() {
                 )
             },
         ) { innerPadding ->
-            HomeScreen(modifier = Modifier.padding(innerPadding))
+            HomeScreen(
+                modifier = Modifier.padding(innerPadding),
+                storeFactory = if (debugMvi) LoggingStoreFactory(DefaultStoreFactory()) else DefaultStoreFactory(),
+                lifecycle = essentyLifecycle(),
+                instanceKeeper = instanceKeeper(),
+                dispatches = DefaultDispatchers,
+            )
         }
     }
 }
-
-@LightDarkPreviews
-@Composable
-private fun MbankAppPreview() = MbankApp()
